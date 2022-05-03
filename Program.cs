@@ -14,26 +14,25 @@
             
         }
             static void Main(string[] args)
-        {
+            { 
             
-                Display.InitializeGameboard1();
-                Coordinate.CoordList = Monster.MonsterPosition();
-            while (InProgress)
-            {
-                Console.Clear();
-                Display.Gameboard();
-                position = Player.PlayerPosition();
-                Coordinate.CombatInitiator(Coordinate.CoordList);
-                Coordinate.CoordListDisplay(Coordinate.CoordList);
-                Console.WriteLine($"The player is at position ({position[0]},{position[1]})");
-                Player.PlayerMouvement(position[1],position[0]);
-                Thread.Sleep(20);
+                Display.InitializeGameboard2();
+                Display.TestGameboard();
+                /*Coordinate.CoordList = Monster.MonsterPosition();
+                while (InProgress)
+                {
+                    Console.Clear();
+                    Display.Gameboard();
+                    position = Player.PlayerPosition();
+                    Coordinate.CombatInitiator(Coordinate.CoordList);
+                    Coordinate.CoordListDisplay(Coordinate.CoordList);
+                    Console.WriteLine($"The player is at position ({position[0]},{position[1]})");
+                    Player.PlayerMouvement(position[1],position[0]);
+                    Thread.Sleep(20);
 
-               // InitializeCombat();
+                   // InitializeCombat();
 
-
-
-            }
-        }
+                }*/
+            }   
     }
 }

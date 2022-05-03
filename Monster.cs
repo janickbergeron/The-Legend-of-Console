@@ -9,7 +9,7 @@ namespace The_Legend_of_Console
     public class Monster : Entity
     {
 
-        public Monster(string name, int level, int maxHealth, int attack, int defence, int armor,Entity enemy) : base(name, level, maxHealth, attack, defence, armor)
+        public Monster(string name, int level, int maxHealth, int attack, int defence, int armor, Entity enemy) : base(name, level, maxHealth, attack, defence, armor)
         {
             Enemy = enemy;
         }
@@ -76,7 +76,7 @@ namespace The_Legend_of_Console
                 case 2:
                     Combat.CombatLogProcess();
                     int defend = Defend();
-                    Combat.CombatLog.Add(String.Format("║ The {0,-8} prepare to prevent the next {1,-2} Damage.                {2,5}", Program.monster.Name,defend, "║"));
+                    Combat.CombatLog.Add(String.Format("║ The {0,-8} prepare to prevent the next {1,-2} Damage.                {2,5}", Program.monster.Name, defend, "║"));
                     break;
             }
         }
