@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace The_Legend_of_Console
 {
 
-    internal class Board
+    public class Board
     {
         public string Line0;
         public string Line1;
@@ -46,7 +46,7 @@ namespace The_Legend_of_Console
             Line14 = line14;
             Line15 = line15;
         }
-        public static Board GenerateMonster(int x, List<Board> list)
+        public static Board GenerateBoard(int x, List<Board> list)
         {
             Board board = new Board(
                 list[x].Line0,
@@ -77,5 +77,6 @@ namespace The_Legend_of_Console
             List<Board> boardList = JsonConvert.DeserializeObject<List<Board>>(jsonString);
             return boardList;
         }
+        
     }
 }

@@ -18,7 +18,8 @@
             
                 Display.InitializeGameboard1();
                 Display.InitializeStringTab();
-                Coordinate.CoordList = Monster.MonsterPosition();
+                Display.MainTabLoading(Board.GenerateBoard(0, Board.GetBoardData()));
+            Coordinate.CoordList = Monster.MonsterPosition();
                 while (InProgress)
                 {
                     Console.Clear();
