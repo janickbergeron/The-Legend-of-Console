@@ -15,16 +15,15 @@ namespace The_Legend_of_Console
         }
         public static List<Coordinate> MonsterPosition()
         {
-            bool PositionFound = false;
             int[] position = new int[2];
             List<Coordinate> CoordList = new List<Coordinate>();
 
             for (int i = 0; i < 16; i++)
             {
                 int compteur = 0;
-                foreach (string n in Display.MainTab[i])
+                foreach (char n in Display.MainTab[i])
                 {
-                    if (n != " M " && n != "║ M " && n != " M ║")
+                    if (n != 'M')
                         compteur++;
                     else
                     {

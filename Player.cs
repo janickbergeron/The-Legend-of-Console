@@ -15,7 +15,6 @@ namespace The_Legend_of_Console
         }
         public static void PlayerMouvement(int x, int y)
         {
-
             ConsoleKeyInfo key = Console.ReadKey();
             while (key.Key != ConsoleKey.UpArrow && key.Key != ConsoleKey.DownArrow && key.Key != ConsoleKey.LeftArrow && key.Key != ConsoleKey.RightArrow &&
                    key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D) 
@@ -24,77 +23,49 @@ namespace The_Legend_of_Console
             }
 
             if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S)
-            {   
-                if (x < 14)
+            {  
+                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝')
                 {
-                    Display.MainTab[x+1][y] = " @ ";
-                    Display.MainTab[x][y] = "   ";
-                }
-                if (y == 14 && x < 14)
-                {
-                    Display.MainTab[x + 1][y] = " @ ║";
-                    Display.MainTab[x][y] = "   ║";
-                }
-                if (y == 0 && x < 14)
-                {
-                    Display.MainTab[x + 1][y] = "║ @ "; 
-                    Display.MainTab[x][y] = "║   ";
+                    if (x < 14)
+                    {
+                    Display.MainTab[x + 1][y] = '@';
+                    Display.MainTab[x][y] = ' ';
+                    }
                 }
             }
             if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W)
             {
-                if (x > 1)
+                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝')
                 {
-                    Display.MainTab[x - 1][y] = " @ ";
-                    Display.MainTab[x][y] = "   ";
-                }
-                if (y == 14 && x > 1)
-                {
-                    Display.MainTab[x - 1][y] = " @ ║";
-                    Display.MainTab[x][y] = "   ║";
-                }
-                if (y == 0 && x > 1)
-                {
-                    Display.MainTab[x - 1][y] = "║ @ ";
-                    Display.MainTab[x][y] = "║   ";
+                    if (x > 1)
+                    {
+                        Display.MainTab[x - 1][y] = '@';
+                        Display.MainTab[x][y] = ' ';
+                    }
                 }
             }
             if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D)
             {
-                if (y < 13)
+                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝')
                 {
-                    Display.MainTab[x][y+1] = " @ ";
-                    Display.MainTab[x][y] = "   ";
+                    if (y < 50)
+                    {
+                        Display.MainTab[x][y + 1] = '@';
+                        Display.MainTab[x][y] = ' ';
+                    }
                 }
                 
-                if (y == 13)
-                {
-                    Display.MainTab[x][y+1] = " @ ║";
-                    Display.MainTab[x][y] = "   ";
-                }
-                if (y == 0)
-                {
-                    Display.MainTab[x][y + 1] = " @ ";
-                    Display.MainTab[x][y] = "║   ";
-                }
             }
             if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A)
             {
-                
-                if (y > 1 && y < 14)
+
+                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝')
                 {
-                    Display.MainTab[x][y - 1] = " @ ";
-                    Display.MainTab[x][y] = "   ";
-                }
-               if (y == 1)
-                {
-                    Display.MainTab[x][y - 1] = "║ @ ";
-                    Display.MainTab[x][y] = "   ";
-                }
-                if (y == 14)
-                {
-                    Display.MainTab[x][y - 1] = " @ ";
-                    Display.MainTab[x][y] = "   ║";
+                    if (y > 1 && y < 51)
+                    {
+                        Display.MainTab[x][y - 1] = '@';
+                        Display.MainTab[x][y] = ' ';
+                    }
                 }
             }
         }
@@ -108,9 +79,9 @@ namespace The_Legend_of_Console
                 for (int i = 0; i < 16; i++)
                 {
                     int compteur = 0;
-                    foreach (string n in Display.MainTab[i])
+                    foreach (char n in Display.MainTab[i])
                     {
-                        if (n != " @ " && n != " @ ║" && n != "║ @ ")
+                        if (n != '@')
                             compteur++;
                         else
                         {
