@@ -17,10 +17,12 @@
             { 
             
                 Display.InitializeGameboard1();
+                Display.InitializeStringTab();
                 Coordinate.CoordList = Monster.MonsterPosition();
                 while (InProgress)
                 {
                     Console.Clear();
+                    Display.GameboardOptimisation();
                     Display.Gameboard();
                     position = Player.PlayerPosition();
                     Coordinate.CombatInitiator(Coordinate.CoordList);

@@ -11,6 +11,12 @@ namespace The_Legend_of_Console
         public static char[][] MainTab = new char[16][];
         public static string[][] StringTab = new string[16][];
 
+        public static void InitializeStringTab()
+        {
+            for (int i = 0; i < 16; i++)
+            StringTab[i] = new string[] { "" };
+        }
+
         /*public static void InitializeGameboard1()
         {
              MainTab[0] = new string[] { "╔═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══", "═══╗" };
@@ -54,12 +60,19 @@ namespace The_Legend_of_Console
             // ╦ ╩ ╣ ║ ╬ ╠ ═ ╔ ╗ ╚ ╝
         }  // Function to initialize the display array  52 Coll 16 row
 
+        public static void MainTabLoading()
+        {
+            for (int i = 0; i < 16; i++)
+            {
+
+            }
+        }
         public static void GameboardOptimisation()
         {
             for (int i = 0; i < 16; i++)
             {
                 string str = new string(MainTab[i]);
-                StringTab[i][0] = str;
+                Display.StringTab[i][0] = str;
             }
         }
         public static void Gameline(int x)
