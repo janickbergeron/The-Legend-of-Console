@@ -4,8 +4,8 @@
     {
         public static bool InProgress = true;
         public static bool TestInProgress = true;
-        public static Player player = new("pepito", 1, 100, 1, 5, 10, 0);
-        public static Monster monster = new("  Blob", 1, 100, 1, 5, 10, 0, player);
+        public static Player player = new("pepito", 1, 100, 40, 50, 1, 0);
+        public static Monster monster = new("  Blob", 1, 100, 1, 5, 1, 0, player);
         public static int[] position = new int[2];
         public static void InitializeCombat()
         {
@@ -20,11 +20,12 @@
                 Display.InventoryDisplay();
                 Console.ReadKey();
             }*/
-             Item.WeaponList = Item.GetWeaponData();
-             Item.ArmorList = Item.GetArmorData();
-             Item.ConsumList = Item.GetConsumData();
+             Item.WeaponList = Item.GetItemData("Weapon");
+             Item.ArmorList = Item.GetItemData("Armor");
+             Item.ConsumList = Item.GetItemData("Consum");
              Inventory.InventoryWeaponList.Add(Item.CreateWeapon(0,Item.WeaponList));
              Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.ArmorList));
+             Inventory.InventoryArmorList.Add(Item.CreateArmor(1, Item.ArmorList));
              Inventory.InventoryConsumList.Add(Item.CreateConsum(0, Item.ConsumList));
 
              Display.InitializeGameboard1();

@@ -57,30 +57,10 @@ namespace The_Legend_of_Console
             _health = health;
             _full = full;
         }   // Consumable Constructor.
-        public static List<Item> GetWeaponData()
+        public static List<Item> GetItemData(string item)
         {
             var CurrentDirectory = Environment.CurrentDirectory;
-            string path = $@"\Data\WeaponData.json";
-            string fullPath = CurrentDirectory + path;
-            StreamReader r = new StreamReader(fullPath);
-            string jsonString = r.ReadToEnd();
-            List<Item> itemList = JsonConvert.DeserializeObject<List<Item>>(jsonString);
-            return itemList;
-        } // Function to fetch the Weapon Data File.
-        public static List<Item> GetArmorData()
-        {
-            var CurrentDirectory = Environment.CurrentDirectory;
-            string path = $@"\Data\ArmorData.json";
-            string fullPath = CurrentDirectory + path;
-            StreamReader r = new StreamReader(fullPath);
-            string jsonString = r.ReadToEnd();
-            List<Item> itemList = JsonConvert.DeserializeObject<List<Item>>(jsonString);
-            return itemList;
-        } // Function to fetch the Armor Data File.
-        public static List<Item> GetConsumData()
-        {
-            var CurrentDirectory = Environment.CurrentDirectory;
-            string path = $@"\Data\ConsumData.json";
+            string path = $@"\Data\{item}Data.json";
             string fullPath = CurrentDirectory + path;
             StreamReader r = new StreamReader(fullPath);
             string jsonString = r.ReadToEnd();
