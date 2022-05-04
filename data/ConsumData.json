@@ -1,0 +1,11 @@
+[
+ {
+   	"Name": "Health Potion",
+	"Type": "Consum",
+	"Health": "20",
+   	"MinDamage": "0",
+	"MaxDamage": "0",
+	"Defense": "0",
+	"Full": "True"
+ }
+]

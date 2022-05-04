@@ -8,11 +8,10 @@ namespace The_Legend_of_Console
 {
     public class Monster : Entity
     {
-
-        public Monster(string name, int level, int maxHealth, int attack, int defence, int armor, Entity enemy) : base(name, level, maxHealth, attack, defence, armor)
+        public Monster(string name, int level, int maxHealth, int minDamage,int maxDamage, int defence, int armor, Entity enemy) : base(name, level, maxHealth, minDamage,maxDamage, defence, armor)
         {
             Enemy = enemy;
-        }
+        } //Monster Constructor
         public static List<Coordinate> MonsterPosition()
         {
             int[] position = new int[2];
@@ -36,9 +35,11 @@ namespace The_Legend_of_Console
                 }
             }
             return CoordList;
-        }
-        public override int CombatAttack(int damage)
+        } //Function that returns a list of coordinate for all monster on the gameboard.
+        public override int CombatAttack(int minDamage, int maxDamage)
         {
+            Random rand = new Random();
+            int damage = rand.Next(minDamage,maxDamage);
             Armor = 0;
             int FinalDamage = damage - this.Enemy.Armor;
             if (FinalDamage < 0)
@@ -47,7 +48,7 @@ namespace The_Legend_of_Console
             }
             this.Enemy.Health -= FinalDamage;
             return FinalDamage;
-        }
+        } 
         public override int Defend()
         {
             Armor = 0;
@@ -69,7 +70,7 @@ namespace The_Legend_of_Console
             {
                 case 1:
                     Combat.CombatLogProcess();
-                    int damage = CombatAttack(Attack);
+                    int damage = CombatAttack(MinDamage,MaxDamage);
                     Combat.CombatLog.Add(String.Format("║ The {0,-8} inflict {1,-2} Damage.                                    {2,5}", Program.monster.Name, damage, "║"));
                     break;
                 case 2:
@@ -79,10 +80,5 @@ namespace The_Legend_of_Console
                     break;
             }
         }
-
-        /*public static Monster MonsterGenerator()
-        {
-
-        }*/
     }
 }
