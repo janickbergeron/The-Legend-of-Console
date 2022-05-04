@@ -67,7 +67,7 @@ namespace The_Legend_of_Console
                 list[x].Line15);
             return board;
         }
-        public static List<Board> GetBoardData()
+        public static List<Board> GetBoardData() 
         {
             var CurrentDirectory = Environment.CurrentDirectory;
             string path = $@"\Data\BoardData.json";
@@ -76,7 +76,7 @@ namespace The_Legend_of_Console
             string jsonString = r.ReadToEnd();
             List<Board> boardList = JsonConvert.DeserializeObject<List<Board>>(jsonString);
             return boardList;
-        }
+        } // Function to fetch the Board Data File.
         
     }
 }

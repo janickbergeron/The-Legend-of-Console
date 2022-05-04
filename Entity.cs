@@ -13,7 +13,8 @@ namespace The_Legend_of_Console
         private int _level;
         private int _maxHealth;
         private int _health;
-        private int _attack;
+        private int _minDamage;
+        private int _maxDamage;
         private int _defense;
         private int _armor;
         
@@ -22,24 +23,23 @@ namespace The_Legend_of_Console
         public int Level { get { return _level; } set { _level = value; } }
         public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
         public int Health { get { return _health; } set { _health = value; } }
-        public int Attack { get { return _attack; } set { _attack = value; } }
+        public int MinDamage { get { return _minDamage; } set { _minDamage = value; } }
+        public int MaxDamage { get { return _maxDamage; } set { _maxDamage = value; } }
         public int Defense { get { return _defense; } set { _defense = value; } }
         public int Armor { get { return _armor; } set { _armor = value; } }
-       
 
-        public Entity(string name, int level, int maxHealth, int attack, int defense, int armor)
+        public Entity(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense, int armor)
         {
             _name = name;
             _level = level;
             _maxHealth = maxHealth;
             _health = maxHealth;
-            _attack = attack;
+            _minDamage = minDamage;
+            _maxDamage = maxDamage;
             _defense = defense;
             _armor = armor;
         }
-        public abstract int CombatAttack(int damage);
-
+        public abstract int CombatAttack(int minDamage, int maxDamage);
         public abstract int Defend();
-
     }
 }

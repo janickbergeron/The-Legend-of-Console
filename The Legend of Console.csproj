@@ -9,11 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="data\ArmorData.json" />
     <None Remove="data\BoardData.json" />
+    <None Remove="data\ConsumData.json" />
+    <None Remove="data\ItemData.json" />
+    <None Remove="data\WeaponData.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="data\ArmorData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\BoardData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\ConsumData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\WeaponData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

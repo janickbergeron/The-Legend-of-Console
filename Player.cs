@@ -8,8 +8,8 @@ namespace The_Legend_of_Console
 {
     public class Player : Entity
     {
-
-        public Player(string name, int level, int maxHealth, int attack, int defence,int armor): base(name,level,maxHealth,attack,defence,armor)
+        public Inventory PlayerInventory = new Inventory();
+        public Player(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense,int armor): base(name,level,maxHealth,minDamage,maxDamage,defense,armor)
         {
 
         }
@@ -17,14 +17,14 @@ namespace The_Legend_of_Console
         {
             ConsoleKeyInfo key = Console.ReadKey();
             while (key.Key != ConsoleKey.UpArrow && key.Key != ConsoleKey.DownArrow && key.Key != ConsoleKey.LeftArrow && key.Key != ConsoleKey.RightArrow &&
-                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar) 
+                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I) 
             {
                 key = Console.ReadKey();
             }
 
             if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S)
             {  
-                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝')
+                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝' && Display.MainTab[x + 1][y] != 'L')
                 {
                     if (x < 14)
                     {
@@ -35,7 +35,7 @@ namespace The_Legend_of_Console
             }
             if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W)
             {
-                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝')
+                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝' && Display.MainTab[x - 1][y] != 'L')
                 {
                     if (x > 1)
                     {
@@ -46,7 +46,7 @@ namespace The_Legend_of_Console
             }
             if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D)
             {
-                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝')
+                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝' && Display.MainTab[x][y + 1] != 'L')
                 {
                     if (y < 50)
                     {
@@ -59,7 +59,7 @@ namespace The_Legend_of_Console
             if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A)
             {
 
-                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝')
+                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝' && Display.MainTab[x][y - 1] != 'L')
                 {
                     if (y > 1 && y < 51)
                     {
@@ -68,8 +68,11 @@ namespace The_Legend_of_Console
                     }
                 }
             }
+            if (key.Key == ConsoleKey.I)
+            {
+                Display.InventoryDisplay();
+            }
         }
-
         public static int[] PlayerPosition()
         {
             bool PositionFound = false;
@@ -96,11 +99,10 @@ namespace The_Legend_of_Console
            }
            return position;
         } //Returns a int array with player's current coordinates
-
-       
-
-        public override int CombatAttack(int damage)
+        public override int CombatAttack(int minDamage, int maxDamage)
         {
+            Random random = new Random();
+            int damage = random.Next(minDamage,maxDamage);
             Armor = 0;
             int FinalDamage = damage - this.Enemy.Armor;
             this.Enemy.Health -= FinalDamage;
@@ -144,7 +146,7 @@ namespace The_Legend_of_Console
             {
                 case 1:
                     Combat.CombatLogProcess();
-                    int damage = CombatAttack(Attack);
+                    int damage = CombatAttack(MinDamage,MaxDamage);
                     Combat.CombatLog.Add(String.Format("║ You inflict {0,-2} Damage.                                             {1,5}", damage, "║"));
                     break;
                 case 2:

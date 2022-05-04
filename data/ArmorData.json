@@ -1,0 +1,10 @@
+[
+ {
+   	"Name": "Quilted Armor",
+	"Type": "Armor",
+	"Health": "0",
+   	"MinDamage": "0",
+	"MaxDamage": "0",
+	"Defense": "5"
+ }
+]
