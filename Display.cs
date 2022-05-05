@@ -16,7 +16,7 @@ namespace The_Legend_of_Console
         {
             for (int i = 0; i < 16; i++)
             StringTab[i] = new string[] { "" };
-        }
+        }  // Function to initialize the display array  62 Coll 16 row
         public static void InitializeGameboard1()
         {
             MainTab[0] = new char[] {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', };
@@ -38,8 +38,7 @@ namespace The_Legend_of_Console
 
 
             // ╦ ╩ ╣ ║ ╬ ╠ ═ ╔ ╗ ╚ ╝
-        }  // Function to initialize the display array  52 Coll 16 row
-
+        }  // Function to initialize the display array  62 Coll 16 row
         public static void MainTabLoading(Board board)
         {
                 for (int i = 0; i < 63; i++)
@@ -69,7 +68,7 @@ namespace The_Legend_of_Console
                 string str = new string(MainTab[i]);
                 Display.StringTab[i][0] = str;
             }
-        }
+        } //Function for display optimisation
         public static void Gameline(int x)
         {
             foreach (string n in StringTab[x]) 
@@ -86,6 +85,17 @@ namespace The_Legend_of_Console
             }
             ContextDisplay();
         }     //Function to draw the gameboard.
+        public static void TitleScreen()
+        {
+            Console.WriteLine(@" .____                                    .___         _____  _________                            .__");
+            Console.WriteLine(@" |    |    ____   ____   ____   ____    __| _/   _____/ ____\ \_   ___ \  ____   ____   __________ |  |  ____ ");
+            Console.WriteLine(@" |    |  _/ __ \ / ___\_/ __ \ /    \  / __ |   /  _ \   __\  /    \  \/ /  _ \ /    \ /  ___/  _ \|  | _/ __ \");
+            Console.WriteLine(@" |    |__\  ___// /_/  >  ___/|   |  \/ /_/ |  (  <_> )  |    \     \___(  <_> )   |  \\___ (  <_> )  |_\  ___/");
+            Console.WriteLine(@" |_______ \___  >___  / \___  >___|  /\____ |   \____/|__|     \______  /\____/|___|  /____  >____/|____/\___  >");
+            Console.WriteLine(@"         \/   \/_____/      \/     \/      \/                         \/            \/     \/                \/ ");
+            Console.WriteLine("Press any key to continue....");
+            Console.ReadKey();
+        } //Function to display the Title Screen.
         public static void ContextDisplay()
         {
             InitializeContextDisplay();
@@ -97,7 +107,7 @@ namespace The_Legend_of_Console
                    menuString += "╚═════════════════════════════════════════════════════════════╝";
             Console.WriteLine(menuString);
             Console.WriteLine("Space = Interact i = Inventory");
-        }
+        } //Function to draw the Context Display.
         public static void InitializeContextDisplay()
         {
             for (int i = 0; i < 4; i++)
@@ -114,14 +124,14 @@ namespace The_Legend_of_Console
             Console.Clear();
                     string menuString = "╔════════════════════════════════════╦═══════════════════════════════════╦══════════════════════════════╗ \n";
             menuString += String.Format("║ Name: {0,-10}       {1,-3}/ {2,-3}HP  ║ Enemy: {3,-10}     {4,-3}/ {5,-3}HP  ║          Equipments          ║\n", Program.player.Name, Program.player.Health, Program.player.MaxHealth, Program.monster.Name, Program.monster.Health, Program.monster.MaxHealth) +
-                          String.Format("║ Level: {0,-3}             Armor: {1,-3}  ║ Level: {2,-5}          Armor: {3,-3}  ║ Weapon:                      ║\n", Program.player.Level,Program.player.Armor,Program.monster.Level, Program.monster.Armor) +
-                          String.Format("║ Damage: {0,3}-{1,-3}                    ║ Damage: {2,3}-{3,-3}                   ║ Off-Hand:                    ║\n", Program.player.MinDamage,Program.player.MaxDamage, Program.monster.MinDamage, Program.monster.MaxDamage) +
-                          String.Format("║ Defense: {0,-5}                     ║ Defense: {1,-5}                    ║ Chest:                       ║ \n", Program.player.Defense, Program.monster.Defense); 
-                           menuString+= "║                                    ║                                   ║ Pants:                       ║ \n" +
-                                        "║                                    ║                                   ║ Gloves:                      ║\n" +
-                                        "║                                    ║                                   ║ Boots:                       ║\n" +
-                                        "║                                    ╠═══════════════════════════════════╣ Ring:                        ║\n" +
-                                        "║                                    ║ Next Action :                     ║ Ring:                        ║\n" +
+                          String.Format("║ Level: {0,-3}             Armor: {1,-3}  ║ Level: {2,-5}          Armor: {3,-3}  ║ Weapon: {4,-12}                  ║\n", Program.player.Level,Program.player.Armor,Program.monster.Level, Program.monster.Armor,Inventory.EquippedWeapon[0]) +
+                          String.Format("║ Damage: {0,3}-{1,-3}                    ║ Damage: {2,3}-{3,-3}                   ║ Off-Hand: {4,-12                    ║\n", Program.player.MinDamage,Program.player.MaxDamage, Program.monster.MinDamage, Program.monster.MaxDamage,Inventory.EquippedOffHand[0]) +
+                          String.Format("║ Defense: {0,-5}                     ║ Defense: {1,-5}                    ║ Chest: {2,-12}                      ║ \n", Program.player.Defense, Program.monster.Defense,Inventory.EquippedChest[0]); 
+             menuString+= String.Format("║                                    ║                                   ║ Pants: {0,-12}                      ║ \n", Inventory.EquippedPants[0]) +
+                          String.Format("║                                    ║                                   ║ Gloves: {0,-12}                     ║\n", Inventory.EquippedGloves[0]) +
+                          String.Format("║                                    ║                                   ║ Boots: {0, -12                      }║\n",Inventory.EquippedBoots[0]) +
+                          String.Format("║                                    ╠═══════════════════════════════════╣ Ring: {0,-12}                       ║\n",Inventory.EquippedRing[0]) +
+                          String.Format("║                                    ║ Next Action :                     ║ Ring: {0,-12}                       ║\n",Inventory.EquippedRing[1]) +
                                         "╠════════════════════════════════════╩═══════════════════════════════════╬══════════════════════════════╝\n";
             foreach(string n in Combat.CombatLog)
             {
@@ -164,6 +174,20 @@ namespace The_Legend_of_Console
             Console.WriteLine(menuString);
             Console.ReadKey();
         }
-
+        public static void TitleMenuDisplay()
+        {
+            Console.Clear();
+            string menuString = "╔═════════════════════╗\n" +
+                                "║      Main Menu      ║\n" +
+                                "╠═════════════════════╣\n" +
+                                "║                     ║\n" +
+                                "║   1 - New Game      ║\n" +
+                                "║   2 - Load Game     ║\n" +
+                                "║   3 - Quit          ║\n" +
+                                "║                     ║\n" +
+                                "╚═════════════════════╝";
+            Console.WriteLine(menuString);
+            Input.TitleMenuInput();
+        }
     }
 }

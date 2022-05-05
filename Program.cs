@@ -4,7 +4,7 @@
     {
         public static bool InProgress = true;
         public static bool TestInProgress = true;
-        public static Player player = new("pepito", 1, 100, 40, 50, 1, 0);
+        public static Player player = null;
         public static Monster monster = new("  Blob", 1, 100, 1, 5, 1, 0, player);
         public static int[] position = new int[2];
         public static void InitializeCombat()
@@ -13,6 +13,15 @@
             monster.Health = monster.MaxHealth;
             combat1.StartCombat();
         }
+        public static Player PlayerCreation()
+        {
+            Console.Clear();
+            Console.WriteLine("Choose the Player's name:");
+            string name = Console.ReadLine();
+
+            Player player = new(name, 1, 50, 2, 5, 0, 0);
+            return player;
+        }
         static void Main(string[] args)
         {
             /*while (TestInProgress)
@@ -20,6 +29,8 @@
                 Display.InventoryDisplay();
                 Console.ReadKey();
             }*/
+
+             Display.TitleScreen();
              Item.WeaponList = Item.GetItemData("Weapon");
              Item.ArmorList = Item.GetItemData("Armor");
              Item.ConsumList = Item.GetItemData("Consum");
@@ -34,6 +45,8 @@
              Coordinate.MonsterCoordList = Monster.MonsterPosition();
              Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
              Coordinate.LeverCoordList = Coordinate.LeverPosition();
+
+             Display.TitleMenuDisplay();
              while (InProgress)
              {
                  Console.Clear();
