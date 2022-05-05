@@ -6,7 +6,8 @@
         public static bool TestInProgress = true;
         public static Player player = null;
         public static Monster monster = new("  Blob", 1, 10, 1, 5, 1, 0, player);
-        public static int[] position = new int[2];
+        public static Coordinate playerCoord = new(0, 0);
+
         public static void InitializeCombat()
         {
             Combat combat1 = new Combat(Program.player, Program.monster);
@@ -40,10 +41,10 @@
             Item.RingList = Item.GetItemData("Ring");
             Item.ConsumList = Item.GetItemData("Consum");
             Inventory.InventoryWeaponList.Add(Item.CreateWeapon(0,Item.WeaponList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.ChestList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.OffHandList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(1, Item.ChestList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.PantsList));
+            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.ChestList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.BootsList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.GlovesList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.RingList));
@@ -65,12 +66,12 @@
                 Console.Clear();
                 Display.GameboardOptimisation();
                 Display.Gameboard();
-                position = Player.PlayerPosition();
+                Program.playerCoord = Coordinate.PlayerPosition();
                 Coordinate.CombatInitiator(Coordinate.MonsterCoordList);
                 Coordinate.TreasureInitiator(Coordinate.TreasureCoordList);
                 //Coordinate.CoordListDisplay(Coordinate.MonsterCoordList);
-                Console.WriteLine($"The player is at position ({position[0]},{position[1]})");
-                Player.PlayerMouvement(position[1],position[0]);
+                Console.WriteLine($"The player is at position ({playerCoord.X},{playerCoord.Y})");
+                Player.PlayerMouvement(playerCoord);
                 Thread.Sleep(20);
             }
         }   

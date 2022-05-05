@@ -18,6 +18,34 @@ namespace The_Legend_of_Console
             X = x;
             Y = y;
         } //Coordinate Constructor.
+        public static Coordinate PlayerPosition()
+        {
+            Coordinate PlayerCoord = new(0, 0);
+            int[] position = new int[2];
+            bool PositionFound = false;
+            while (!PositionFound)
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    int compteur = 0;
+                    foreach (char n in Display.MainTab[i])
+                    {
+                        if (n != '@')
+                            compteur++;
+                        else
+                        {
+                            position[0] = compteur;
+                            position[1] = i;
+                            PlayerCoord = new(position[0], position[1]);
+                            PositionFound = true;
+                            break;
+                        }
+                    }
+                    if (PositionFound) { break; }
+                }
+            }
+            return PlayerCoord;
+        } //Returns a int array with player's current coordinates
         public static List<Coordinate> TreasurePosition()
         {
             int[] position = new int[2];
@@ -79,7 +107,7 @@ namespace The_Legend_of_Console
             foreach (Coordinate coord in ListCoord)
             {
                 compteur++;
-                if (coord.X == Program.position[0] && coord.Y == Program.position[1])
+                if (coord.X == Program.playerCoord.X && coord.Y == Program.playerCoord.Y)
                 {
                     Program.InitializeCombat();
                     MonsterCoordList.RemoveAt(compteur);
@@ -95,7 +123,7 @@ namespace The_Legend_of_Console
             foreach (Coordinate coord in ListCoord)
             {
                 compteur++;
-                if (coord.X == Program.position[0] && coord.Y == Program.position[1])
+                if (coord.X == Program.playerCoord.X && coord.Y == Program.playerCoord.Y)
                 {
                     Animation.ChestAnimationIdle();
                     TreasureCoordList.RemoveAt(compteur);

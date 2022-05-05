@@ -78,7 +78,7 @@ namespace The_Legend_of_Console
 
             if (input < weapon)
                 Inventory.InventoryWeaponList.RemoveAt(input);
-            if (input > weapon && input < weaponArmorConsum)
+            if (input >= weapon && input < weaponArmorConsum)
                 Inventory.InventoryArmorList.RemoveAt(input-weapon);
             if (input > weaponArmor)
                 Inventory.InventoryConsumList.RemoveAt(input - weaponArmor);
