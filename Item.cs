@@ -10,8 +10,14 @@ namespace The_Legend_of_Console
     public class Item
     {
         public static List<Item> WeaponList = new List<Item>();
-        public static List<Item> ArmorList = new List<Item>();
+        public static List<Item> OffHandList = new List<Item>();
+        public static List<Item> ChestList = new List<Item>();
+        public static List<Item> PantsList = new List<Item>();
+        public static List<Item> BootsList = new List<Item>();
+        public static List<Item> GlovesList = new List<Item>();
+        public static List<Item> RingList = new List<Item>();
         public static List<Item> ConsumList = new List<Item>();
+
         private string _name;
         private string _type;
         private int _minDamage;

@@ -32,23 +32,51 @@ namespace The_Legend_of_Console
 
                     break;
             }
-        }
-        public static void InventoryInput()
+        } //User input in Title Menu
+        public static int EquipmentInput()
         {
+            Inventory.RefreshInventoryList();
+            Console.WriteLine("Choose an item to equip:");
             int input = 0;
+            int total = Inventory.GetInventoryTotal();
             try
             {
                 do input = int.Parse(Console.ReadLine());
-                while (input != 1 && input != 2);
+                while (input < 0 && input > total);
             } catch (Exception ex)
             {
                 Console.WriteLine("Incorrect Entry."); 
             }
-
-        }
-        public static void EquipmentInput()
+            Inventory.RemoveItemFromInventory(input - 1);
+            return input-1;
+        } //User input to select which item to equip.
+        public static void InventoryInput()
         {
+            int input = 0;
+            Console.WriteLine("1: Equip an item. 2: Use consumable. 3: Return.");
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input != 1 && input != 2 && input != 3);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            switch (input)
+            {
+                case 1:
+                    Display.InventoryDisplay();
+                    Inventory.AddItemToInventory(Inventory.EquipItemToSlot(Inventory.InventoryList[EquipmentInput()]));
+                    Display.ShowInventory();
+                    break;
+                case 2:
+                    //TODO Consumable feature
+                    break;
+                case 3:
 
-        }
+                    break;
+            }
+        }   //User input in inventory menu
     }
 }

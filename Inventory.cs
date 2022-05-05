@@ -8,6 +8,7 @@ namespace The_Legend_of_Console
 {
     public class Inventory
     {
+        public static List<Item> InventoryList = new List<Item>();
         public static List<Item> InventoryWeaponList = new List<Item>();
         public static List<Item> InventoryArmorList = new List<Item>();
         public static List<Item> InventoryConsumList = new List<Item>();
@@ -18,8 +19,36 @@ namespace The_Legend_of_Console
         public static List<Item> EquippedBoots = new List<Item>();
         public static List<Item> EquippedGloves = new List<Item>();
         public static List<Item> EquippedRing = new List<Item>();
-        
 
+        public static void InitializeEquipment()
+        {
+            Item item = new(" ", "Placeholder", 0);
+            InventoryList.Add(item);
+            EquippedWeapon.Add(item);
+            EquippedOffHand.Add(item);
+            EquippedChest.Add(item);
+            EquippedPants.Add(item);
+            EquippedBoots.Add(item);
+            EquippedGloves.Add(item);
+            EquippedRing.Add(item);
+            EquippedRing.Add(item);
+        }
+        public static void RefreshInventoryList()
+        {
+            InventoryList.Clear();
+            foreach (Item item in InventoryWeaponList)
+            {
+                InventoryList.Add(item);
+            }
+            foreach (Item item in InventoryArmorList)
+            {
+                InventoryList.Add(item);
+            }
+            foreach (Item item in InventoryConsumList)
+            {
+                InventoryList.Add(item);
+            }
+        }
         public static void AddItemToInventory(Item item)
         {
             if (item.Type == "Chest")
@@ -39,18 +68,49 @@ namespace The_Legend_of_Console
             if (item.Type == "Consum")
                 InventoryConsumList.Add(item);
         }
+        public static void RemoveItemFromInventory(int input)
+        {
+            int weapon = Inventory.InventoryWeaponList.Count();
+            int armor = Inventory.InventoryArmorList.Count();
+            int consum = Inventory.InventoryConsumList.Count();
+            int weaponArmor = weapon + armor;
+            int weaponArmorConsum = weapon + armor + consum;
 
+            if (input < weapon)
+                Inventory.InventoryWeaponList.RemoveAt(input);
+            if (input > weapon && input < weaponArmorConsum)
+                Inventory.InventoryArmorList.RemoveAt(input-weapon);
+            if (input > weaponArmor)
+                Inventory.InventoryConsumList.RemoveAt(input - weaponArmor);
+        }
         public static Item EquipItemToSlot(Item item)
         {
-            Item returnToInv = null; ;
-            if (item.Type == "Weapon") { if (EquippedWeapon.Count > 0) { returnToInv = EquippedWeapon[0]; EquippedWeapon.RemoveAt(0); } else { EquippedWeapon.Add(item); } }
-            if (item.Type == "Off-Hand") { if (EquippedOffHand.Count > 0) { returnToInv = EquippedOffHand[0]; EquippedOffHand.RemoveAt(0); } else { EquippedOffHand.Add(item); } }
-            if (item.Type == "Chest") { if (EquippedChest.Count > 0) { returnToInv = EquippedChest[0]; EquippedChest.RemoveAt(0); } else { EquippedChest.Add(item); } }
-            if (item.Type == "Pants") { if (EquippedPants.Count > 0) { returnToInv = EquippedPants[0]; EquippedPants.RemoveAt(0); } else { EquippedPants.Add(item); } }
-            if (item.Type == "Boots") { if (EquippedBoots.Count > 0) { returnToInv = EquippedBoots[0]; EquippedBoots.RemoveAt(0); } else { EquippedBoots.Add(item); } }
-            if (item.Type == "Gloves") { if (EquippedGloves.Count > 0) { returnToInv = EquippedGloves[0]; EquippedGloves.RemoveAt(0); } else { EquippedGloves.Add(item); } }
-            if (item.Type == "Ring") { if (EquippedRing.Count > 1) { returnToInv = EquippedRing[0]; EquippedRing.RemoveAt(0); } else { EquippedRing.Add(item); } }
-            return returnToInv;
+            Item returnToInventory = new(" ", "Placeholder", 0);
+            Item placeholder = new(" ", "Placeholder", 0);
+
+            if (item.Type == "Weapon") { returnToInventory = EquippedWeapon[0]; EquippedWeapon.RemoveAt(0); EquippedWeapon.Add(item);}
+            if (item.Type == "Off-Hand") { returnToInventory = EquippedOffHand[0]; EquippedOffHand.RemoveAt(0); EquippedOffHand.Add(item); } 
+            if (item.Type == "Chest") { returnToInventory = EquippedChest[0]; EquippedChest.RemoveAt(0);  EquippedChest.Add(item); } 
+            if (item.Type == "Pants") { returnToInventory = EquippedPants[0]; EquippedPants.RemoveAt(0);  EquippedPants.Add(item); } 
+            if (item.Type == "Boots") { returnToInventory = EquippedBoots[0]; EquippedBoots.RemoveAt(0);  EquippedBoots.Add(item); } 
+            if (item.Type == "Gloves") { returnToInventory = EquippedGloves[0]; EquippedGloves.RemoveAt(0);  EquippedGloves.Add(item); } 
+            if (item.Type == "Ring") { returnToInventory = EquippedRing[0]; EquippedRing.RemoveAt(0);  EquippedRing.Add(item); } 
+            
+            if (returnToInventory.Type != "Placeholder")
+            {
+                return returnToInventory;
+            }
+            else
+            {
+                return placeholder;
+            }
+        }
+        public static int GetInventoryTotal()
+        {
+            int list1 = InventoryWeaponList.Count();
+                list1 += InventoryArmorList.Count();
+                list1 += InventoryConsumList.Count();
+            return list1;
         }
     }
 }

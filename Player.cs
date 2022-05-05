@@ -24,7 +24,7 @@ namespace The_Legend_of_Console
 
             if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S)
             {  
-                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝' && Display.MainTab[x + 1][y] != 'L')
+                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝' && Display.MainTab[x + 1][y] != 'L' && Display.MainTab[x + 1][y] != 'D')
                 {
                     if (x < 14)
                     {
@@ -35,7 +35,7 @@ namespace The_Legend_of_Console
             }
             if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W)
             {
-                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝' && Display.MainTab[x - 1][y] != 'L')
+                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝' && Display.MainTab[x - 1][y] != 'L' && Display.MainTab[x - 1][y] != 'D')
                 {
                     if (x > 1)
                     {
@@ -46,7 +46,7 @@ namespace The_Legend_of_Console
             }
             if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D)
             {
-                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝' && Display.MainTab[x][y + 1] != 'L')
+                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝' && Display.MainTab[x][y + 1] != 'L' && Display.MainTab[x][y+1] != 'D')
                 {
                     if (y < 50)
                     {
@@ -59,7 +59,7 @@ namespace The_Legend_of_Console
             if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A)
             {
 
-                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝' && Display.MainTab[x][y - 1] != 'L')
+                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝' && Display.MainTab[x][y - 1] != 'L' && Display.MainTab[x][y - 1] != 'D')
                 {
                     if (y > 1 && y < 51)
                     {
@@ -70,7 +70,11 @@ namespace The_Legend_of_Console
             }
             if (key.Key == ConsoleKey.I)
             {
-                Display.InventoryDisplay();
+                Display.ShowInventory();
+            }
+            if (key.Key == ConsoleKey.Spacebar)
+            {
+
             }
         }
         public static int[] PlayerPosition()

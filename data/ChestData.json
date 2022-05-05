@@ -1,7 +1,7 @@
 [
 	{
 		"Name": "Quilted Armor",
-		"Type": "Armor",
+		"Type": "Chest",
 		"Health": "0",
 		"MinDamage": "0",
 		"MaxDamage": "0",
@@ -9,7 +9,7 @@
 	},
 	{
 		"Name": "Leather Armor",
-		"Type": "Armor",
+		"Type": "Chest",
 		"Health": "0",
 		"MinDamage": "0",
 		"MaxDamage": "0",

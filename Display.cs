@@ -124,14 +124,14 @@ namespace The_Legend_of_Console
             Console.Clear();
                     string menuString = "╔════════════════════════════════════╦═══════════════════════════════════╦══════════════════════════════╗ \n";
             menuString += String.Format("║ Name: {0,-10}       {1,-3}/ {2,-3}HP  ║ Enemy: {3,-10}     {4,-3}/ {5,-3}HP  ║          Equipments          ║\n", Program.player.Name, Program.player.Health, Program.player.MaxHealth, Program.monster.Name, Program.monster.Health, Program.monster.MaxHealth) +
-                          String.Format("║ Level: {0,-3}             Armor: {1,-3}  ║ Level: {2,-5}          Armor: {3,-3}  ║ Weapon: {4,-12}                  ║\n", Program.player.Level,Program.player.Armor,Program.monster.Level, Program.monster.Armor,Inventory.EquippedWeapon[0]) +
-                          String.Format("║ Damage: {0,3}-{1,-3}                    ║ Damage: {2,3}-{3,-3}                   ║ Off-Hand: {4,-12                    ║\n", Program.player.MinDamage,Program.player.MaxDamage, Program.monster.MinDamage, Program.monster.MaxDamage,Inventory.EquippedOffHand[0]) +
-                          String.Format("║ Defense: {0,-5}                     ║ Defense: {1,-5}                    ║ Chest: {2,-12}                      ║ \n", Program.player.Defense, Program.monster.Defense,Inventory.EquippedChest[0]); 
-             menuString+= String.Format("║                                    ║                                   ║ Pants: {0,-12}                      ║ \n", Inventory.EquippedPants[0]) +
-                          String.Format("║                                    ║                                   ║ Gloves: {0,-12}                     ║\n", Inventory.EquippedGloves[0]) +
-                          String.Format("║                                    ║                                   ║ Boots: {0, -12                      }║\n",Inventory.EquippedBoots[0]) +
-                          String.Format("║                                    ╠═══════════════════════════════════╣ Ring: {0,-12}                       ║\n",Inventory.EquippedRing[0]) +
-                          String.Format("║                                    ║ Next Action :                     ║ Ring: {0,-12}                       ║\n",Inventory.EquippedRing[1]) +
+                          String.Format("║ Level: {0,-3}             Armor: {1,-3}  ║ Level: {2,-5}          Armor: {3,-3}  ║ Weapon: {4,-17}    ║\n", Program.player.Level, Program.player.Armor, Program.monster.Level, Program.monster.Armor, Inventory.EquippedWeapon[0].Name) +
+                          String.Format("║ Damage: {0,3}-{1,-3}                    ║ Damage: {2,3}-{3,-3}                   ║ Off-Hand: {4,-17}  ║\n", Program.player.MinDamage, Program.player.MaxDamage, Program.monster.MinDamage, Program.monster.MaxDamage, Inventory.EquippedOffHand[0].Name) +
+                          String.Format("║ Defense: {0,-5}                     ║ Defense: {1,-5}                    ║ Chest: {2,-17}     ║ \n", Program.player.Defense, Program.monster.Defense, Inventory.EquippedChest[0].Name); 
+             menuString+= String.Format("║                                    ║                                   ║ Pants: {0,-17}     ║ \n", Inventory.EquippedPants[0].Name) +
+                          String.Format("║                                    ║                                   ║ Gloves: {0,-17}    ║\n", Inventory.EquippedGloves[0].Name) +
+                          String.Format("║                                    ║                                   ║ Boots: {0, -17}     ║\n",Inventory.EquippedBoots[0].Name) +
+                          String.Format("║                                    ╠═══════════════════════════════════╣ Ring: {0,-17}      ║\n", Inventory.EquippedRing[0].Name) +
+                          String.Format("║                                    ║ Next Action :                     ║ Ring: {0,-17}      ║\n", Inventory.EquippedRing[1].Name) +
                                         "╠════════════════════════════════════╩═══════════════════════════════════╬══════════════════════════════╝\n";
             foreach(string n in Combat.CombatLog)
             {
@@ -139,6 +139,11 @@ namespace The_Legend_of_Console
             }
             menuString += "╚════════════════════════════════════════════════════════════════════════╝";
             Console.WriteLine(menuString);
+        }
+        public static void ShowInventory()
+        {
+            InventoryDisplay();
+            Input.InventoryInput();
         }
         public static void InventoryDisplay()
         {
@@ -172,7 +177,7 @@ namespace The_Legend_of_Console
             }
                   menuString += "╚══════════════════════╩═══════════════════════╝";
             Console.WriteLine(menuString);
-            Console.ReadKey();
+            
         }
         public static void TitleMenuDisplay()
         {

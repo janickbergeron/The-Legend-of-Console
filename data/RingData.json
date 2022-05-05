@@ -1,0 +1,19 @@
+[
+    {
+        "Name": "Ruby Ring",
+        "Type": "Ring",
+        "Health": "10",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "0"
+    },
+    {
+        "Name": "Worn Ring",
+        "Type": "Ring",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "1"
+    }
+]
+

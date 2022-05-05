@@ -89,5 +89,21 @@ namespace The_Legend_of_Console
 
             }
         }
+        public static void TreasureInitiator(List<Coordinate> ListCoord)
+        {
+            int compteur = -1;
+            foreach (Coordinate coord in ListCoord)
+            {
+                compteur++;
+                if (coord.X == Program.position[0] && coord.Y == Program.position[1])
+                {
+                    Animation.ChestAnimationIdle();
+                    TreasureCoordList.RemoveAt(compteur);
+                    break;
+                }
+
+
+            }
+        }
     }
 }

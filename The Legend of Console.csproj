@@ -11,19 +11,40 @@
   <ItemGroup>
     <None Remove="data\ArmorData.json" />
     <None Remove="data\BoardData.json" />
+    <None Remove="data\BootsData.json" />
+    <None Remove="data\ChestData.json" />
     <None Remove="data\ConsumData.json" />
+    <None Remove="data\GlovesData.json" />
     <None Remove="data\ItemData.json" />
+    <None Remove="data\OffHandData.json" />
+    <None Remove="data\PantsData.json" />
+    <None Remove="data\RingData.json" />
     <None Remove="data\WeaponData.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="data\ArmorData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="data\BoardData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\BootsData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\ChestData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\ConsumData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\GlovesData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\OffHandData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\PantsData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\RingData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data\WeaponData.json">
