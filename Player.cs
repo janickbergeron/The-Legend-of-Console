@@ -13,8 +13,13 @@ namespace The_Legend_of_Console
         {
 
         }
-        public static void PlayerMouvement(int x, int y)
+        public static void PlayerMouvement(Coordinate playerCoord)
         {
+            int y=0;
+            int x=0;
+            y = playerCoord.X;
+            x = playerCoord.Y;
+
             ConsoleKeyInfo key = Console.ReadKey();
             while (key.Key != ConsoleKey.UpArrow && key.Key != ConsoleKey.DownArrow && key.Key != ConsoleKey.LeftArrow && key.Key != ConsoleKey.RightArrow &&
                    key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I) 
@@ -92,8 +97,8 @@ namespace The_Legend_of_Console
                             compteur++;
                         else
                         {
-                            position[0] = compteur;
-                            position[1] = i;
+                            position[1] = compteur;
+                            position[0] = i;
                             PositionFound = true;
                             break;
                         }
