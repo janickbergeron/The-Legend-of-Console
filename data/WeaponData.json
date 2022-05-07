@@ -1,11 +1,12 @@
 [
- {
-   	"Name": "Short Sword",
-	"Type": "Weapon",
-	"Health": "0",
-   	"MinDamage": "2",
-	"MaxDamage": "5",
-	"Defense": "0"
- }
+	{
+		"Name": "Short Sword",
+		"Type": "Weapon",
+		"Health": "0",
+		"MinDamage": "2",
+		"MaxDamage": "5",
+		"Defense": "0",
+		"GoldValue": "10"
+	}
 ]
 

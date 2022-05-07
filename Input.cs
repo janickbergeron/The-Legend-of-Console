@@ -50,6 +50,24 @@ namespace The_Legend_of_Console
             Inventory.RemoveItemFromInventory(input - 1);
             return input-1;
         } //User input to select which item to equip.
+        public static int MerchantInput(List<Item> merchantList)
+        {
+            
+            Console.WriteLine("Choose an item to buy:");
+            int input = 0;
+            int total = merchantList.Count();
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input < 0 && input > total);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            Inventory.RemoveItemFromInventory(input - 1);
+            return input - 1;
+        } //User input to select which item to buy.
         public static void InventoryInput()
         {
             int input = 0;

@@ -5,7 +5,8 @@
         "Health": "10",
         "MinDamage": "0",
         "MaxDamage": "0",
-        "Defense": "0"
+        "Defense": "0",
+        "GoldValue": "10"
     },
     {
         "Name": "Worn Ring",
@@ -13,7 +14,8 @@
         "Health": "0",
         "MinDamage": "0",
         "MaxDamage": "0",
-        "Defense": "1"
+        "Defense": "1",
+        "GoldValue": "10"
     }
 ]
 

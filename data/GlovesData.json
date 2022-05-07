@@ -5,7 +5,8 @@
         "Health": "0",
         "MinDamage": "0",
         "MaxDamage": "0",
-        "Defense": "1"
+        "Defense": "1",
+        "GoldValue": "10"
     }
 ]
 

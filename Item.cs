@@ -25,6 +25,7 @@ namespace The_Legend_of_Console
         private int _defense;
         private int _health;
         private bool _full;
+        private int _goldValue;
         public string Name { get { return _name; } set { _name = value; } }
         public string Type { get { return _type; } set { _type = value; } }
         public int MinDamage { get { return _minDamage; } set { _minDamage = value;} }
@@ -32,9 +33,10 @@ namespace The_Legend_of_Console
         public int Defense { get { return _defense; } set { _defense = value;} }
         public int Health { get { return _health; } set { _health = value;} }
         public bool Full { get { return _full; } set { _full = value;} }    
+        public int GoldValue { get { return _goldValue; } set { _goldValue = value; } }
 
         [JsonConstructor]
-        public Item(string name, string type, int health, int minDamage, int maxDamage, int defense)       
+        public Item(string name, string type, int health, int minDamage, int maxDamage, int defense, int value, bool full, int goldValue)
         {
             _name = name;
             _type = type;
@@ -42,26 +44,33 @@ namespace The_Legend_of_Console
             _minDamage = minDamage;
             _maxDamage = maxDamage;
             _defense = defense;
-        }  //Json Constructor.
-        public Item(string name, string type, int minDamage, int maxDamage)  
+            _goldValue = goldValue;
+            _full = full;
+            
+
+         }  //Json Constructor.
+        public Item(string name, string type, int minDamage, int maxDamage, int goldValue)  
         {
             _name = name;
             _type = type;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
+            _goldValue= goldValue;
         }   // Weapon Constructor.
-        public Item(string name, string type, int defense)
+        public Item(string name, string type, int defense, int goldValue)
         {
             _name = name;
             _type = type;
             _defense = defense;
+            _goldValue = goldValue;
         }   // Armor Constructor.
-        public Item(string name, string type, int health, bool full)
+        public Item(string name, string type, int health, bool full, int goldValue)
         {
             _name = name;
             _type = type;
             _health = health;
             _full = full;
+            _goldValue = goldValue;
         }   // Consumable Constructor.
         public static List<Item> GetItemData(string item)
         {
@@ -80,12 +89,12 @@ namespace The_Legend_of_Console
         }  //Function to create a Weapon.
         public static Item CreateArmor(int x, List<Item> itemList)
         {
-            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Defense);
+            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Defense, itemList[x].GoldValue);
             return item;
         }  //Function to create an Armor.
         public static Item CreateConsum(int x, List<Item> itemList)
         {
-            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].Full);
+            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].Full, itemList[x].GoldValue);
             return item;
         }  //Function to create a consumable.
     }

@@ -5,7 +5,8 @@
 		"Health": "0",
 		"MinDamage": "0",
 		"MaxDamage": "0",
-		"Defense": "5"
+		"Defense": "5",
+		"GoldValue": "10"
 	},
 	{
 		"Name": "Leather Armor",
@@ -13,6 +14,7 @@
 		"Health": "0",
 		"MinDamage": "0",
 		"MaxDamage": "0",
-		"Defense": "7"
+		"Defense": "7",
+		"GoldValue": "10"
 	}
 ]

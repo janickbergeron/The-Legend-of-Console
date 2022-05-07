@@ -22,7 +22,7 @@ namespace The_Legend_of_Console
 
         public static void InitializeEquipment()
         {
-            Item item = new(" ", "Placeholder", 0);
+            Item item = new(" ", "Placeholder", 0,0);
             InventoryList.Add(item);
             EquippedWeapon.Add(item);
             EquippedOffHand.Add(item);
@@ -85,8 +85,8 @@ namespace The_Legend_of_Console
         }
         public static Item EquipItemToSlot(Item item)
         {
-            Item returnToInventory = new(" ", "Placeholder", 0);
-            Item placeholder = new(" ", "Placeholder", 0);
+            Item returnToInventory = new(" ", "Placeholder", 0,0);
+            Item placeholder = new(" ", "Placeholder", 0,0);
 
             if (item.Type == "Weapon") { returnToInventory = EquippedWeapon[0]; EquippedWeapon.RemoveAt(0); EquippedWeapon.Add(item);}
             if (item.Type == "Off-Hand") { returnToInventory = EquippedOffHand[0]; EquippedOffHand.RemoveAt(0); EquippedOffHand.Add(item); } 
