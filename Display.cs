@@ -118,7 +118,7 @@ namespace The_Legend_of_Console
             {
                 ContextDisplayList.Add("║                                                             ║");
             }
-        }
+        } //Function to initialize the Context Display.
         public static void CombatLogDisplay()
         {
             Console.Clear();
@@ -139,46 +139,84 @@ namespace The_Legend_of_Console
             }
             menuString += "╚════════════════════════════════════════════════════════════════════════╝";
             Console.WriteLine(menuString);
-        }
+        } //function to display the comabt interface.
         public static void ShowInventory()
         {
             InventoryDisplay();
             Input.InventoryInput();
-        }
+        } //Function to show the inventory + user input
         public static void InventoryDisplay()
         {
             Console.Clear();
             int index = 0;
-            string menuString = "╔══════════════════════════════════════════════╗ \n" +
-                                "║                   Inventory                  ║ \n" +
-                                "╠══════════════════════════════════════════════╣ \n" +
-                                "║ Weapon                                       ║ \n" +
-                                "╠══════════════════════╦═══════════════════════╣ \n";
+            string menuString = "╔═════════════════════════════════════════════════════════════════╗ \n" +
+                                "║                            Inventory                            ║ \n" +
+                                "╠═════════════════════════════════════════════════════════════════╣ \n" +
+                                "║       Weapon                                                    ║ \n" +
+                                "╠══════════════════════╦══════════════════════════════════════════╣ \n";
             foreach (Item item in Inventory.InventoryWeaponList)
             {
                 index++;
-                menuString += String.Format("║ {0,2} - {1,-15} ║    Damage:  {2,-2}- {3,-3}   ║ \n", index, item.Name,item.MinDamage,item.MaxDamage);
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", index, item.Name, item.Defense, item.Health, item.MinDamage,item.MaxDamage);
             }
-                  menuString += "╠══════════════════════╩═══════════════════════╣ \n" +
-                                "║ Armor                                        ║ \n" +
-                                "╠══════════════════════╦═══════════════════════╣ \n";
+                  menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
+                                "║       Armor                                                     ║ \n" +
+                                "╠══════════════════════╦══════════════════════════════════════════╣ \n";
             foreach (Item item in Inventory.InventoryArmorList)
             {
                 index++;
-                menuString += String.Format("║ {0,2} - {1,-15} ║    Defense: {2,-3}       ║\n", index, item.Name, item.Defense);
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
             }
-                  menuString += "╠══════════════════════╩═══════════════════════╣ \n" +
-                                "║ Consumable                                   ║ \n" +
-                                "╠══════════════════════╦═══════════════════════╣ \n";
+                  menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
+                                "║     Consumable                                                  ║ \n" +
+                                "╠══════════════════════╦══════════════════════════════════════════╣ \n";
             foreach (Item item in Inventory.InventoryConsumList)
             {
                 index++;
-                menuString += String.Format("║ {0,2} - {1,-15} ║    Health: +{2,-3}       ║\n", index, item.Name, item.Health);
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
             }
-                  menuString += "╚══════════════════════╩═══════════════════════╝";
+                  menuString += "╚══════════════════════╩══════════════════════════════════════════╝";
             Console.WriteLine(menuString);
             
-        }
+        } //Function to display the inventory.
+        public static void InventorySellDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+            int itemValue;
+            string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ \n" +
+                                "║                                    Inventory                                   ║ \n" +
+                                "╠════════════════════════════════════════════════════════════════════════════════╣ \n" +
+                                "║       Weapon                                                                   ║ \n" +
+                                "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ \n";
+            foreach (Item item in Inventory.InventoryWeaponList)
+            {
+                index++;
+                itemValue = item.GoldValue / 4;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║ \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, itemValue);
+            }
+            menuString += "╠══════════════════════╩══════════════════════════════════════════╩══════════════╣ \n" +
+                          "║       Armor                                                                    ║ \n" +
+                          "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ \n";
+            foreach (Item item in Inventory.InventoryArmorList)
+            {
+                index++;
+                itemValue = item.GoldValue / 4;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, itemValue);
+            }
+            menuString += "╠══════════════════════╩══════════════════════════════════════════╩══════════════╣ \n" +
+                          "║     Consumable                                                                 ║ \n" +
+                          "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ \n";
+            foreach (Item item in Inventory.InventoryConsumList)
+            {
+                index++;
+                itemValue = item.GoldValue / 4;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, itemValue);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
+            Console.WriteLine(menuString);
+
+        }  //Function to display the inventory with gold value.
         public static void TitleMenuDisplay()
         {
             Console.Clear();
@@ -193,6 +231,54 @@ namespace The_Legend_of_Console
                                 "╚═════════════════════╝";
             Console.WriteLine(menuString);
             Input.TitleMenuInput();
+        }  //Function to display the title menu.
+        public static void ArmorerDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
+                   String.Format("║                                   Armorer's Shack                              ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                 "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ ╚═════════════╝\n";
+            foreach (Item item in Merchant.ArmorerList)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║  \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, item.GoldValue);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
+            Console.WriteLine(menuString);
+            
+        }
+        public static void BlacksmithDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+            string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
+                  String.Format("║                                 Blacksmith's Workshop                          ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ ╚═════════════╝\n";
+            foreach (Item item in Merchant.BlacksmithList)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║  \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, item.GoldValue);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
+            Console.WriteLine(menuString);
+
+        }
+        public static void AlchemistDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+            string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
+                  String.Format("║                                    Alchemist's Lab                             ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ ╚═════════════╝\n";
+            foreach (Item item in Merchant.AlchemistList)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║  \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, item.GoldValue);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
+            Console.WriteLine(menuString);
+
         }
     }
 }

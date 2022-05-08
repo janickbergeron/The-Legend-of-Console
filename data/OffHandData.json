@@ -6,6 +6,7 @@
         "MinDamage": "0",
         "MaxDamage": "0",
         "Defense": "2",
+        "Full": "True",
         "GoldValue": "10"
     }
 ]

@@ -9,6 +9,9 @@ namespace The_Legend_of_Console
     public class Player : Entity
     {
         public Inventory PlayerInventory = new Inventory();
+        private int _gold;
+        public int Gold { get { return _gold; } set { _gold = value; } } 
+        
         public Player(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense,int armor): base(name,level,maxHealth,minDamage,maxDamage,defense,armor)
         {
 

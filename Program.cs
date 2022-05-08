@@ -25,13 +25,6 @@
         }
         static void Main(string[] args)
         {
-            /*while (TestInProgress)
-            {
-                Display.InventoryDisplay();
-                Console.ReadKey();
-            }*/
-              //Assets Loading
-            Display.TitleScreen();
             Item.WeaponList = Item.GetItemData("Weapon");
             Item.OffHandList = Item.GetItemData("OffHand");
             Item.ChestList = Item.GetItemData("Chest");
@@ -40,6 +33,8 @@
             Item.GlovesList = Item.GetItemData("Gloves");
             Item.RingList = Item.GetItemData("Ring");
             Item.ConsumList = Item.GetItemData("Consum");
+            
+              //Assets Loading
             Inventory.InventoryWeaponList.Add(Item.CreateWeapon(0,Item.WeaponList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.OffHandList));
             Inventory.InventoryArmorList.Add(Item.CreateArmor(1, Item.ChestList));
@@ -59,7 +54,35 @@
             Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
             Coordinate.LeverCoordList = Coordinate.LeverPosition();
 
+
+          // // Test loop
+            Program.player = Program.PlayerCreation();
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.ChestList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.PantsList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.BootsList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.RingList));
+            Merchant.BlacksmithList.Add(Item.CreateItem(0, Item.WeaponList));
+            Merchant.BlacksmithList.Add(Item.CreateItem(0, Item.WeaponList));
+            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+
+            player.Gold = 100;
+
+            while (TestInProgress)
+            {
+                //Display.ArmorerDisplay();
+                //Merchant.ArmorerLogic(Input.MerchantInput());
+
+                //Display.BlacksmithDisplay();
+                //Merchant.BlacksmithLogic(Input.MerchantInput());
+
+                Display.AlchemistDisplay();
+                Merchant.AlchemistLogic(Input.MerchantInput());
+            }
+
                //Gameplay Loop
+            Display.TitleScreen();
             Display.TitleMenuDisplay();
             while (InProgress)
             {

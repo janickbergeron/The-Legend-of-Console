@@ -50,7 +50,38 @@ namespace The_Legend_of_Console
             Inventory.RemoveItemFromInventory(input - 1);
             return input-1;
         } //User input to select which item to equip.
-        public static int MerchantInput(List<Item> merchantList)
+        public static bool YesNoInput()
+        {
+            bool isFormatOK = false;
+            string input = null;
+            while (!isFormatOK)
+            {
+                try
+                {
+                    do input = Console.ReadLine();
+                    while (input != "Y" && input != "M" && input != "y" && input != "m");
+                    isFormatOK = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect Entry.");
+                    Console.ReadKey();
+                }
+            }
+            switch (input)
+            {
+                case "Y":
+                case "y":
+                    return true;
+                    break;
+                case "N":
+                case "n":
+                    return false;
+                    break;
+            }
+            return false;
+        } //Standard Yes/No Function
+        public static int MerchantBuyInput(List<Item> merchantList)
         {
             
             Console.WriteLine("Choose an item to buy:");
@@ -65,9 +96,25 @@ namespace The_Legend_of_Console
             {
                 Console.WriteLine("Incorrect Entry.");
             }
-            Inventory.RemoveItemFromInventory(input - 1);
             return input - 1;
         } //User input to select which item to buy.
+        public static int MerchantSellInput(List<Item> playerList)
+        {
+
+            Console.WriteLine("Choose an item to sell:");
+            int input = 0;
+            int total = playerList.Count();
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input < 0 && input > total);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            return input - 1;
+        } //User input to select which item to sell.
         public static void InventoryInput()
         {
             int input = 0;
@@ -96,5 +143,26 @@ namespace The_Legend_of_Console
                     break;
             }
         }   //User input in inventory menu
+        public static int MerchantInput()
+        {
+            int input = 0;
+            Inventory.RefreshInventoryList();
+            
+            List<Item> BlacksmithList = Merchant.BlacksmithList;
+            List<Item> AlchemistList = Merchant.AlchemistList;
+
+            Console.WriteLine("1: Buy an item. 2: Sell an item. 3: Return.");
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input != 1 && input != 2 && input != 3);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+                Console.ReadKey();
+            }
+            return input;
+        }   //Merchant input in Merchant menu
     }
 }

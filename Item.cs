@@ -36,7 +36,7 @@ namespace The_Legend_of_Console
         public int GoldValue { get { return _goldValue; } set { _goldValue = value; } }
 
         [JsonConstructor]
-        public Item(string name, string type, int health, int minDamage, int maxDamage, int defense, int value, bool full, int goldValue)
+        public Item(string name, string type, int health, int minDamage, int maxDamage, int defense, bool full, int goldValue)
         {
             _name = name;
             _type = type;
@@ -84,14 +84,19 @@ namespace The_Legend_of_Console
         } // Function to fetch the Item Data File.
         public static Item CreateWeapon(int x, List<Item> itemList)
         {
-            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].MinDamage, itemList[x].MaxDamage);
+            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].MinDamage, itemList[x].MaxDamage, itemList[x].GoldValue);
             return item;
         }  //Function to create a Weapon.
         public static Item CreateArmor(int x, List<Item> itemList)
         {
-            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Defense, itemList[x].GoldValue);
+            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].Defense, itemList[x].GoldValue);
             return item;
         }  //Function to create an Armor.
+        public static Item CreateItem(int x, List<Item> itemList)
+        {
+            Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].MinDamage, itemList[x].MaxDamage, itemList[x].Defense, itemList[x].Full, itemList[x].GoldValue);
+            return item;
+        }  //Function to create an item.
         public static Item CreateConsum(int x, List<Item> itemList)
         {
             Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].Full, itemList[x].GoldValue);
