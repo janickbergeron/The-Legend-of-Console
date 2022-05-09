@@ -11,7 +11,9 @@ namespace The_Legend_of_Console
         public Inventory PlayerInventory = new Inventory();
         public static bool isPlayerInTown;
         private int _gold;
+        private int _experience;
         public int Gold { get { return _gold; } set { _gold = value; } } 
+        public int Experience { get { return _experience; } set { _experience = value;} }
         
         public Player(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense,int armor): base(name,level,maxHealth,minDamage,maxDamage,defense,armor)
         {
@@ -26,7 +28,7 @@ namespace The_Legend_of_Console
 
             ConsoleKeyInfo key = Console.ReadKey();
             while (key.Key != ConsoleKey.UpArrow && key.Key != ConsoleKey.DownArrow && key.Key != ConsoleKey.LeftArrow && key.Key != ConsoleKey.RightArrow &&
-                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I) 
+                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I && key.Key != ConsoleKey.C) 
             {
                 key = Console.ReadKey();
             }
@@ -72,6 +74,10 @@ namespace The_Legend_of_Console
             if (key.Key == ConsoleKey.Spacebar)
             {
                 PlayerInteractionLogic(Coordinate.FindInteractible(playerCoord), playerCoord);
+            }
+            if (key.Key == ConsoleKey.C)
+            {
+                Display.EquipmentDisplay();
             }
         }
         public static int[] PlayerPosition()
@@ -131,7 +137,7 @@ namespace The_Legend_of_Console
                 
 
             }
-        }
+        }  //Function the the player interaction logic.
         public override int CombatAttack(int minDamage, int maxDamage)
         {
             Random random = new Random();
@@ -140,13 +146,13 @@ namespace The_Legend_of_Console
             int FinalDamage = damage - this.Enemy.Armor;
             this.Enemy.Health -= FinalDamage;
             return FinalDamage;
-        }
+        }  //Player's combat attack function.
         public override int Defend()
         {
             Armor = 0;
             Armor += Defense;
             return Armor;
-        }
+        }  //Player's combat defense function.
         public int ChooseAction()
         {
             bool isFormatOK = false;
@@ -172,7 +178,7 @@ namespace The_Legend_of_Console
                 }
             }
             return choice;
-        }
+        } //Player's combat action choice.
         public void ExecuteAction(int action)
         {
             switch (action)
@@ -188,6 +194,6 @@ namespace The_Legend_of_Console
                     Combat.CombatLog.Add(String.Format("║ You prepare to prevent the next {0,-2} Damage.                         {1,5}",defend, "║"));
                     break;
             }
-        }
+        }  //Execute player's combat action choice.
     }
 }

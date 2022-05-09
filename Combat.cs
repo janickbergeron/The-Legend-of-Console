@@ -38,7 +38,7 @@ namespace The_Legend_of_Console
             {
                 CombatLog.Add("║                                                                        ║");
             }
-        }
+        }  
         public static void CombatLogProcess()
         {
             CombatLog.RemoveAt(0);

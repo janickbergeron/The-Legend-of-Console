@@ -67,7 +67,7 @@ namespace The_Legend_of_Console
                 InventoryWeaponList.Add(item);
             if (item.Type == "Consum")
                 InventoryConsumList.Add(item);
-        }
+        }  //Function to add an item to inventory.
         public static void RemoveItemFromInventory(int input)
         {
             int weapon = Inventory.InventoryWeaponList.Count();
@@ -82,7 +82,7 @@ namespace The_Legend_of_Console
                 Inventory.InventoryArmorList.RemoveAt(input-weapon);
             if (input > weaponArmor)
                 Inventory.InventoryConsumList.RemoveAt(input - weaponArmor);
-        }
+        }   //Function to remove an item from inventory.
         public static Item EquipItemToSlot(Item item)
         {
             Item returnToInventory = new(" ", "Placeholder", 0,0);

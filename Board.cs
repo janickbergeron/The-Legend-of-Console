@@ -66,7 +66,7 @@ namespace The_Legend_of_Console
                 list[x].Line14,
                 list[x].Line15);
             return board;
-        }
+        }  //Function to generate a new board.
         public static List<Board> GetBoardData() 
         {
             var CurrentDirectory = Environment.CurrentDirectory;

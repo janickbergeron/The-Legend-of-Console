@@ -86,7 +86,7 @@ namespace The_Legend_of_Console
                 Gameline(i);
             }
             ContextDisplay();
-        }     //Function to draw the gameboard.
+        }   //Function to draw the gameboard.
         public static void BoardLoading(int boardNumber)
         {
             if (boardNumber == 0)
@@ -94,14 +94,14 @@ namespace The_Legend_of_Console
                 Player.isPlayerInTown = true;
                 MainTabLoading(Board.GenerateBoard(boardNumber, BoardList));
             }
-        }
+        }  //Function to load a given board
         public static void RandomBoardLoading()
         {
             Random rand = new Random();
             int randomNumber = rand.Next(1,3);
             Player.isPlayerInTown = false;
             MainTabLoading(Board.GenerateBoard(randomNumber, BoardList));
-        }
+        } //Function to load a random board
         public static void TitleScreen()
         {
             Console.WriteLine(@" .____                                    .___         _____  _________                            .__");
@@ -122,7 +122,7 @@ namespace The_Legend_of_Console
                 }
                    menuString += "╚═════════════════════════════════════════════════════════════╝";
             Console.WriteLine(menuString);
-            Console.WriteLine("Space = Interact i = Inventory");
+            Console.WriteLine("Space = Interact. I = Inventory. C = Character's statistics.");
         } //Function to draw the Context Display.
         public static void InitializeContextDisplay()
         {
@@ -195,6 +195,24 @@ namespace The_Legend_of_Console
             Console.WriteLine(menuString);
             
         } //Function to display the inventory.
+        public static void EquipmentDisplay()
+        {
+            Console.Clear();
+                            string menuString = "╔═════════════════════════════╦═══════════════════════════════════════════════════════════════════════╗\n";
+                                  menuString += "║         Statistics          ║                              Equipments                               ║\n" +
+                                                "╠═════════════════════════════╬════════════════════════════╦══════════════════════════════════════════╣\n" +
+                                  String.Format("║ Name: {0,-10}            ║ Weapon: {1,-17}  ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Name, Inventory.EquippedWeapon[0].Name, Inventory.EquippedWeapon[0].Defense, Inventory.EquippedWeapon[0].Health, Inventory.EquippedWeapon[0].MinDamage, Inventory.EquippedWeapon[0].MaxDamage) +
+                                  String.Format("║ Level: {0,-3}                  ║ Off-Hand: {1,-17}║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Level, Inventory.EquippedOffHand[0].Name, Inventory.EquippedOffHand[0].Defense, Inventory.EquippedOffHand[0].Health, Inventory.EquippedOffHand[0].MinDamage, Inventory.EquippedOffHand[0].MaxDamage) +
+                                  String.Format("║ Exp: {0,6} / 100           ║ Chest: {1,-17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", Program.player.Experience, Inventory.EquippedChest[0].Name, Inventory.EquippedChest[0].Defense, Inventory.EquippedChest[0].Health, Inventory.EquippedChest[0].MinDamage, Inventory.EquippedChest[0].MaxDamage);
+                    menuString += String.Format("║ Health: {0,-5}               ║ Pants: {1,-17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", Program.player.Health, Inventory.EquippedPants[0].Name, Inventory.EquippedPants[0].Defense, Inventory.EquippedPants[0].Health, Inventory.EquippedPants[0].MinDamage, Inventory.EquippedPants[0].MaxDamage) +
+                                  String.Format("║ Damage: {0,3}-{1,-3}             ║ Gloves: {2,-17}  ║ Defense: {3,-3} Health: {4,-3} Damage: {5,3}-{6,-3} ║\n", Program.player.MinDamage, Program.player.MaxDamage, Inventory.EquippedGloves[0].Name, Inventory.EquippedGloves[0].Defense, Inventory.EquippedGloves[0].Health, Inventory.EquippedGloves[0].MinDamage, Inventory.EquippedGloves[0].MaxDamage) +
+                                  String.Format("║ Defense: {0,-5}              ║ Boots: {1, -17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Defense, Inventory.EquippedBoots[0].Name, Inventory.EquippedBoots[0].Defense, Inventory.EquippedBoots[0].Health, Inventory.EquippedBoots[0].MinDamage, Inventory.EquippedBoots[0].MaxDamage) +
+                                  String.Format("║                             ║ Ring: {0,-17}    ║ Defense: {1,-3} Health: {2,-3} Damage: {3,3}-{4,-3} ║\n", Inventory.EquippedRing[0].Name, Inventory.EquippedRing[0].Defense, Inventory.EquippedRing[0].Health, Inventory.EquippedRing[0].MinDamage, Inventory.EquippedRing[0].MaxDamage) +
+                                  String.Format("║                             ║ Ring: {0,-17}    ║ Defense: {1,-3} Health: {2,-3} Damage: {3,3}-{4,-3} ║\n", Inventory.EquippedRing[1].Name, Inventory.EquippedRing[1].Defense, Inventory.EquippedRing[1].Health, Inventory.EquippedRing[1].MinDamage, Inventory.EquippedRing[1].MaxDamage) +
+                                                "╚═════════════════════════════╩════════════════════════════╩══════════════════════════════════════════╝\n";
+            Console.WriteLine(menuString);
+            Console.ReadKey();
+        }   //Function to display the equipment + stats.
         public static void InventorySellDisplay()
         {
             Console.Clear();
@@ -263,7 +281,7 @@ namespace The_Legend_of_Console
             menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
             Console.WriteLine(menuString);
             
-        }
+        }  //Function to display the armorer's shop.
         public static void BlacksmithDisplay()
         {
             Console.Clear();
@@ -279,7 +297,7 @@ namespace The_Legend_of_Console
             menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
             Console.WriteLine(menuString);
 
-        }
+        } //Function to display the blacksmith's shop.
         public static void AlchemistDisplay()
         {
             Console.Clear();
@@ -295,6 +313,6 @@ namespace The_Legend_of_Console
             menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
             Console.WriteLine(menuString);
 
-        }
+        } //Function to display the alchemist's shop.
     }
 }

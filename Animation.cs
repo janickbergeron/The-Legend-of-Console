@@ -38,7 +38,7 @@ namespace The_Legend_of_Console
             Console.WriteLine("Press a key to open the chest!");
             Console.ReadKey();
             AnimationChestOpen();
-        }
+        }   //Display Idle chest
         public static void AnimationChestOpen()
         {
             Console.Clear();
@@ -139,6 +139,6 @@ namespace The_Legend_of_Console
                                 $"▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒ \n" +
                                 $"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ \n" +
                                 $"  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒   \n");
-        }
+        }  //Display opening chest animation.
     }
 }
