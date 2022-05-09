@@ -32,6 +32,6 @@ namespace The_Legend_of_Console
             Console.WriteLine($"Congratulation! You have found a treasure containing {treasure.Gold} gold.");
             Console.ReadKey();
             Program.player.Gold += treasure.Gold;
-        }
+        }  //Function to generate a new treasure.
     }
 }

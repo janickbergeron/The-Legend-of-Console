@@ -38,11 +38,11 @@ namespace The_Legend_of_Console
             {
                 CombatLog.Add("║                                                                        ║");
             }
-        }  
+        }    //Function to initialize combat.
         public static void CombatLogProcess()
         {
             CombatLog.RemoveAt(0);
-        }
+        }    //Function to remove the last line from the Combat Log
         public void StartCombat()
         {
             CombatRound = 0;
@@ -50,12 +50,12 @@ namespace The_Legend_of_Console
             while (_player.Health > 0 && _monster.Health > 0)
             {
                 Display.CombatLogDisplay();
-                TourPlayer();
+                PlayerTurn();
                 Display.CombatLogDisplay();
                 Thread.Sleep(500);
                 if (_monster.Health <= 0)
                     continue;
-                TourMonster();
+                MonsterTurn();
             }
 
             if (_player.Health <= 0)
@@ -65,14 +65,14 @@ namespace The_Legend_of_Console
                 Console.ReadKey();
                 Console.Clear();
                 Display.Gameboard();
-        }
-        private void TourPlayer()
+        }        //Function to start a new combat.
+        private void PlayerTurn()
         {
             _player.ExecuteAction(_player.ChooseAction());
-        }
-        private void TourMonster()
+        }       //Function for the player's turn
+        private void MonsterTurn()
         {
             _monster.ExecuteAction(_monster.ChooseAction());
-        }
+        }  //Function for the monster's turn
     }
 }

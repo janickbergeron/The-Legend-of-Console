@@ -32,7 +32,7 @@ namespace The_Legend_of_Console
             EquippedGloves.Add(item);
             EquippedRing.Add(item);
             EquippedRing.Add(item);
-        }
+        } //Function to initialize the equipment slot with placeholders.
         public static void RefreshInventoryList()
         {
             InventoryList.Clear();
@@ -48,7 +48,7 @@ namespace The_Legend_of_Console
             {
                 InventoryList.Add(item);
             }
-        }
+        } // Function to refresh the inventoryList
         public static void AddItemToInventory(Item item)
         {
             if (item.Type == "Chest")
@@ -104,13 +104,13 @@ namespace The_Legend_of_Console
             {
                 return placeholder;
             }
-        }
+        } //Function to equip an item and return previously equipped item to inventory
         public static int GetInventoryTotal()
         {
             int list1 = InventoryWeaponList.Count();
                 list1 += InventoryArmorList.Count();
                 list1 += InventoryConsumList.Count();
             return list1;
-        }
+        } //Function to get the total items in the inventory
     }
 }

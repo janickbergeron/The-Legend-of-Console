@@ -15,7 +15,7 @@ namespace The_Legend_of_Console
             Display.Gameboard();
             Console.ReadKey();
             Display.InitializeContextDisplay();
-        }
+        }  //Function to display the armorer's panel in the Context menu.
         public static void BlacksmithPanelContext()
         {
             Display.ContextDisplayList.Insert(0, "║    The Blacksmith's Workshop.                               ║");
@@ -23,7 +23,7 @@ namespace The_Legend_of_Console
             Display.Gameboard();
             Console.ReadKey();
             Display.InitializeContextDisplay();
-        }
+        }  //Function to display the blacksmith's panel in the Context menu.
         public static void AlchemistPanelContext()
         {
             Display.ContextDisplayList.Insert(0, "║    The Alchemist's Lab.                                     ║");
@@ -31,6 +31,6 @@ namespace The_Legend_of_Console
             Display.Gameboard();
             Console.ReadKey();
             Display.InitializeContextDisplay();
-        }
+        }  //Function to display the alchemist's panel in the Context menu.
     }
 }

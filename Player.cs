@@ -79,33 +79,7 @@ namespace The_Legend_of_Console
             {
                 Display.EquipmentDisplay();
             }
-        }
-        public static int[] PlayerPosition()
-        {
-            bool PositionFound = false;
-            int[] position = new int[2];
-           while (!PositionFound)
-           {
-                for (int i = 0; i < 16; i++)
-                {
-                    int compteur = 0;
-                    foreach (char n in Display.MainTab[i])
-                    {
-                        if (n != '@')
-                            compteur++;
-                        else
-                        {
-                            position[1] = compteur;
-                            position[0] = i;
-                            PositionFound = true;
-                            break;
-                        }
-                    }
-                    if (PositionFound) { break; }
-                }
-           }
-           return position;
-        } //Returns a int array with player's current coordinates
+        }  //Function for the player's mouvement.
         public static void PlayerInteractionLogic(char interactible, Coordinate playerPosition)
         {
             

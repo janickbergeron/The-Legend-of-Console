@@ -48,13 +48,13 @@ namespace The_Legend_of_Console
             }
             this.Enemy.Health -= FinalDamage;
             return FinalDamage;
-        } 
+        }    //monster's combat attack function.
         public override int Defend()
         {
             Armor = 0;
             Armor += Defense;
             return Armor;
-        }
+        } //monster's combat defend function.
         public int ChooseAction()
         {
                 Random random = new Random();
@@ -63,7 +63,7 @@ namespace The_Legend_of_Console
                     return 1;
                 else
                     return 2;
-        }
+        } //monster's combat Choose action function.
         public void ExecuteAction(int action)
         {
             switch (action)
@@ -79,6 +79,6 @@ namespace The_Legend_of_Console
                     Combat.CombatLog.Add(String.Format("║ The {0,-8} prepare to prevent the next {1,-2} Damage.                {2,5}", Program.monster.Name, defend, "║"));
                     break;
             }
-        }
+        } //Execute monster's combat choice of action.
     }
 }

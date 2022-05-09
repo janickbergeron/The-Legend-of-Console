@@ -150,7 +150,7 @@ namespace The_Legend_of_Console
             {
                 Console.WriteLine($"There is a monster at position ({coord.X},{coord.Y})");
             }
-        }
+        }  //Test function to see all the monster's coordinate.
         public static void CombatInitiator(List<Coordinate> ListCoord)
         {
             int compteur = -1;
@@ -164,7 +164,7 @@ namespace The_Legend_of_Console
                     break;
                 }
             }
-        }
+        } //Function that verify if a combat encounter should be started.
         public static void TreasureInitiator(List<Coordinate> ListCoord)
         {
             int compteur = -1;
@@ -182,7 +182,7 @@ namespace The_Legend_of_Console
 
 
             }
-        }
+        } //Function that verify if a treasure encounter should be started.
         public static void PlayerEnterShop(Coordinate playerPosition)
         {
             if (playerPosition.X == 10 && playerPosition.Y == 8)
@@ -200,7 +200,7 @@ namespace The_Legend_of_Console
                 Display.AlchemistDisplay();
                 Merchant.AlchemistLogic(Input.MerchantInput());
             }
-        }
+        }        //Function to know if the player is trying to enter a shop.
         public static void ShopPanelInteraction(Coordinate playerPosition)
         {
             if (playerPosition.X == 14 && playerPosition.Y == 7)
@@ -241,7 +241,7 @@ namespace The_Legend_of_Console
             {
                 Panel.AlchemistPanelContext();
             }
-        }
+        }    //Function to know which shop panel the user is trying to interact with.
         public static char FindInteractible(Coordinate playerPosition)
         {
             if (Display.MainTab[playerPosition.Y+1][playerPosition.X] == 'P' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == '▓' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == '▒' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == 'L')  //Look for interactible Cell to the right of the player.
@@ -264,6 +264,6 @@ namespace The_Legend_of_Console
                 return Display.MainTab[playerPosition.Y][playerPosition.X + 1];
             }
             return ' ';
-        }
+        }    //Function that verify if any interactible cell is around the player's position.
     }
 }
