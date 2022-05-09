@@ -9,6 +9,7 @@ namespace The_Legend_of_Console
     public class Player : Entity
     {
         public Inventory PlayerInventory = new Inventory();
+        public static bool isPlayerInTown;
         private int _gold;
         public int Gold { get { return _gold; } set { _gold = value; } } 
         
@@ -32,48 +33,36 @@ namespace The_Legend_of_Console
 
             if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S)
             {  
-                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝' && Display.MainTab[x + 1][y] != 'L' && Display.MainTab[x + 1][y] != 'D')
+                if (Display.MainTab[x+1][y] != '╦' && Display.MainTab[x + 1][y] != '╩' && Display.MainTab[x + 1][y] != '╣' && Display.MainTab[x + 1][y] != '║' && Display.MainTab[x + 1][y] != '╬' && Display.MainTab[x + 1][y] != '╠' && Display.MainTab[x + 1][y] != '═' && Display.MainTab[x + 1][y] != '╔' && Display.MainTab[x + 1][y] != '╗' && Display.MainTab[x + 1][y] != '╚' && Display.MainTab[x + 1][y] != '╝' && Display.MainTab[x + 1][y] != '/' && Display.MainTab[x + 1][y] != '\\' && Display.MainTab[x + 1][y] != '|' && Display.MainTab[x + 1][y] != 'x' && Display.MainTab[x + 1][y] != '_' && Display.MainTab[x + 1][y] != '▓' && Display.MainTab[x + 1][y] != '▒' && Display.MainTab[x + 1][y] != 'L' && Display.MainTab[x + 1][y] != 'D' && Display.MainTab[x + 1][y] != 'P')
                 {
-                    if (x < 14)
-                    {
                     Display.MainTab[x + 1][y] = '@';
                     Display.MainTab[x][y] = ' ';
-                    }
                 }
             }
             if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W)
             {
-                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝' && Display.MainTab[x - 1][y] != 'L' && Display.MainTab[x - 1][y] != 'D')
+                if (Display.MainTab[x - 1][y] != '╦' && Display.MainTab[x - 1][y] != '╩' && Display.MainTab[x - 1][y] != '╣' && Display.MainTab[x - 1][y] != '║' && Display.MainTab[x - 1][y] != '╬' && Display.MainTab[x - 1][y] != '╠' && Display.MainTab[x - 1][y] != '═' && Display.MainTab[x - 1][y] != '╔' && Display.MainTab[x - 1][y] != '╗' && Display.MainTab[x - 1][y] != '╚' && Display.MainTab[x - 1][y] != '╝' && Display.MainTab[x - 1][y] != '/' && Display.MainTab[x - 1][y] != '\\' && Display.MainTab[x - 1][y] != '|' && Display.MainTab[x - 1][y] != 'x' && Display.MainTab[x - 1][y] != '_' && Display.MainTab[x - 1][y] != '▓' && Display.MainTab[x - 1][y] != '▒' && Display.MainTab[x - 1][y] != 'L' && Display.MainTab[x - 1][y] != 'D' && Display.MainTab[x - 1][y] != 'P')
                 {
-                    if (x > 1)
-                    {
                         Display.MainTab[x - 1][y] = '@';
                         Display.MainTab[x][y] = ' ';
-                    }
                 }
             }
             if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D)
             {
-                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝' && Display.MainTab[x][y + 1] != 'L' && Display.MainTab[x][y+1] != 'D')
+                if (Display.MainTab[x][y+1] != '╦' && Display.MainTab[x][y + 1] != '╩' && Display.MainTab[x][y + 1] != '╣' && Display.MainTab[x][y + 1] != '║' && Display.MainTab[x][y + 1] != '╬' && Display.MainTab[x][y + 1] != '╠' && Display.MainTab[x][y + 1] != '═' && Display.MainTab[x][y + 1] != '╔' && Display.MainTab[x][y + 1] != '╗' && Display.MainTab[x][y + 1] != '╚' && Display.MainTab[x][y+1] != '╝' && Display.MainTab[x][y+1] != '/' && Display.MainTab[x][y+1] != '\\' && Display.MainTab[x][y + 1] != '|' && Display.MainTab[x][y + 1] != 'x' && Display.MainTab[x][y + 1] != '_' && Display.MainTab[x][y + 1] != '▓' && Display.MainTab[x][y + 1] != '▒' && Display.MainTab[x][y + 1] != 'L' && Display.MainTab[x][y+1] != 'D' && Display.MainTab[x][y+1] != 'P')
                 {
-                    if (y < 50)
-                    {
                         Display.MainTab[x][y + 1] = '@';
                         Display.MainTab[x][y] = ' ';
-                    }
                 }
                 
             }
             if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A)
             {
 
-                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝' && Display.MainTab[x][y - 1] != 'L' && Display.MainTab[x][y - 1] != 'D')
+                if (Display.MainTab[x][y - 1] != '╦' && Display.MainTab[x][y - 1] != '╩' && Display.MainTab[x][y - 1] != '╣' && Display.MainTab[x][y - 1] != '║' && Display.MainTab[x][y - 1] != '╬' && Display.MainTab[x][y - 1] != '╠' && Display.MainTab[x][y - 1] != '═' && Display.MainTab[x][y - 1] != '╔' && Display.MainTab[x][y - 1] != '╗' && Display.MainTab[x][y - 1] != '╚' && Display.MainTab[x][y - 1] != '╝' && Display.MainTab[x][y - 1] != '/' && Display.MainTab[x][y - 1] != '\\' && Display.MainTab[x][y - 1] != '|' && Display.MainTab[x][y - 1] != 'x' && Display.MainTab[x][y - 1] != '_' && Display.MainTab[x][y - 1] != '▓' && Display.MainTab[x][y - 1] != '▒' && Display.MainTab[x][y - 1] != 'L' && Display.MainTab[x][y - 1] != 'D' && Display.MainTab[x][y-1] != 'P')
                 {
-                    if (y > 1 && y < 51)
-                    {
                         Display.MainTab[x][y - 1] = '@';
                         Display.MainTab[x][y] = ' ';
-                    }
                 }
             }
             if (key.Key == ConsoleKey.I)
@@ -82,7 +71,7 @@ namespace The_Legend_of_Console
             }
             if (key.Key == ConsoleKey.Spacebar)
             {
-
+                PlayerInteractionLogic(Coordinate.FindInteractible(playerCoord), playerCoord);
             }
         }
         public static int[] PlayerPosition()
@@ -111,6 +100,38 @@ namespace The_Legend_of_Console
            }
            return position;
         } //Returns a int array with player's current coordinates
+        public static void PlayerInteractionLogic(char interactible, Coordinate playerPosition)
+        {
+            
+            if (interactible == 'L')
+            {
+                //TOTO lever interaction
+            }
+            if (interactible == 'P')
+            {
+                Coordinate.ShopPanelInteraction(playerPosition);
+            }
+            if (interactible == '▓')  //shop's door
+            {
+                Coordinate.PlayerEnterShop(playerPosition);
+            }
+            if (interactible == '▒')  //portal door  
+            {
+                if (isPlayerInTown)
+                {
+                    Display.RandomBoardLoading();
+                    Coordinate.MonsterCoordList = Monster.MonsterPosition();
+                    Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
+                    Coordinate.LeverCoordList = Coordinate.LeverPosition();
+                }
+                else
+                {
+                    Display.BoardLoading(0);
+                }
+                
+
+            }
+        }
         public override int CombatAttack(int minDamage, int maxDamage)
         {
             Random random = new Random();

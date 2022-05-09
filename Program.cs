@@ -25,6 +25,8 @@
         }
         static void Main(string[] args)
         {
+            
+            //Assets Loading
             Item.WeaponList = Item.GetItemData("Weapon");
             Item.OffHandList = Item.GetItemData("OffHand");
             Item.ChestList = Item.GetItemData("Chest");
@@ -33,30 +35,34 @@
             Item.GlovesList = Item.GetItemData("Gloves");
             Item.RingList = Item.GetItemData("Ring");
             Item.ConsumList = Item.GetItemData("Consum");
+            Display.BoardList = Board.GetBoardData();
             
-              //Assets Loading
-            Inventory.InventoryWeaponList.Add(Item.CreateWeapon(0,Item.WeaponList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.OffHandList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(1, Item.ChestList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.PantsList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.ChestList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.BootsList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.GlovesList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(0, Item.RingList));
-            Inventory.InventoryArmorList.Add(Item.CreateArmor(1, Item.RingList));
-            Inventory.InventoryConsumList.Add(Item.CreateConsum(0, Item.ConsumList));
+            Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.OffHandList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.ChestList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.PantsList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.ChestList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.BootsList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.GlovesList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.RingList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.RingList));
+            Inventory.InventoryConsumList.Add(Item.CreateItem(0, Item.ConsumList));
 
             Display.InitializeGameboard1();
+            Display.InitializeContextDisplay();
             Display.InitializeStringTab();
             Inventory.InitializeEquipment();
-            Display.MainTabLoading(Board.GenerateBoard(0, Board.GetBoardData()));
+            Display.BoardLoading(0);  //Board chooser
             Coordinate.MonsterCoordList = Monster.MonsterPosition();
             Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
             Coordinate.LeverCoordList = Coordinate.LeverPosition();
+            Coordinate.PanelCoordList = Coordinate.PanelPosition();
+            Coordinate.MerchantCoordList = Coordinate.MerchantPosition();
 
 
-          // // Test loop
-            Program.player = Program.PlayerCreation();
+            // // Test loop
+            //Program.player = Program.PlayerCreation();
+            //player.Gold = 100;
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.ChestList));
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.PantsList));
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.BootsList));
@@ -67,9 +73,8 @@
             Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
             Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
 
-            player.Gold = 100;
 
-            while (TestInProgress)
+            /*while (TestInProgress)
             {
                 //Display.ArmorerDisplay();
                 //Merchant.ArmorerLogic(Input.MerchantInput());
@@ -79,7 +84,7 @@
 
                 Display.AlchemistDisplay();
                 Merchant.AlchemistLogic(Input.MerchantInput());
-            }
+            }*/
 
                //Gameplay Loop
             Display.TitleScreen();

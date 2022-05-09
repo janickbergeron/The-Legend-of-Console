@@ -38,10 +38,6 @@ namespace The_Legend_of_Console
             Console.WriteLine("Press a key to open the chest!");
             Console.ReadKey();
             AnimationChestOpen();
-            Console.ReadKey();
-            Console.Clear();
-            Display.Gameboard();
-
         }
         public static void AnimationChestOpen()
         {

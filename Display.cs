@@ -11,6 +11,7 @@ namespace The_Legend_of_Console
         public static char[][] MainTab = new char[16][];
         public static string[][] StringTab = new string[16][];
         public static List<string> ContextDisplayList = new List<string>();
+        public static List<Board> BoardList = new List<Board>();
 
         public static void InitializeStringTab()
         {
@@ -79,12 +80,28 @@ namespace The_Legend_of_Console
         }    //Function to draw one line of the gameboard.
         public static void Gameboard()
         {
+            Console.Clear();
             for (int i = 0; i < 16; i++)
             {
                 Gameline(i);
             }
             ContextDisplay();
         }     //Function to draw the gameboard.
+        public static void BoardLoading(int boardNumber)
+        {
+            if (boardNumber == 0)
+            {
+                Player.isPlayerInTown = true;
+                MainTabLoading(Board.GenerateBoard(boardNumber, BoardList));
+            }
+        }
+        public static void RandomBoardLoading()
+        {
+            Random rand = new Random();
+            int randomNumber = rand.Next(1,3);
+            Player.isPlayerInTown = false;
+            MainTabLoading(Board.GenerateBoard(randomNumber, BoardList));
+        }
         public static void TitleScreen()
         {
             Console.WriteLine(@" .____                                    .___         _____  _________                            .__");
@@ -98,7 +115,6 @@ namespace The_Legend_of_Console
         } //Function to display the Title Screen.
         public static void ContextDisplay()
         {
-            InitializeContextDisplay();
              string menuString = "╔═════════════════════════════════════════════════════════════╗ \n";                
                 foreach (string n in ContextDisplayList)
                 {
@@ -139,7 +155,7 @@ namespace The_Legend_of_Console
             }
             menuString += "╚════════════════════════════════════════════════════════════════════════╝";
             Console.WriteLine(menuString);
-        } //function to display the comabt interface.
+        } //function to display the combat interface.
         public static void ShowInventory()
         {
             InventoryDisplay();
@@ -149,9 +165,9 @@ namespace The_Legend_of_Console
         {
             Console.Clear();
             int index = 0;
-            string menuString = "╔═════════════════════════════════════════════════════════════════╗ \n" +
-                                "║                            Inventory                            ║ \n" +
-                                "╠═════════════════════════════════════════════════════════════════╣ \n" +
+            string menuString = "╔═════════════════════════════════════════════════════════════════╗ ╔═════════════╗ \n" +
+                  String.Format("║                            Inventory                            ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                "╠═════════════════════════════════════════════════════════════════╣ ╚═════════════╝ \n" +
                                 "║       Weapon                                                    ║ \n" +
                                 "╠══════════════════════╦══════════════════════════════════════════╣ \n";
             foreach (Item item in Inventory.InventoryWeaponList)

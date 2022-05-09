@@ -13,6 +13,8 @@ namespace The_Legend_of_Console
         public static List<Coordinate> MonsterCoordList = new List<Coordinate>();
         public static List<Coordinate> TreasureCoordList = new List<Coordinate>();
         public static List<Coordinate> LeverCoordList = new List<Coordinate>();
+        public static List<Coordinate> PanelCoordList = new List<Coordinate>();
+        public static List<Coordinate> MerchantCoordList = new List<Coordinate>();
         public Coordinate(int x, int y)
         {
             X = x;
@@ -45,7 +47,7 @@ namespace The_Legend_of_Console
                 }
             }
             return PlayerCoord;
-        } //Returns a int array with player's current coordinates
+        } //Returns a Coordinate object with player's current coordinates
         public static List<Coordinate> TreasurePosition()
         {
             int[] position = new int[2];
@@ -94,6 +96,54 @@ namespace The_Legend_of_Console
             }
             return CoordList;
         } //Function that returns a list of coordinate for all Levers on the gameboard.
+        public static List<Coordinate> MerchantPosition()
+        {
+            int[] position = new int[2];
+            List<Coordinate> CoordList = new List<Coordinate>();
+
+            for (int i = 0; i < 16; i++)
+            {
+                int compteur = 0;
+                foreach (char n in Display.MainTab[i])
+                {
+                    if (n != '▓')
+                        compteur++;
+                    else
+                    {
+                        position[0] = compteur;
+                        position[1] = i;
+                        compteur++;
+                        Coordinate Coord = new(position[0], position[1]);
+                        CoordList.Add(Coord);
+                    }
+                }
+            }
+            return CoordList;
+        } //Function that returns a list of coordinate for all Levers on the gameboard.
+        public static List<Coordinate> PanelPosition()
+        {
+            int[] position = new int[2];
+            List<Coordinate> CoordList = new List<Coordinate>();
+
+            for (int i = 0; i < 16; i++)
+            {
+                int compteur = 0;
+                foreach (char n in Display.MainTab[i])
+                {
+                    if (n != 'P')
+                        compteur++;
+                    else
+                    {
+                        position[0] = compteur;
+                        position[1] = i;
+                        compteur++;
+                        Coordinate Coord = new(position[0], position[1]);
+                        CoordList.Add(Coord);
+                    }
+                }
+            }
+            return CoordList;
+        } //Function that returns a list of coordinate for all Levers on the gameboard.
         public static void CoordListDisplay(List<Coordinate> ListCoord)
         {
             foreach (Coordinate coord in ListCoord)
@@ -113,8 +163,6 @@ namespace The_Legend_of_Console
                     MonsterCoordList.RemoveAt(compteur);
                     break;
                 }
-                    
-
             }
         }
         public static void TreasureInitiator(List<Coordinate> ListCoord)
@@ -126,12 +174,96 @@ namespace The_Legend_of_Console
                 if (coord.X == Program.playerCoord.X && coord.Y == Program.playerCoord.Y)
                 {
                     Animation.ChestAnimationIdle();
+                    Treasure.TreasureGenerator();
+                    Display.Gameboard();
                     TreasureCoordList.RemoveAt(compteur);
                     break;
                 }
 
 
             }
+        }
+        public static void PlayerEnterShop(Coordinate playerPosition)
+        {
+            if (playerPosition.X == 10 && playerPosition.Y == 8)
+            {
+                Display.ArmorerDisplay();
+                Merchant.ArmorerLogic(Input.MerchantInput());
+            }
+            if (playerPosition.X == 44 && playerPosition.Y == 7)
+            {
+                Display.BlacksmithDisplay();
+                Merchant.BlacksmithLogic(Input.MerchantInput());
+            }
+            if (playerPosition.X == 24 && playerPosition.Y == 14)
+            {
+                Display.AlchemistDisplay();
+                Merchant.AlchemistLogic(Input.MerchantInput());
+            }
+        }
+        public static void ShopPanelInteraction(Coordinate playerPosition)
+        {
+            if (playerPosition.X == 14 && playerPosition.Y == 7)
+            {
+                Panel.ArmorerPanelContext();
+            }
+            if (playerPosition.X == 13 && playerPosition.Y == 6)
+            {
+                Panel.ArmorerPanelContext();
+            }
+            if (playerPosition.X == 13 && playerPosition.Y == 8)
+            {
+                Panel.ArmorerPanelContext();
+            }
+
+            if (playerPosition.X == 40 && playerPosition.Y == 6)
+            {
+                Panel.BlacksmithPanelContext();
+            }
+            if (playerPosition.X == 41 && playerPosition.Y == 5)
+            {
+                Panel.BlacksmithPanelContext();
+            }
+            if (playerPosition.X == 41 && playerPosition.Y == 7)
+            {
+                Panel.BlacksmithPanelContext();
+            }
+
+            if (playerPosition.X == 26 && playerPosition.Y == 14)
+            {
+                Panel.AlchemistPanelContext();
+            }
+            if (playerPosition.X == 27 && playerPosition.Y == 13)
+            {
+                Panel.AlchemistPanelContext();
+            }
+            if (playerPosition.X == 28 && playerPosition.Y == 14)
+            {
+                Panel.AlchemistPanelContext();
+            }
+        }
+        public static char FindInteractible(Coordinate playerPosition)
+        {
+            if (Display.MainTab[playerPosition.Y+1][playerPosition.X] == 'P' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == '▓' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == '▒' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == 'L')  //Look for interactible Cell to the right of the player.
+            {
+                return Display.MainTab[playerPosition.Y + 1][playerPosition.X];
+            }
+
+            if (Display.MainTab[playerPosition.Y - 1][playerPosition.X] == 'P' || Display.MainTab[playerPosition.Y - 1][playerPosition.X] == '▓' || Display.MainTab[playerPosition.Y - 1][playerPosition.X] == '▒' || Display.MainTab[playerPosition.Y - 1][playerPosition.X] == 'L') //Look interactible Cell to the left of the player.
+            {
+                return Display.MainTab[playerPosition.Y - 1][playerPosition.X];
+            }
+
+            if (Display.MainTab[playerPosition.Y][playerPosition.X - 1] == 'P' || Display.MainTab[playerPosition.Y][playerPosition.X - 1] == '▓' || Display.MainTab[playerPosition.Y ][playerPosition.X - 1] == '▒' || Display.MainTab[playerPosition.Y][playerPosition.X - 1] == 'L') //Look interactible Cell above the player.
+            {
+                return Display.MainTab[playerPosition.Y][playerPosition.X - 1];
+            }
+
+            if (Display.MainTab[playerPosition.Y][playerPosition.X + 1] == 'P' || Display.MainTab[playerPosition.Y][playerPosition.X + 1] == '▓' || Display.MainTab[playerPosition.Y][playerPosition.X + 1] == '▒' || Display.MainTab[playerPosition.Y][playerPosition.X + 1] == 'L') //Look interactible Cell under the player.
+            {
+                return Display.MainTab[playerPosition.Y][playerPosition.X + 1];
+            }
+            return ' ';
         }
     }
 }
