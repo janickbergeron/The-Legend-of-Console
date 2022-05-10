@@ -88,13 +88,13 @@ namespace The_Legend_of_Console
             Item returnToInventory = new(" ", "Placeholder", 0,0);
             Item placeholder = new(" ", "Placeholder", 0,0);
 
-            if (item.Type == "Weapon") { returnToInventory = EquippedWeapon[0]; EquippedWeapon.RemoveAt(0); EquippedWeapon.Add(item);}
-            if (item.Type == "Off-Hand") { returnToInventory = EquippedOffHand[0]; EquippedOffHand.RemoveAt(0); EquippedOffHand.Add(item); } 
-            if (item.Type == "Chest") { returnToInventory = EquippedChest[0]; EquippedChest.RemoveAt(0);  EquippedChest.Add(item); } 
-            if (item.Type == "Pants") { returnToInventory = EquippedPants[0]; EquippedPants.RemoveAt(0);  EquippedPants.Add(item); } 
-            if (item.Type == "Boots") { returnToInventory = EquippedBoots[0]; EquippedBoots.RemoveAt(0);  EquippedBoots.Add(item); } 
-            if (item.Type == "Gloves") { returnToInventory = EquippedGloves[0]; EquippedGloves.RemoveAt(0);  EquippedGloves.Add(item); } 
-            if (item.Type == "Ring") { returnToInventory = EquippedRing[0]; EquippedRing.RemoveAt(0);  EquippedRing.Add(item); } 
+            if (item.Type == "Weapon") { returnToInventory = EquippedWeapon[0]; RemoveItemStats(EquippedWeapon[0]); EquippedWeapon.RemoveAt(0); EquippedWeapon.Add(item); AddItemStats(item); }
+            if (item.Type == "Off-Hand") { returnToInventory = EquippedOffHand[0]; RemoveItemStats(EquippedOffHand[0]); EquippedOffHand.RemoveAt(0); EquippedOffHand.Add(item); AddItemStats(item); } 
+            if (item.Type == "Chest") { returnToInventory = EquippedChest[0]; RemoveItemStats(EquippedChest[0]); EquippedChest.RemoveAt(0);  EquippedChest.Add(item); AddItemStats(item); } 
+            if (item.Type == "Pants") { returnToInventory = EquippedPants[0]; RemoveItemStats(EquippedPants[0]); EquippedPants.RemoveAt(0);  EquippedPants.Add(item); AddItemStats(item); } 
+            if (item.Type == "Boots") { returnToInventory = EquippedBoots[0]; RemoveItemStats(EquippedBoots[0]); EquippedBoots.RemoveAt(0);  EquippedBoots.Add(item); AddItemStats(item); } 
+            if (item.Type == "Gloves") { returnToInventory = EquippedGloves[0]; RemoveItemStats(EquippedGloves[0]); EquippedGloves.RemoveAt(0);  EquippedGloves.Add(item); AddItemStats(item); } 
+            if (item.Type == "Ring") { returnToInventory = EquippedRing[0]; RemoveItemStats(EquippedRing[0]); EquippedRing.RemoveAt(0);  EquippedRing.Add(item); AddItemStats(item); } 
             
             if (returnToInventory.Type != "Placeholder")
             {
@@ -104,7 +104,21 @@ namespace The_Legend_of_Console
             {
                 return placeholder;
             }
-        } //Function to equip an item and return previously equipped item to inventory
+        } //Function to equip an item and return previously equipped item to inventory.
+        public static void RemoveItemStats(Item item)
+        {
+            Program.player.MaxHealth -= item.Health;
+            Program.player.MinDamage -= item.MinDamage;
+            Program.player.MaxDamage -= item.MaxDamage;
+            Program.player.Defense -= item.Defense;
+        }
+        public static void AddItemStats(Item item)
+        {
+            Program.player.MaxHealth += item.Health;
+            Program.player.MinDamage += item.MinDamage;
+            Program.player.MaxDamage += item.MaxDamage;
+            Program.player.Defense += item.Defense;
+        }
         public static int GetInventoryTotal()
         {
             int list1 = InventoryWeaponList.Count();

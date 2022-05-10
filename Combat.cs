@@ -10,8 +10,13 @@ namespace The_Legend_of_Console
     {
         private Player _player;
         private Monster _monster;
+        public static string monsterAction;
         public static List<string> CombatLog = new List<string>();
-        public static int CombatRound;
+        public enum MonsterAction
+        {
+            Attack,
+            Defend
+        }
 
         public Player Player
         {
@@ -45,17 +50,51 @@ namespace The_Legend_of_Console
         }    //Function to remove the last line from the Combat Log
         public void StartCombat()
         {
-            CombatRound = 0;
             InitializeCombatLog();
             while (_player.Health > 0 && _monster.Health > 0)
             {
+                int mobAction = _monster.ChooseAction();
+                var a = (MonsterAction)mobAction-1;
+                monsterAction = a.ToString();
                 Display.CombatLogDisplay();
-                PlayerTurn();
+                int playerAction = _player.ChooseAction();
+                    if (playerAction == 2 && mobAction == 1)  //Player defend against attack.
+                    {
+                        PlayerTurn(playerAction);
+                        Display.CombatLogDisplay();
+                        Thread.Sleep(500);
+                        if (_monster.Health <= 0)
+                            continue;
+                        MonsterTurn(mobAction);
+                    }
+                    if (playerAction == 1 && mobAction == 2) //Monster defend against attack.
+                    {
+                            MonsterTurn(mobAction);
+                            Display.CombatLogDisplay();
+                            Thread.Sleep(500);
+                            if (_player.Health <= 0)
+                                continue;
+                            PlayerTurn(playerAction);
+                    }
+                    if (playerAction == 1 && mobAction == 1) //Player and monster both attack.
+                    {
+                        PlayerTurn(playerAction);
+                        Display.CombatLogDisplay();
+                        Thread.Sleep(500);
+                        if (_monster.Health <= 0)
+                            continue;
+                        MonsterTurn(mobAction);
+                    }
+                    if (playerAction == 2 && mobAction == 2) //Player and monster both defend.
+                    {
+                        PlayerTurn(playerAction);
+                        Display.CombatLogDisplay();
+                        Thread.Sleep(500);
+                        if (_monster.Health <= 0)
+                            continue;
+                        MonsterTurn(mobAction);
+                    }
                 Display.CombatLogDisplay();
-                Thread.Sleep(500);
-                if (_monster.Health <= 0)
-                    continue;
-                MonsterTurn();
             }
 
             if (_player.Health <= 0)
@@ -66,13 +105,13 @@ namespace The_Legend_of_Console
                 Console.Clear();
                 Display.Gameboard();
         }        //Function to start a new combat.
-        private void PlayerTurn()
+        private void PlayerTurn(int action)
         {
-            _player.ExecuteAction(_player.ChooseAction());
+            _player.ExecuteAction(action);
         }       //Function for the player's turn
-        private void MonsterTurn()
+        private void MonsterTurn(int action)
         {
-            _monster.ExecuteAction(_monster.ChooseAction());
+            _monster.ExecuteAction(action);
         }  //Function for the monster's turn
     }
 }

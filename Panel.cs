@@ -8,6 +8,7 @@ namespace The_Legend_of_Console
 {
     internal class Panel
     {
+        
         public static void ArmorerPanelContext()
         {
             Display.ContextDisplayList.Insert(0, "║    The Armorer's Shack.                                     ║");

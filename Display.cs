@@ -98,7 +98,7 @@ namespace The_Legend_of_Console
         public static void RandomBoardLoading()
         {
             Random rand = new Random();
-            int randomNumber = rand.Next(1,3);
+            int randomNumber = rand.Next(1,2);
             Player.isPlayerInTown = false;
             MainTabLoading(Board.GenerateBoard(randomNumber, BoardList));
         } //Function to load a random board
@@ -147,7 +147,7 @@ namespace The_Legend_of_Console
                           String.Format("║                                    ║                                   ║ Gloves: {0,-17}    ║\n", Inventory.EquippedGloves[0].Name) +
                           String.Format("║                                    ║                                   ║ Boots: {0, -17}     ║\n",Inventory.EquippedBoots[0].Name) +
                           String.Format("║                                    ╠═══════════════════════════════════╣ Ring: {0,-17}      ║\n", Inventory.EquippedRing[0].Name) +
-                          String.Format("║                                    ║ Next Action :                     ║ Ring: {0,-17}      ║\n", Inventory.EquippedRing[1].Name) +
+                          String.Format("║                                    ║ Next Action : {0,-10}          ║ Ring: {1,-17}      ║\n", Combat.monsterAction, Inventory.EquippedRing[1].Name) +
                                         "╠════════════════════════════════════╩═══════════════════════════════════╬══════════════════════════════╝\n";
             foreach(string n in Combat.CombatLog)
             {

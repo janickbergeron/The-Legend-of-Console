@@ -85,7 +85,9 @@ namespace The_Legend_of_Console
             
             if (interactible == 'L')
             {
-                //TOTO lever interaction
+                //TODO lever interaction
+                Interactible.LeverInteractionContext();
+                Interactible.LeverInteractionLogic(playerPosition, Interactible.LeverList);
             }
             if (interactible == 'P')
             {
@@ -103,6 +105,8 @@ namespace The_Legend_of_Console
                     Coordinate.MonsterCoordList = Monster.MonsterPosition();
                     Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
                     Coordinate.LeverCoordList = Coordinate.LeverPosition();
+                    Coordinate.DoorCoordList = Coordinate.DoorPosition();
+                    Interactible.LeverList = Interactible.CreateNewLeverList(Coordinate.LeverCoordList, Coordinate.DoorCoordList);
                 }
                 else
                 {
@@ -116,10 +120,9 @@ namespace The_Legend_of_Console
         {
             Random random = new Random();
             int damage = random.Next(minDamage,maxDamage);
-            Armor = 0;
             int FinalDamage = damage - this.Enemy.Armor;
             this.Enemy.Health -= FinalDamage;
-            return FinalDamage;
+            return damage;
         }  //Player's combat attack function.
         public override int Defend()
         {

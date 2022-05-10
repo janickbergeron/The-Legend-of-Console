@@ -10,7 +10,8 @@
 
         public static void InitializeCombat()
         {
-            Combat combat1 = new Combat(Program.player, Program.monster);
+            Monster monster = new("  Blob", 1, 10, 1, 5, 1, 0, player);
+            Combat combat1 = new Combat(player, monster);
             monster.Health = monster.MaxHealth;
             combat1.StartCombat();
         }
@@ -20,7 +21,7 @@
             Console.WriteLine("Choose the Player's name:");
             string name = Console.ReadLine();
 
-            Player player = new(name, 1, 50, 50, 60, 0, 0);
+            Player player = new(name, 1, 50, 11, 15, 2, 0);
             return player;
         }
         static void Main(string[] args)
@@ -58,6 +59,8 @@
             Coordinate.LeverCoordList = Coordinate.LeverPosition();
             Coordinate.PanelCoordList = Coordinate.PanelPosition();
             Coordinate.MerchantCoordList = Coordinate.MerchantPosition();
+            Coordinate.DoorCoordList = Coordinate.DoorPosition();
+            Interactible.LeverList = Interactible.CreateNewLeverList(Coordinate.LeverCoordList, Coordinate.DoorCoordList);
 
 
             // // Test loop
@@ -100,7 +103,7 @@
                 //Coordinate.CoordListDisplay(Coordinate.MonsterCoordList);
                 Console.WriteLine($"The player is at position ({playerCoord.X},{playerCoord.Y})");
                 Player.PlayerMouvement(playerCoord);
-                Thread.Sleep(20);
+                Thread.Sleep(10);
             }
         }   
     }

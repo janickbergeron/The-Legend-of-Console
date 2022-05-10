@@ -40,14 +40,13 @@ namespace The_Legend_of_Console
         {
             Random rand = new Random();
             int damage = rand.Next(minDamage,maxDamage);
-            Armor = 0;
             int FinalDamage = damage - this.Enemy.Armor;
             if (FinalDamage < 0)
             {
                 FinalDamage = 0;
             }
             this.Enemy.Health -= FinalDamage;
-            return FinalDamage;
+            return damage;
         }    //monster's combat attack function.
         public override int Defend()
         {

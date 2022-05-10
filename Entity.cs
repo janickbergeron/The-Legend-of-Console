@@ -22,11 +22,33 @@ namespace The_Legend_of_Console
         public string Name { get { return _name; } set { _name = value; } }
         public int Level { get { return _level; } set { _level = value; } }
         public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
-        public int Health { get { return _health; } set { _health = value; } }
+        public int Health { get { return _health; } 
+            set 
+            { 
+                if (_health < 0)
+                {
+                    _health = 0;
+                }else
+                _health = value; 
+            } 
+        }
         public int MinDamage { get { return _minDamage; } set { _minDamage = value; } }
         public int MaxDamage { get { return _maxDamage; } set { _maxDamage = value; } }
         public int Defense { get { return _defense; } set { _defense = value; } }
-        public int Armor { get { return _armor; } set { _armor = value; } }
+        public int Armor 
+            { get 
+                {
+                    return _armor; 
+                }
+            set
+            {
+                if (_armor < 0)
+                {
+                    _armor = 0;
+                }
+                else  _armor = value; 
+                } 
+            }
 
         public Entity(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense, int armor)
         {
