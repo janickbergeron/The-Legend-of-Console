@@ -53,7 +53,12 @@
             Display.InitializeContextDisplay();
             Display.InitializeStringTab();
             Inventory.InitializeEquipment();
-            Display.BoardLoading(0);  //Board chooser
+
+            Display.BoardLoading(0, Display.MainTab);  //Board loading
+
+            Display.BoardLoading(0, Display.MainTab);
+            Display.BoardLoading(1, Display.FogTab);
+
             Coordinate.MonsterCoordList = Monster.MonsterPosition();
             Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
             Coordinate.LeverCoordList = Coordinate.LeverPosition();

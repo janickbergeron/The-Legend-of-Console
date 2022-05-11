@@ -101,7 +101,7 @@ namespace The_Legend_of_Console
             {
                 if (isPlayerInTown)
                 {
-                    Display.RandomBoardLoading();
+                    Display.RandomBoardLoading(Display.MainTab);
                     Coordinate.MonsterCoordList = Monster.MonsterPosition();
                     Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
                     Coordinate.LeverCoordList = Coordinate.LeverPosition();
@@ -110,7 +110,7 @@ namespace The_Legend_of_Console
                 }
                 else
                 {
-                    Display.BoardLoading(0);
+                    Display.BoardLoading(0,Display.MainTab);
                 }
                 
 
