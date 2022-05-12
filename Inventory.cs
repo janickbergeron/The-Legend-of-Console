@@ -9,6 +9,7 @@ namespace The_Legend_of_Console
     public class Inventory
     {
         public static List<Item> InventoryList = new List<Item>();
+        public static List<Item> HouseStorageList = new List<Item>();
         public static List<Item> HouseStorageArmor = new List<Item>();
         public static List<Item> HouseStorageWeapon = new List<Item>();
         public static List<Item> HouseStorageConsum = new List<Item>();
@@ -50,6 +51,20 @@ namespace The_Legend_of_Console
             foreach (Item item in InventoryConsumList)
             {
                 InventoryList.Add(item);
+            }
+
+            HouseStorageList.Clear();
+            foreach (Item item in HouseStorageWeapon)
+            {
+                HouseStorageList.Add(item);
+            }
+            foreach (Item item in HouseStorageArmor)
+            {
+                HouseStorageList.Add(item);
+            }
+            foreach (Item item in HouseStorageConsum)
+            {
+                HouseStorageList.Add(item);
             }
         } // Function to refresh the inventoryList
         public static void AddItemToInventory(Item item)
@@ -99,11 +114,11 @@ namespace The_Legend_of_Console
             int weaponArmor = weapon + armor;
             int weaponArmorConsum = weapon + armor + consum;
 
-            if (input < weapon)
+            if (input <= weapon)
                 Inventory.InventoryWeaponList.RemoveAt(input);
-            if (input >= weapon && input < weaponArmorConsum)
+            if (input >= weapon && input < weaponArmor)
                 Inventory.InventoryArmorList.RemoveAt(input-weapon);
-            if (input > weaponArmor)
+            if (input > weaponArmorConsum)
                 Inventory.InventoryConsumList.RemoveAt(input - weaponArmor);
         }   //Function to remove an item from inventory.
         public static void RemoveItemFromStorage(int input)
@@ -162,6 +177,13 @@ namespace The_Legend_of_Console
             int list1 = InventoryWeaponList.Count();
                 list1 += InventoryArmorList.Count();
                 list1 += InventoryConsumList.Count();
+            return list1;
+        } //Function to get the total items in the inventory
+        public static int GetStorageTotal()
+        {
+            int list1 = HouseStorageWeapon.Count();
+            list1 += HouseStorageArmor.Count();
+            list1 += HouseStorageConsum.Count();
             return list1;
         } //Function to get the total items in the inventory
     }

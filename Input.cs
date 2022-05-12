@@ -54,19 +54,47 @@ namespace The_Legend_of_Console
         {
             Inventory.RefreshInventoryList();
             Console.WriteLine("Choose an item to deposit:");
+            bool isFormatOK = false;
             int input = 0;
-            int total = Inventory.GetInventoryTotal();
-            try
+            int total = Inventory.GetStorageTotal();
+            while (!isFormatOK)
             {
-                do input = int.Parse(Console.ReadLine());
-                while (input < 0 && input > total);
+                try
+                {
+                    do input = int.Parse(Console.ReadLine());
+                    while (input < 0 && input > total);
+                    isFormatOK = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect Entry.");
+                }
+                Inventory.RemoveItemFromInventory(input - 1);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Incorrect Entry.");
-            }
-            Inventory.RemoveItemFromInventory(input - 1);
             return input - 1;
+        } //User input to select which item to equip.
+        public static int StorageWithdrawInput()
+        {
+            Inventory.RefreshInventoryList();
+            Console.WriteLine("Choose an item to withdraw:");
+            bool isFormatOK = false;
+            int input = 0;
+            int total = Inventory.GetStorageTotal();
+            while (!isFormatOK)
+            {
+                try
+                {
+                    do input = int.Parse(Console.ReadLine());
+                    while (input < 0 && input > total);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect Entry.");
+                }
+                Inventory.RemoveItemFromStorage(input - 1);
+            }
+                return input - 1;
+            
         } //User input to select which item to equip.
         public static bool YesNoInput()
         {
@@ -180,12 +208,18 @@ namespace The_Legend_of_Console
                 case 1:
                     Display.InventoryDisplay();
                     item = StorageDepositInput();
-                    Inventory.RemoveItemFromInventory(item);
                     Inventory.AddItemToStorage(Inventory.InventoryList[item]);
-                    Display.ShowInventory();
+                    Display.StorageDisplay();
+                    Input.StorageInput();
+
                     break;
                 case 2:
-                    //TODO Consumable feature
+                    Display.StorageDisplay();
+                    item = StorageWithdrawInput();
+                    Inventory.AddItemToInventory(Inventory.HouseStorageList[item]);
+                    Inventory.RemoveItemFromStorage(item);
+                    Display.StorageDisplay();
+                    Input.StorageInput();
                     break;
                 case 3:
 
