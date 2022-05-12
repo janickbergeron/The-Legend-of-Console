@@ -235,54 +235,54 @@ namespace The_Legend_of_Console
         {
             if (playerPosition.X == 14 && playerPosition.Y == 7)
             {
-                Panel.ArmorerPanelContext();
+                Interactible.ArmorerPanelContext();
             }
             if (playerPosition.X == 13 && playerPosition.Y == 6)
             {
-                Panel.ArmorerPanelContext();
+                Interactible.ArmorerPanelContext();
             }
             if (playerPosition.X == 13 && playerPosition.Y == 8)
             {
-                Panel.ArmorerPanelContext();
+                Interactible.ArmorerPanelContext();
             }
 
             if (playerPosition.X == 40 && playerPosition.Y == 6)
             {
-                Panel.BlacksmithPanelContext();
+                Interactible.BlacksmithPanelContext();
             }
             if (playerPosition.X == 41 && playerPosition.Y == 5)
             {
-                Panel.BlacksmithPanelContext();
+                Interactible.BlacksmithPanelContext();
             }
             if (playerPosition.X == 41 && playerPosition.Y == 7)
             {
-                Panel.BlacksmithPanelContext();
+                Interactible.BlacksmithPanelContext();
             }
 
             if (playerPosition.X == 26 && playerPosition.Y == 14)
             {
-                Panel.AlchemistPanelContext();
+                Interactible.AlchemistPanelContext();
             }
             if (playerPosition.X == 27 && playerPosition.Y == 13)
             {
-                Panel.AlchemistPanelContext();
+                Interactible.AlchemistPanelContext();
             }
             if (playerPosition.X == 28 && playerPosition.Y == 14)
             {
-                Panel.AlchemistPanelContext();
+                Interactible.AlchemistPanelContext();
             }
 
             if (playerPosition.X == 47 && playerPosition.Y == 13)
             {
-                Panel.PlayerHouseContext();
+                Interactible.PlayerHouseContext();
             }
             if (playerPosition.X == 48 && playerPosition.Y == 12)
             {
-                Panel.PlayerHouseContext();
+                Interactible.PlayerHouseContext();
             }
             if (playerPosition.X == 48 && playerPosition.Y == 14)
             {
-                Panel.PlayerHouseContext();
+                Interactible.PlayerHouseContext();
             }
         }    //Function to know which shop panel the user is trying to interact with.
         public static char FindInteractible(Coordinate playerPosition)

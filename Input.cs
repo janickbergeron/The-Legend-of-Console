@@ -50,6 +50,24 @@ namespace The_Legend_of_Console
             Inventory.RemoveItemFromInventory(input - 1);
             return input-1;
         } //User input to select which item to equip.
+        public static int StorageDepositInput()
+        {
+            Inventory.RefreshInventoryList();
+            Console.WriteLine("Choose an item to deposit:");
+            int input = 0;
+            int total = Inventory.GetInventoryTotal();
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input < 0 && input > total);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            Inventory.RemoveItemFromInventory(input - 1);
+            return input - 1;
+        } //User input to select which item to equip.
         public static bool YesNoInput()
         {
             bool isFormatOK = false;
@@ -133,6 +151,37 @@ namespace The_Legend_of_Console
                 case 1:
                     Display.InventoryDisplay();
                     Inventory.AddItemToInventory(Inventory.EquipItemToSlot(Inventory.InventoryList[EquipmentInput()]));
+                    Display.ShowInventory();
+                    break;
+                case 2:
+                    //TODO Consumable feature
+                    break;
+                case 3:
+
+                    break;
+            }
+        }   //User input in inventory menu
+        public static void StorageInput()
+        {
+            int input = 0;
+            int item = 0;
+            Console.WriteLine("1: Deposit an item. 2: Withdraw an item. 3: Return.");
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input != 1 && input != 2 && input != 3);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            switch (input)
+            {
+                case 1:
+                    Display.InventoryDisplay();
+                    item = StorageDepositInput();
+                    Inventory.RemoveItemFromInventory(item);
+                    Inventory.AddItemToStorage(Inventory.InventoryList[item]);
                     Display.ShowInventory();
                     break;
                 case 2:

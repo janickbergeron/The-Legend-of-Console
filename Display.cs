@@ -273,6 +273,40 @@ namespace The_Legend_of_Console
             Console.WriteLine(menuString);
             
         } //Function to display the inventory.
+        public static void StorageDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+            string menuString = "╔═════════════════════════════════════════════════════════════════╗ ╔═════════════╗ \n" +
+                  String.Format("║                         House Storage                           ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                "╠═════════════════════════════════════════════════════════════════╣ ╚═════════════╝ \n" +
+                                "║       Weapon                                                    ║ \n" +
+                                "╠══════════════════════╦══════════════════════════════════════════╣ \n";
+            foreach (Item item in Inventory.HouseStorageWeapon)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
+            }
+            menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
+                          "║       Armor                                                     ║ \n" +
+                          "╠══════════════════════╦══════════════════════════════════════════╣ \n";
+            foreach (Item item in Inventory.HouseStorageArmor)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
+            }
+            menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
+                          "║     Consumable                                                  ║ \n" +
+                          "╠══════════════════════╦══════════════════════════════════════════╣ \n";
+            foreach (Item item in Inventory.HouseStorageConsum)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╝";
+            Console.WriteLine(menuString);
+
+        } //Function to display the inventory.
         public static void EquipmentDisplay()
         {
             Console.Clear();

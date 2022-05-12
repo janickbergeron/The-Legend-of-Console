@@ -39,7 +39,7 @@
             Display.BoardList = Board.GetBoardData();
             
             Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.OffHandList));
+            Inventory.InventoryWeaponList.Add(Item.CreateItem(0, Item.OffHandList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.ChestList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.PantsList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.ChestList));

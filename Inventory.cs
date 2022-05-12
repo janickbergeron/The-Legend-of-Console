@@ -9,6 +9,9 @@ namespace The_Legend_of_Console
     public class Inventory
     {
         public static List<Item> InventoryList = new List<Item>();
+        public static List<Item> HouseStorageArmor = new List<Item>();
+        public static List<Item> HouseStorageWeapon = new List<Item>();
+        public static List<Item> HouseStorageConsum = new List<Item>();
         public static List<Item> InventoryWeaponList = new List<Item>();
         public static List<Item> InventoryArmorList = new List<Item>();
         public static List<Item> InventoryConsumList = new List<Item>();
@@ -68,6 +71,26 @@ namespace The_Legend_of_Console
             if (item.Type == "Consum")
                 InventoryConsumList.Add(item);
         }  //Function to add an item to inventory.
+        public static void AddItemToStorage(Item item)
+        {
+            if (item.Type == "Chest")
+                HouseStorageArmor.Add(item);
+            if (item.Type == "Pants")
+                HouseStorageArmor.Add(item);
+            if (item.Type == "Boots")
+                HouseStorageArmor.Add(item);
+            if (item.Type == "Gloves")
+                HouseStorageArmor.Add(item);
+            if (item.Type == "Ring")
+                HouseStorageArmor.Add(item);
+            if (item.Type == "Weapon")
+                HouseStorageWeapon.Add(item);
+            if (item.Type == "Off-Hand")
+                HouseStorageWeapon.Add(item);
+            if (item.Type == "Consum")
+                HouseStorageConsum.Add(item);
+
+        }  //Function to add an item to storage.
         public static void RemoveItemFromInventory(int input)
         {
             int weapon = Inventory.InventoryWeaponList.Count();
@@ -83,6 +106,21 @@ namespace The_Legend_of_Console
             if (input > weaponArmor)
                 Inventory.InventoryConsumList.RemoveAt(input - weaponArmor);
         }   //Function to remove an item from inventory.
+        public static void RemoveItemFromStorage(int input)
+        {
+            int weapon = Inventory.HouseStorageWeapon.Count();
+            int armor = Inventory.HouseStorageArmor.Count();
+            int consum = Inventory.HouseStorageConsum.Count();
+            int weaponArmor = weapon + armor;
+            int weaponArmorConsum = weapon + armor + consum;
+
+            if (input < weapon)
+                Inventory.HouseStorageWeapon.RemoveAt(input);
+            if (input >= weapon && input < weaponArmorConsum)
+                Inventory.HouseStorageArmor.RemoveAt(input - weapon);
+            if (input > weaponArmor)
+                Inventory.HouseStorageConsum.RemoveAt(input - weaponArmor);
+        }   //Function to remove an item from storage.
         public static Item EquipItemToSlot(Item item)
         {
             Item returnToInventory = new(" ", "Placeholder", 0,0);
@@ -111,14 +149,14 @@ namespace The_Legend_of_Console
             Program.player.MinDamage -= item.MinDamage;
             Program.player.MaxDamage -= item.MaxDamage;
             Program.player.Defense -= item.Defense;
-        }
+        } //Remove stats from item when its unequipped.
         public static void AddItemStats(Item item)
         {
             Program.player.MaxHealth += item.Health;
             Program.player.MinDamage += item.MinDamage;
             Program.player.MaxDamage += item.MaxDamage;
             Program.player.Defense += item.Defense;
-        }
+        } //Add stats from item when its equipped.
         public static int GetInventoryTotal()
         {
             int list1 = InventoryWeaponList.Count();

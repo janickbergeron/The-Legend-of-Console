@@ -242,7 +242,8 @@ namespace The_Legend_of_Console
                     Animation.SleepingAnimation();
                     break;
                 case 2:
-                    
+                    Display.StorageDisplay();
+                    Input.StorageInput();
                     break;
                 case 3:
 
