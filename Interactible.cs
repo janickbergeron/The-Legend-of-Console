@@ -38,6 +38,7 @@ namespace The_Legend_of_Console
             {
                 Interactible lever = new(coord, targetCoordList[x]);
                 leverList.Add(lever);
+               if (targetCoordList.Count > 1) 
                 x++;
             }
             return leverList;

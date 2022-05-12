@@ -52,12 +52,11 @@
             Display.InitializeGameboard1();
             Display.InitializeContextDisplay();
             Display.InitializeStringTab();
+            Display.InitializePreFogTab();
+            Display.InitializePostFogTab();
             Inventory.InitializeEquipment();
 
-            Display.BoardLoading(0, Display.MainTab);  //Board loading
-
-            Display.BoardLoading(0, Display.MainTab);
-            Display.BoardLoading(1, Display.FogTab);
+            Display.BoardLoading(0, Display.MainTab);  //Board loading                                                   
 
             Coordinate.MonsterCoordList = Monster.MonsterPosition();
             Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
@@ -100,9 +99,11 @@
             while (InProgress)
             {
                 Console.Clear();
+                Program.playerCoord = Coordinate.PlayerPosition();
+                //Display.FogOfWarProcess(playerCoord);
+                //Display.AddFogToMainTab();
                 Display.GameboardOptimisation();
                 Display.Gameboard();
-                Program.playerCoord = Coordinate.PlayerPosition();
                 Coordinate.CombatInitiator(Coordinate.MonsterCoordList);
                 Coordinate.TreasureInitiator(Coordinate.TreasureCoordList);
                 //Coordinate.CoordListDisplay(Coordinate.MonsterCoordList);

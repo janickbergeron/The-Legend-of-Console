@@ -164,5 +164,27 @@ namespace The_Legend_of_Console
             }
             return input;
         }   //Merchant input in Merchant menu
+        public static int HouseInput()
+        {
+            int input = 0;
+            Inventory.RefreshInventoryList();
+
+            List<Item> BlacksmithList = Merchant.BlacksmithList;
+            List<Item> AlchemistList = Merchant.AlchemistList;
+
+            Console.WriteLine("1: Rest for a moment. 2: Access storage. 3: Return.");
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input != 1 && input != 2 && input != 3);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+                Console.ReadKey();
+            }
+            return input;
+        }   //Merchant input in Merchant menu
     }
+
 }
