@@ -140,5 +140,70 @@ namespace The_Legend_of_Console
                                 $"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ \n" +
                                 $"  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒   \n");
         }  //Display opening chest animation.
+        public static void SleepingAnimation()
+        {
+            Console.Clear();
+            Console.WriteLine("						\n" +
+                              "			    		\n" +
+                              "			    		\n" +
+                              "			     		");
+            Console.WriteLine(@"      _____|~~\_____      _____________	");
+            Console.WriteLine(@"  _-~               \    |    \		 ");
+            Console.WriteLine(@"  _-    | )     \    |__/   \   \		");
+            Console.WriteLine(@"  _-         )   |   |  |     \  \		");
+            Console.WriteLine("._ -    | ) /    | --|      |  | \n" +
+                              " __-_______________ /__/_______|  |_________	\n" +
+                              "(                |----         |  |		\n");
+            Console.WriteLine(@" `---------------'--\\\\      .`--'		");
+            Console.WriteLine("                              `||||		");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.WriteLine("						\n" +
+                              "			    		\n" +
+                              "			    		\n" +
+                              "			Z    		");
+            Console.WriteLine(@"      _____|~~\_____      _____________	");
+            Console.WriteLine(@"  _-~               \    |    \		 ");
+            Console.WriteLine(@"  _-    | )     \    |__/   \   \		");
+            Console.WriteLine(@"  _-         )   |   |  |     \  \		");
+            Console.WriteLine("._ -    | ) /    | --|      |  | \n" +
+                              " __-_______________ /__/_______|  |_________	\n" +
+                              "(                |----         |  |		\n");
+            Console.WriteLine(@" `---------------'--\\\\      .`--'		");
+            Console.WriteLine("                              `||||		");
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.WriteLine("						\n" +
+                              "			    		\n" +
+                              "			   Z		\n" +
+                              "			Z    		");
+            Console.WriteLine(@"      _____|~~\_____      _____________	");
+            Console.WriteLine(@"  _-~               \    |    \		 ");
+            Console.WriteLine(@"  _-    | )     \    |__/   \   \		");
+            Console.WriteLine(@"  _-         )   |   |  |     \  \		");
+            Console.WriteLine("._ -    | ) /    | --|      |  | \n" +
+                              " __-_______________ /__/_______|  |_________	\n" +
+                              "(                |----         |  |		\n");
+            Console.WriteLine(@" `---------------'--\\\\      .`--'		");
+            Console.WriteLine("                              `||||		");
+
+            Thread.Sleep(500);
+            Console.Clear();
+            Console.WriteLine("			      			\n" +
+                              "	              Z		\n" +
+                              "			   Z		\n" +
+                              "			Z    		");
+            Console.WriteLine(@"      _____|~~\_____      _____________	");
+            Console.WriteLine(@"  _-~               \    |    \		 ");
+            Console.WriteLine(@"  _-    | )     \    |__/   \   \		");
+            Console.WriteLine(@"  _-         )   |   |  |     \  \		");
+            Console.WriteLine("._ -    | ) /    | --|      |  | \n" +
+                              " __-_______________ /__/_______|  |_________	\n" +
+                              "(                |----         |  |		\n");
+            Console.WriteLine(@" `---------------'--\\\\      .`--'		");
+            Console.WriteLine("                              `||||		");
+            Console.WriteLine("You feel rested. All your injuries have healed.");
+            Console.ReadKey();
+        }
     }
 }

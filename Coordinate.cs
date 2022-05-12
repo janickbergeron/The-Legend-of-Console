@@ -225,6 +225,11 @@ namespace The_Legend_of_Console
                 Display.AlchemistDisplay();
                 Merchant.AlchemistLogic(Input.MerchantInput());
             }
+            if (playerPosition.X == 51 && playerPosition.Y == 14)
+            {
+                Display.PlayerHouseDisplay();
+                Player.PlayerHouseLogic(Input.HouseInput());
+            }
         }        //Function to know if the player is trying to enter a shop.
         public static void ShopPanelInteraction(Coordinate playerPosition)
         {
@@ -265,6 +270,19 @@ namespace The_Legend_of_Console
             if (playerPosition.X == 28 && playerPosition.Y == 14)
             {
                 Panel.AlchemistPanelContext();
+            }
+
+            if (playerPosition.X == 47 && playerPosition.Y == 13)
+            {
+                Panel.PlayerHouseContext();
+            }
+            if (playerPosition.X == 48 && playerPosition.Y == 12)
+            {
+                Panel.PlayerHouseContext();
+            }
+            if (playerPosition.X == 48 && playerPosition.Y == 14)
+            {
+                Panel.PlayerHouseContext();
             }
         }    //Function to know which shop panel the user is trying to interact with.
         public static char FindInteractible(Coordinate playerPosition)

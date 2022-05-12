@@ -80,16 +80,77 @@ namespace The_Legend_of_Console
                 Display.EquipmentDisplay();
             }
         }  //Function for the player's mouvement.
+        public static void PlayerMouvementFog(Coordinate playerCoord)
+        {
+            int y = 0;
+            int x = 0;
+            y = playerCoord.X;
+            x = playerCoord.Y;
+
+            ConsoleKeyInfo key = Console.ReadKey();
+            while (key.Key != ConsoleKey.UpArrow && key.Key != ConsoleKey.DownArrow && key.Key != ConsoleKey.LeftArrow && key.Key != ConsoleKey.RightArrow &&
+                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I && key.Key != ConsoleKey.C)
+            {
+                key = Console.ReadKey();
+            }
+
+            if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S)
+            {
+                if (Display.PostFogTab[x + 1][y] != '╦' && Display.PostFogTab[x + 1][y] != '╩' && Display.PostFogTab[x + 1][y] != '╣' && Display.PostFogTab[x + 1][y] != '║' && Display.PostFogTab[x + 1][y] != '╬' && Display.PostFogTab[x + 1][y] != '╠' && Display.PostFogTab[x + 1][y] != '═' && Display.PostFogTab[x + 1][y] != '╔' && Display.PostFogTab[x + 1][y] != '╗' && Display.PostFogTab[x + 1][y] != '╚' && Display.PostFogTab[x + 1][y] != '╝' && Display.PostFogTab[x + 1][y] != '/' && Display.PostFogTab[x + 1][y] != '\\' && Display.PostFogTab[x + 1][y] != '|' && Display.PostFogTab[x + 1][y] != 'x' && Display.PostFogTab[x + 1][y] != '_' && Display.PostFogTab[x + 1][y] != '▓' && Display.PostFogTab[x + 1][y] != '▒' && Display.PostFogTab[x + 1][y] != 'L' && Display.PostFogTab[x + 1][y] != 'D' && Display.PostFogTab[x + 1][y] != 'P')
+                {
+                    Display.PostFogTab[x + 1][y] = '@';
+                    Display.PostFogTab[x][y] = ' ';
+                }
+            }
+            if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W)
+            {
+                if (Display.PostFogTab[x - 1][y] != '╦' && Display.PostFogTab[x - 1][y] != '╩' && Display.PostFogTab[x - 1][y] != '╣' && Display.PostFogTab[x - 1][y] != '║' && Display.PostFogTab[x - 1][y] != '╬' && Display.PostFogTab[x - 1][y] != '╠' && Display.PostFogTab[x - 1][y] != '═' && Display.PostFogTab[x - 1][y] != '╔' && Display.PostFogTab[x - 1][y] != '╗' && Display.PostFogTab[x - 1][y] != '╚' && Display.PostFogTab[x - 1][y] != '╝' && Display.PostFogTab[x - 1][y] != '/' && Display.PostFogTab[x - 1][y] != '\\' && Display.PostFogTab[x - 1][y] != '|' && Display.PostFogTab[x - 1][y] != 'x' && Display.PostFogTab[x - 1][y] != '_' && Display.PostFogTab[x - 1][y] != '▓' && Display.PostFogTab[x - 1][y] != '▒' && Display.PostFogTab[x - 1][y] != 'L' && Display.PostFogTab[x - 1][y] != 'D' && Display.PostFogTab[x - 1][y] != 'P')
+                {
+                    Display.PostFogTab[x - 1][y] = '@';
+                    Display.PostFogTab[x][y] = ' ';
+                }
+            }
+            if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D)
+            {
+                if (Display.PostFogTab[x][y + 1] != '╦' && Display.PostFogTab[x][y + 1] != '╩' && Display.PostFogTab[x][y + 1] != '╣' && Display.PostFogTab[x][y + 1] != '║' && Display.PostFogTab[x][y + 1] != '╬' && Display.PostFogTab[x][y + 1] != '╠' && Display.PostFogTab[x][y + 1] != '═' && Display.PostFogTab[x][y + 1] != '╔' && Display.PostFogTab[x][y + 1] != '╗' && Display.PostFogTab[x][y + 1] != '╚' && Display.PostFogTab[x][y + 1] != '╝' && Display.PostFogTab[x][y + 1] != '/' && Display.PostFogTab[x][y + 1] != '\\' && Display.PostFogTab[x][y + 1] != '|' && Display.PostFogTab[x][y + 1] != 'x' && Display.PostFogTab[x][y + 1] != '_' && Display.PostFogTab[x][y + 1] != '▓' && Display.PostFogTab[x][y + 1] != '▒' && Display.PostFogTab[x][y + 1] != 'L' && Display.PostFogTab[x][y + 1] != 'D' && Display.PostFogTab[x][y + 1] != 'P')
+                {
+                    Display.PostFogTab[x][y + 1] = '@';
+                    Display.PostFogTab[x][y] = ' ';
+                }
+
+            }
+            if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A)
+            {
+
+                if (Display.PostFogTab[x][y - 1] != '╦' && Display.PostFogTab[x][y - 1] != '╩' && Display.PostFogTab[x][y - 1] != '╣' && Display.PostFogTab[x][y - 1] != '║' && Display.PostFogTab[x][y - 1] != '╬' && Display.PostFogTab[x][y - 1] != '╠' && Display.PostFogTab[x][y - 1] != '═' && Display.PostFogTab[x][y - 1] != '╔' && Display.PostFogTab[x][y - 1] != '╗' && Display.PostFogTab[x][y - 1] != '╚' && Display.PostFogTab[x][y - 1] != '╝' && Display.PostFogTab[x][y - 1] != '/' && Display.PostFogTab[x][y - 1] != '\\' && Display.PostFogTab[x][y - 1] != '|' && Display.PostFogTab[x][y - 1] != 'x' && Display.PostFogTab[x][y - 1] != '_' && Display.PostFogTab[x][y - 1] != '▓' && Display.PostFogTab[x][y - 1] != '▒' && Display.PostFogTab[x][y - 1] != 'L' && Display.PostFogTab[x][y - 1] != 'D' && Display.PostFogTab[x][y - 1] != 'P')
+                {
+                    Display.PostFogTab[x][y - 1] = '@';
+                    Display.PostFogTab[x][y] = ' ';
+                }
+            }
+            if (key.Key == ConsoleKey.I)
+            {
+                Display.ShowInventory();
+            }
+            if (key.Key == ConsoleKey.Spacebar)
+            {
+                PlayerInteractionLogic(Coordinate.FindInteractible(playerCoord), playerCoord);
+            }
+            if (key.Key == ConsoleKey.C)
+            {
+                Display.EquipmentDisplay();
+            }
+        }  //Function for the player's mouvement.
         public static void PlayerInteractionLogic(char interactible, Coordinate playerPosition)
         {
             
-            if (interactible == 'L')
+            if (interactible == 'L')  //Lever
             {
                 //TODO lever interaction
                 Interactible.LeverInteractionContext();
                 Interactible.LeverInteractionLogic(playerPosition, Interactible.LeverList);
             }
-            if (interactible == 'P')
+            if (interactible == 'P')  //Panel
             {
                 Coordinate.ShopPanelInteraction(playerPosition);
             }
@@ -101,7 +162,7 @@ namespace The_Legend_of_Console
             {
                 if (isPlayerInTown)
                 {
-                    Display.RandomBoardLoading();
+                    Display.RandomBoardLoading(Display.MainTab);
                     Coordinate.MonsterCoordList = Monster.MonsterPosition();
                     Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
                     Coordinate.LeverCoordList = Coordinate.LeverPosition();
@@ -110,7 +171,7 @@ namespace The_Legend_of_Console
                 }
                 else
                 {
-                    Display.BoardLoading(0);
+                    Display.BoardLoading(0,Display.MainTab);
                 }
                 
 
@@ -172,5 +233,21 @@ namespace The_Legend_of_Console
                     break;
             }
         }  //Execute player's combat action choice.
+        public static void PlayerHouseLogic(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    Program.player.Health = Program.player.MaxHealth;
+                    Animation.SleepingAnimation();
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+
+                    break;
+            }
+        } //Function for the Player house.
     }
 }
