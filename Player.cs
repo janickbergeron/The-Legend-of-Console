@@ -163,10 +163,7 @@ namespace The_Legend_of_Console
                 if (isPlayerInTown)
                 {
                     Display.RandomBoardLoading(Display.MainTab);
-                    Coordinate.MonsterCoordList = Monster.MonsterPosition();
-                    Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
-                    Coordinate.LeverCoordList = Coordinate.LeverPosition();
-                    Coordinate.DoorCoordList = Coordinate.DoorPosition();
+                    
                     Interactible.LeverList = Interactible.CreateNewLeverList(Coordinate.LeverCoordList, Coordinate.DoorCoordList);
                 }
                 else

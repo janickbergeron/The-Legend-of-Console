@@ -86,6 +86,7 @@ namespace The_Legend_of_Console
                 {
                     do input = int.Parse(Console.ReadLine());
                     while (input < 0 && input > total);
+                    isFormatOK = true;
                 }
                 catch (Exception ex)
                 {
@@ -193,6 +194,7 @@ namespace The_Legend_of_Console
         {
             int input = 0;
             int item = 0;
+            Inventory.RefreshInventoryList();
             Console.WriteLine("1: Deposit an item. 2: Withdraw an item. 3: Return.");
             try
             {
@@ -207,17 +209,33 @@ namespace The_Legend_of_Console
             {
                 case 1:
                     Display.InventoryDisplay();
-                    item = StorageDepositInput();
-                    Inventory.AddItemToStorage(Inventory.InventoryList[item]);
+                    if (Inventory.InventoryList.Count > 0)
+                    {
+                        item = StorageDepositInput();
+                        Inventory.AddItemToStorage(Inventory.InventoryList[item]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have anything to deposit.");
+                        Console.ReadKey();
+                    }
                     Display.StorageDisplay();
                     Input.StorageInput();
 
                     break;
                 case 2:
                     Display.StorageDisplay();
-                    item = StorageWithdrawInput();
-                    Inventory.AddItemToInventory(Inventory.HouseStorageList[item]);
-                    Inventory.RemoveItemFromStorage(item);
+                    if (Inventory.HouseStorageList.Count > 0)
+                    {
+                        item = StorageWithdrawInput();
+                        Inventory.AddItemToInventory(Inventory.HouseStorageList[item]);
+                        Inventory.RemoveItemFromStorage(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine("There isn't anything to withdraw.");
+                        Console.ReadKey();
+                    }
                     Display.StorageDisplay();
                     Input.StorageInput();
                     break;
@@ -229,21 +247,22 @@ namespace The_Legend_of_Console
         public static int MerchantInput()
         {
             int input = 0;
-            Inventory.RefreshInventoryList();
-            
-            List<Item> BlacksmithList = Merchant.BlacksmithList;
-            List<Item> AlchemistList = Merchant.AlchemistList;
+            bool isFormatOK = false;
 
-            Console.WriteLine("1: Buy an item. 2: Sell an item. 3: Return.");
-            try
+            Console.WriteLine("1: Buy an item. 2: Sell an item. 3: Craft an item. 4: Return.");
+            while (!isFormatOK)
             {
-                do input = int.Parse(Console.ReadLine());
-                while (input != 1 && input != 2 && input != 3);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Incorrect Entry.");
-                Console.ReadKey();
+                try
+                {
+                    do input = int.Parse(Console.ReadLine());
+                    while (input != 1 && input != 2 && input != 3 && input != 4);
+                    isFormatOK = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect Entry.");
+                    Console.ReadKey();
+                }
             }
             return input;
         }   //Merchant input in Merchant menu
@@ -268,6 +287,23 @@ namespace The_Legend_of_Console
             }
             return input;
         }   //Merchant input in Merchant menu
+        public static int CraftingInput()
+        {
+            bool isFormatOK = false;
+            int input = 0;
+            int total = Recipe.RecipeList.Count();
+            Console.WriteLine("Choose an item to craft:");
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input < 0 && input > total);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            return input - 1;
+        } //User input to select which item to equip.
     }
 
 }

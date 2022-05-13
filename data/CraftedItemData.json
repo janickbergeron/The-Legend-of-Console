@@ -1,0 +1,12 @@
+﻿[
+    {
+        "Name": "Iron Axe",
+        "Type": "Weapon",
+        "Health": "20",
+        "MinDamage": "10",
+        "MaxDamage": "15",
+        "Defense": "1",
+        "Full": "True",
+        "GoldValue": "300"
+    }
+]

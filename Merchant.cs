@@ -43,18 +43,22 @@ namespace The_Legend_of_Console
         {
             bool UserConfirmed;
             int itemValue = PlayerList[input].GoldValue / 4;
-            Display.InventorySellDisplay();
-            Console.WriteLine($"The {PlayerList[input].Name} you want to sell is worth {itemValue} gold.");
-            Console.WriteLine("Confirm sale? (Y/N)");
-            UserConfirmed = Input.YesNoInput();
-            switch (UserConfirmed)
+            Inventory.RefreshInventoryList();
+            if ( Inventory.InventoryList.Count > 0)
             {
-                case true:
-                    Program.player.Gold += itemValue;
-                    Inventory.RemoveItemFromInventory(input);
-                    break;
-                case false:
-                    break;
+                Display.InventorySellDisplay();
+                Console.WriteLine($"The {PlayerList[input].Name} you want to sell is worth {itemValue} gold.");
+                Console.WriteLine("Confirm sale? (Y/N)");
+                UserConfirmed = Input.YesNoInput();
+                switch (UserConfirmed)
+                {
+                    case true:
+                        Program.player.Gold += itemValue;
+                        Inventory.RemoveItemFromInventory(input);
+                        break;
+                    case false:
+                        break;
+                }
             }
         } //Fucntion to sell items to merchant.
         public static void ArmorerLogic(int input)
@@ -91,6 +95,12 @@ namespace The_Legend_of_Console
                     Merchant.SellItemToMerchant(Input.MerchantSellInput(PlayerList), PlayerList);
                     break;
                 case 3:
+                    Display.BlacksmithCraftingDisplay();
+                    Recipe recipe = Recipe.RecipeList[Input.CraftingInput()];
+                    Display.BlacksmithCraftingInfoDisplay(recipe);
+                    Inventory.AddItemToInventory(BlacksmithCraftingLogic(recipe));
+                    break;
+                case 4:
 
                     break;
             }
@@ -114,6 +124,88 @@ namespace The_Legend_of_Console
                     break;
             }
         } //Function for the Alchemist's buying/selling logic.
+        public static Item BlacksmithCraftingLogic(Recipe recipe)
+        {
+            bool PlayerMeetsReq1 = false;
+            bool PlayerMeetsReq2 = false;
+            bool PlayerMeetsReq3 = false;
+            bool PlayerMeetsReq4 = false;
+            bool PlayerMeetsReq5 = false;
+            int counter1 = 0;
+            int counter2 = 0;
+            int counter3 = 0;
+            Item Material1 = recipe.Material1;
+            Item Material2 = recipe.Material2;
+            Item Material3 = recipe.Material3;
+            Item placeholder = new(" ", " ", 0, 0);
+
+            foreach (Item item in Inventory.InventoryMaterialList)
+            {
+                if (item.Name == Material1.Name)
+                {
+                    counter1++;
+                    if (counter1 == recipe.NumberMaterial1)
+                        PlayerMeetsReq1 = true;
+                }
+                if (item.Name == Material2.Name)
+                {
+                    counter2++;
+                    if (counter2 == recipe.NumberMaterial2)
+                        PlayerMeetsReq2 = true;
+                }
+                if (item.Name == Material3.Name)
+                {
+                    counter3++;
+                    if (counter3 == recipe.NumberMaterial3)
+                        PlayerMeetsReq3 = true;
+                }
+            }
+            if (Program.player.Gold >= recipe.ItemToCraft.GoldValue)
+            {
+                PlayerMeetsReq4 = true;
+            }
+
+            Console.WriteLine($"It'll cost you {recipe.ItemToCraft.GoldValue} gold for me to craft you a {recipe.ItemToCraft.Name}.");
+            Console.WriteLine("Are you sure you wish to proceed? (Y/N)");
+            PlayerMeetsReq5 = Input.YesNoInput();
+            if (!PlayerMeetsReq5)
+            {
+                Display.BlacksmithCraftingDisplay();
+            }
+
+            if (PlayerMeetsReq1 && PlayerMeetsReq2 && PlayerMeetsReq3 && PlayerMeetsReq4 && PlayerMeetsReq5)
+            {
+                for (int i = 0; i < counter1; i++)
+                {
+                    Inventory.RemoveItemFromInventory(Material1);
+                }
+                for (int i = 0; i < counter2; i++)
+                {
+                    Inventory.RemoveItemFromInventory(Material2);
+                }
+                for (int i = 0; i < counter3; i++)
+                {
+                    Inventory.RemoveItemFromInventory(Material3);
+                }
+                Program.player.Gold -= recipe.ItemToCraft.GoldValue;
+                Item craftedItem = Item.CreateItem(recipe);
+                Display.BlacksmithCraftingInfoDisplay(recipe);
+                Console.WriteLine($"The blacksmith takes the materials and starts to work on your request.");
+                Console.WriteLine($"You come back a few hours later to pickup your {recipe.ItemToCraft.Name}.");
+                Console.ReadKey();
+                return craftedItem;
+            }
+            else
+            {
+                if (PlayerMeetsReq4)
+                {
+                    Console.WriteLine("Not enough materials.");
+                    Console.ReadKey();
+                }
+                
+                return placeholder;
+            }
+        } //Function for the blacksmith's crafting Logic.
 
 
     }

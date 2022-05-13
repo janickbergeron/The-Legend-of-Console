@@ -17,6 +17,8 @@ namespace The_Legend_of_Console
         public static List<Item> GlovesList = new List<Item>();
         public static List<Item> RingList = new List<Item>();
         public static List<Item> ConsumList = new List<Item>();
+        public static List<Item> MaterialList = new List<Item>();
+        public static List<Item> CraftedItemList = new List<Item>();
 
         private string _name;
         private string _type;
@@ -97,6 +99,11 @@ namespace The_Legend_of_Console
             Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].MinDamage, itemList[x].MaxDamage, itemList[x].Defense, itemList[x].Full, itemList[x].GoldValue);
             return item;
         }  //Function to create an item.
+        public static Item CreateItem(Recipe recipe)
+        {
+            Item item = new(recipe.ItemToCraft.Name, recipe.ItemToCraft.Type, recipe.ItemToCraft.Health, recipe.ItemToCraft.MinDamage, recipe.ItemToCraft.MaxDamage, recipe.ItemToCraft.Defense, recipe.ItemToCraft.Full, recipe.ItemToCraft.GoldValue);
+            return item;
+        }  //Function to create an item from a Recipe object.
         public static Item CreateConsum(int x, List<Item> itemList)
         {
             Item item = new(itemList[x].Name, itemList[x].Type, itemList[x].Health, itemList[x].Full, itemList[x].GoldValue);

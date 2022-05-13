@@ -156,11 +156,17 @@ namespace The_Legend_of_Console
             {
                 Player.isPlayerInTown = true;
                 TabLoading(Board.GenerateBoard(boardNumber, BoardList),charTab);
+                Coordinate.PanelCoordList = Coordinate.PanelPosition();
+                Coordinate.MerchantCoordList = Coordinate.MerchantPosition();
             }
             else
             {
                 Player.isPlayerInTown = false;
                 TabLoading(Board.GenerateBoard(boardNumber, BoardList), charTab);
+                Coordinate.MonsterCoordList = Monster.MonsterPosition();
+                Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
+                Coordinate.LeverCoordList = Coordinate.LeverPosition();
+                Coordinate.DoorCoordList = Coordinate.DoorPosition();
             }
         }  //Function to load a given board
         public static void RandomBoardLoading(char[][] charTab)
@@ -169,6 +175,10 @@ namespace The_Legend_of_Console
             int randomNumber = rand.Next(2,3);
             Player.isPlayerInTown = false;
             TabLoading(Board.GenerateBoard(randomNumber, BoardList),charTab);
+            Coordinate.MonsterCoordList = Monster.MonsterPosition();
+            Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
+            Coordinate.LeverCoordList = Coordinate.LeverPosition();
+            Coordinate.DoorCoordList = Coordinate.DoorPosition();
         } //Function to load a random board
         public static void FogOfWarProcess(Coordinate playerCoord)
         {
@@ -242,6 +252,7 @@ namespace The_Legend_of_Console
         public static void InventoryDisplay()
         {
             Console.Clear();
+            Inventory.RefreshInventoryList();
             int index = 0;
             string menuString = "╔═════════════════════════════════════════════════════════════════╗ ╔═════════════╗ \n" +
                   String.Format("║                            Inventory                            ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -269,7 +280,15 @@ namespace The_Legend_of_Console
                 index++;
                 menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
             }
-                  menuString += "╚══════════════════════╩══════════════════════════════════════════╝";
+                  menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
+                                "║     Material                                                    ║ \n" +
+                                "╠══════════════════════╦══════════════════════════════════════════╣ \n";
+            foreach (Item item in Inventory.InventoryMaterialList)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: 1                              ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╝";
             Console.WriteLine(menuString);
             
         } //Function to display the inventory.
@@ -302,6 +321,14 @@ namespace The_Legend_of_Console
             {
                 index++;
                 menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
+            }
+            menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
+                          "║     Material                                                    ║ \n" +
+                          "╠══════════════════════╦══════════════════════════════════════════╣ \n";
+            foreach (Item item in Inventory.HouseStorageMaterial)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: 1                              ║\n", index, item.Name);
             }
             menuString += "╚══════════════════════╩══════════════════════════════════════════╝";
             Console.WriteLine(menuString);
@@ -359,6 +386,15 @@ namespace The_Legend_of_Console
                 itemValue = item.GoldValue / 4;
                 menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Gold: {6,-6} ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, itemValue);
             }
+            menuString += "╠══════════════════════╩══════════════════════════════════════════╩══════════════╣ \n" +
+                          "║     Material                                                                   ║ \n" +
+                          "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ \n";
+            foreach (Item item in Inventory.InventoryMaterialList)
+            {
+                index++;
+                itemValue = item.GoldValue / 4;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: 1                              ║ Gold: {2,-6} ║\n", index, item.Name, itemValue);
+            }
             menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
             Console.WriteLine(menuString);
 
@@ -410,6 +446,37 @@ namespace The_Legend_of_Console
             Console.WriteLine(menuString);
 
         } //Function to display the blacksmith's shop.
+        public static void BlacksmithCraftingDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+            string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
+                  String.Format("║                                 Blacksmith's Workshop                          ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ ╚═════════════╝\n";
+            foreach (Item item in Item.CraftedItemList)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Cost:{6,-5}   ║  \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, item.GoldValue);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
+            Console.WriteLine(menuString);
+
+        } //Function to display the blacksmith's shop.
+        public static void BlacksmithCraftingInfoDisplay(Recipe recipe)
+        {
+            Console.Clear();
+            string menuString =         "╔═══════════════════════════════╗ ╔═════════════╗\n" +
+                          String.Format("║     Blacksmith's Workshop     ║ ║ Gold: {0,-6}║\n", Program.player.Gold) +
+                                        "╠═══════════════════════════════╣ ╚═════════════╝\n";
+            menuString += String.Format("║          {0,-15}      ║\n", recipe.ItemToCraft.Name);
+            menuString += String.Format("╠═══════════════════════════════╣\n");
+            menuString += String.Format("║  {0,-15} :  {1,-3} / {2,-3} ║\n", recipe.Material1.Name, Inventory.MaterialCount(recipe.Material1), recipe.NumberMaterial1);
+            menuString += String.Format("║  {0,-15} :  {1,-3} / {2,-3} ║ ╔═════════════╗\n", recipe.Material2.Name, Inventory.MaterialCount(recipe.Material2), recipe.NumberMaterial2);
+            menuString += String.Format("║  {0,-15} :  {1,-3} / {2,-3} ║ ║ Cost:{3,-6} ║\n", recipe.Material3.Name, Inventory.MaterialCount(recipe.Material3), recipe.NumberMaterial3, recipe.ItemToCraft.GoldValue);
+                          menuString += "╚═══════════════════════════════╝ ╚═════════════╝\n";
+            Console.WriteLine(menuString);
+
+        } //Function to display the blacksmith's shop. ╦ ╩
         public static void AlchemistDisplay()
         {
             Console.Clear();

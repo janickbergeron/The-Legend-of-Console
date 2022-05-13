@@ -36,6 +36,8 @@
             Item.GlovesList = Item.GetItemData("Gloves");
             Item.RingList = Item.GetItemData("Ring");
             Item.ConsumList = Item.GetItemData("Consum");
+            Item.MaterialList = Item.GetItemData("Material");
+            Item.CraftedItemList = Item.GetItemData("CraftedItem");
             Display.BoardList = Board.GetBoardData();
             
             Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
@@ -48,6 +50,10 @@
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.RingList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.RingList));
             Inventory.InventoryConsumList.Add(Item.CreateItem(0, Item.ConsumList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
+            Recipe.RecipeList.Add(Recipe.CreateRecipe(0,0, 1, 1, 1, 2, 1, Item.CraftedItemList));
 
             Display.InitializeGameboard1();
             Display.InitializeContextDisplay();
@@ -57,19 +63,11 @@
             Inventory.InitializeEquipment();
 
             Display.BoardLoading(0, Display.MainTab);  //Board loading                                                   
-
-            Coordinate.MonsterCoordList = Monster.MonsterPosition();
-            Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
-            Coordinate.LeverCoordList = Coordinate.LeverPosition();
-            Coordinate.PanelCoordList = Coordinate.PanelPosition();
-            Coordinate.MerchantCoordList = Coordinate.MerchantPosition();
-            Coordinate.DoorCoordList = Coordinate.DoorPosition();
-            Interactible.LeverList = Interactible.CreateNewLeverList(Coordinate.LeverCoordList, Coordinate.DoorCoordList);
+            
 
 
             // // Test loop
             //Program.player = Program.PlayerCreation();
-            //player.Gold = 100;
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.ChestList));
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.PantsList));
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.BootsList));
@@ -83,19 +81,16 @@
 
             /*while (TestInProgress)
             {
-                //Display.ArmorerDisplay();
-                //Merchant.ArmorerLogic(Input.MerchantInput());
 
-                //Display.BlacksmithDisplay();
-                //Merchant.BlacksmithLogic(Input.MerchantInput());
-
-                Display.AlchemistDisplay();
-                Merchant.AlchemistLogic(Input.MerchantInput());
             }*/
+
 
                //Gameplay Loop
             Display.TitleScreen();
             Display.TitleMenuDisplay();
+            player.Gold = 999;
+
+
             while (InProgress)
             {
                 Console.Clear();

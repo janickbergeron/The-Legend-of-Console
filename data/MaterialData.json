@@ -1,0 +1,32 @@
+﻿[
+    {
+        "Name": "Iron Bar",
+        "Type": "Material",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "0",
+        "Full": "True",
+        "GoldValue": "1"
+    },
+    {
+        "Name": "Wooden Log",
+        "Type": "Material",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "0",
+        "Full": "True",
+        "GoldValue": "1"
+    },
+    {
+        "Name": "Vines",
+        "Type": "Material",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "0",
+        "Full": "True",
+        "GoldValue": "1"
+    }
+]

@@ -190,7 +190,7 @@ namespace The_Legend_of_Console
             Thread.Sleep(500);
             Console.Clear();
             Console.WriteLine("			      			\n" +
-                              "	              Z		\n" +
+                              "                      Z		\n" +
                               "			   Z		\n" +
                               "			Z    		");
             Console.WriteLine(@"      _____|~~\_____      _____________	");
