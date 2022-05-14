@@ -37,12 +37,12 @@
             Item.RingList = Item.GetItemData("Ring");
             Item.ConsumList = Item.GetItemData("Consum");
             Item.MaterialList = Item.GetItemData("Material");
-            Item.CraftedItemList = Item.GetItemData("CraftedItem");
+            Item.CraftedWeaponList = Item.GetItemData("CraftedWeapon");
+            Item.CraftedArmorList = Item.GetItemData("CraftedArmor");
             Display.BoardList = Board.GetBoardData();
             
             Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
             Inventory.InventoryWeaponList.Add(Item.CreateItem(0, Item.OffHandList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.ChestList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.PantsList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.ChestList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.BootsList));
@@ -53,7 +53,10 @@
             Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
-            Recipe.RecipeList.Add(Recipe.CreateRecipe(0,0, 1, 1, 1, 2, 1, Item.CraftedItemList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(3, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(4, Item.MaterialList));
+            Recipe.WeaponRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 1, 1, 2, 1, Item.CraftedWeaponList));
+            Recipe.ArmorRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 3, 1, 4, 1, Item.CraftedArmorList));
 
             Display.InitializeGameboard1();
             Display.InitializeContextDisplay();

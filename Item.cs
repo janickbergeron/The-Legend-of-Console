@@ -18,7 +18,8 @@ namespace The_Legend_of_Console
         public static List<Item> RingList = new List<Item>();
         public static List<Item> ConsumList = new List<Item>();
         public static List<Item> MaterialList = new List<Item>();
-        public static List<Item> CraftedItemList = new List<Item>();
+        public static List<Item> CraftedWeaponList = new List<Item>();
+        public static List<Item> CraftedArmorList = new List<Item>();
 
         private string _name;
         private string _type;

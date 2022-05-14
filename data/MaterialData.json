@@ -28,5 +28,25 @@
         "Defense": "0",
         "Full": "True",
         "GoldValue": "1"
+    },
+    {
+        "Name": "Thread",
+        "Type": "Material",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "0",
+        "Full": "True",
+        "GoldValue": "1"
+    },
+    {
+        "Name": "Leather",
+        "Type": "Material",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "0",
+        "Full": "True",
+        "GoldValue": "1"
     }
 ]

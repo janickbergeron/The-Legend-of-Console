@@ -287,11 +287,11 @@ namespace The_Legend_of_Console
             }
             return input;
         }   //Merchant input in Merchant menu
-        public static int CraftingInput()
+        public static int CraftingInput(List<Recipe> recipeList)
         {
             bool isFormatOK = false;
             int input = 0;
-            int total = Recipe.RecipeList.Count();
+            int total = recipeList.Count();
             Console.WriteLine("Choose an item to craft:");
             try
             {

@@ -97,27 +97,24 @@ namespace The_Legend_of_Console
             if (item.Type == "Consum")
                 InventoryConsumList.Add(item);
         }  //Function to add an item to inventory.
-        public static void RemoveItemFromInventory(Item item)
+        public static void RemoveMaterialFromInventory(int itemPosition)
         {
-            if (item.Type == "Chest")
-                InventoryArmorList.Remove(item);
-            if (item.Type == "Pants")
-                InventoryArmorList.Remove(item);
-            if (item.Type == "Boots")
-                InventoryArmorList.Remove(item);
-            if (item.Type == "Gloves")
-                InventoryArmorList.Remove(item);
-            if (item.Type == "Ring")
-                InventoryArmorList.Remove(item);
-            if (item.Type == "Weapon")
-                InventoryWeaponList.Remove(item);
-            if (item.Type == "Off-Hand")
-                InventoryWeaponList.Remove(item);
-            if (item.Type == "Consum")
-                InventoryConsumList.Remove(item);
-            if (item.Type == "Material")
-                InventoryMaterialList.Remove(item);
-        }  //Function to add an item to inventory.
+                InventoryMaterialList.RemoveAt(itemPosition);
+        }  //Function to remove materials from inventory.
+        public static int FindCraftingMaterial(List<Item> materialList, Item itemToFind)
+        {
+            int counter = 0;
+            int materialPosition = 0;
+            for (int i = 0; i < materialList.Count; i++)
+            {
+                if (materialList[i].Name == itemToFind.Name)
+                {
+                    materialPosition = counter;
+                }
+                counter++;
+            }
+            return materialPosition;
+        }
         public static void AddItemToStorage(Item item)
         {
             if (item.Type == "Chest")

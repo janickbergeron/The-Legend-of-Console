@@ -8,7 +8,9 @@ namespace The_Legend_of_Console
 {
     public class Recipe
     {
-        public static List<Recipe> RecipeList = new List<Recipe>();
+        public static List<Recipe> WeaponRecipeList = new List<Recipe>();
+        public static List<Recipe> ArmorRecipeList = new List<Recipe>();
+
         private int _numberMaterial1;
         private int _numberMaterial2;
         private int _numberMaterial3;

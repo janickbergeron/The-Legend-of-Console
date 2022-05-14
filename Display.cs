@@ -343,7 +343,7 @@ namespace The_Legend_of_Console
                                   String.Format("║ Name: {0,-10}            ║ Weapon: {1,-17}  ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Name, Inventory.EquippedWeapon[0].Name, Inventory.EquippedWeapon[0].Defense, Inventory.EquippedWeapon[0].Health, Inventory.EquippedWeapon[0].MinDamage, Inventory.EquippedWeapon[0].MaxDamage) +
                                   String.Format("║ Level: {0,-3}                  ║ Off-Hand: {1,-17}║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Level, Inventory.EquippedOffHand[0].Name, Inventory.EquippedOffHand[0].Defense, Inventory.EquippedOffHand[0].Health, Inventory.EquippedOffHand[0].MinDamage, Inventory.EquippedOffHand[0].MaxDamage) +
                                   String.Format("║ Exp: {0,6} / 100           ║ Chest: {1,-17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", Program.player.Experience, Inventory.EquippedChest[0].Name, Inventory.EquippedChest[0].Defense, Inventory.EquippedChest[0].Health, Inventory.EquippedChest[0].MinDamage, Inventory.EquippedChest[0].MaxDamage);
-                    menuString += String.Format("║ Health: {0,-5}               ║ Pants: {1,-17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", Program.player.Health, Inventory.EquippedPants[0].Name, Inventory.EquippedPants[0].Defense, Inventory.EquippedPants[0].Health, Inventory.EquippedPants[0].MinDamage, Inventory.EquippedPants[0].MaxDamage) +
+                    menuString += String.Format("║ Health: {0,4} / {1,-4}         ║ Pants: {2,-17}   ║ Defense: {3,-3} Health: {4,-3} Damage: {5,3}-{6,-3} ║ \n", Program.player.Health, Program.player.MaxHealth, Inventory.EquippedPants[0].Name, Inventory.EquippedPants[0].Defense, Inventory.EquippedPants[0].Health, Inventory.EquippedPants[0].MinDamage, Inventory.EquippedPants[0].MaxDamage) +
                                   String.Format("║ Damage: {0,3}-{1,-3}             ║ Gloves: {2,-17}  ║ Defense: {3,-3} Health: {4,-3} Damage: {5,3}-{6,-3} ║\n", Program.player.MinDamage, Program.player.MaxDamage, Inventory.EquippedGloves[0].Name, Inventory.EquippedGloves[0].Defense, Inventory.EquippedGloves[0].Health, Inventory.EquippedGloves[0].MinDamage, Inventory.EquippedGloves[0].MaxDamage) +
                                   String.Format("║ Defense: {0,-5}              ║ Boots: {1, -17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Defense, Inventory.EquippedBoots[0].Name, Inventory.EquippedBoots[0].Defense, Inventory.EquippedBoots[0].Health, Inventory.EquippedBoots[0].MinDamage, Inventory.EquippedBoots[0].MaxDamage) +
                                   String.Format("║                             ║ Ring: {0,-17}    ║ Defense: {1,-3} Health: {2,-3} Damage: {3,3}-{4,-3} ║\n", Inventory.EquippedRing[0].Name, Inventory.EquippedRing[0].Defense, Inventory.EquippedRing[0].Health, Inventory.EquippedRing[0].MinDamage, Inventory.EquippedRing[0].MaxDamage) +
@@ -453,7 +453,7 @@ namespace The_Legend_of_Console
             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
                   String.Format("║                                 Blacksmith's Workshop                          ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
                                 "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ ╚═════════════╝\n";
-            foreach (Item item in Item.CraftedItemList)
+            foreach (Item item in Item.CraftedWeaponList)
             {
                 index++;
                 menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Cost:{6,-5}   ║  \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, item.GoldValue);
@@ -461,7 +461,38 @@ namespace The_Legend_of_Console
             menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
             Console.WriteLine(menuString);
 
-        } //Function to display the blacksmith's shop.
+        } //Function to display the blacksmith's crafting window.
+        public static void ArmorerCraftingDisplay()
+        {
+            Console.Clear();
+            int index = 0;
+            string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
+                  String.Format("║                                    Armorer's Shack                             ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
+                                "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ ╚═════════════╝\n";
+            foreach (Item item in Item.CraftedArmorList)
+            {
+                index++;
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ Cost:{6,-5}   ║  \n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage, item.GoldValue);
+            }
+            menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
+            Console.WriteLine(menuString);
+
+        } //Function to display the blacksmith's crafting window.
+        public static void ArmorerCraftingInfoDisplay(Recipe recipe)
+        {
+            Console.Clear();
+                    string menuString = "╔═══════════════════════════════╗ ╔═════════════╗\n" +
+                          String.Format("║        Armorer's Shack        ║ ║ Gold: {0,-6}║\n", Program.player.Gold) +
+                                        "╠═══════════════════════════════╣ ╚═════════════╝\n";
+            menuString += String.Format("║          {0,-15}      ║\n", recipe.ItemToCraft.Name);
+            menuString += String.Format("╠═══════════════════════════════╣\n");
+            menuString += String.Format("║  {0,-15} :   {1,-3}/ {2,-3} ║\n", recipe.Material1.Name, Inventory.MaterialCount(recipe.Material1), recipe.NumberMaterial1);
+            menuString += String.Format("║  {0,-15} :   {1,-3}/ {2,-3} ║ ╔═════════════╗\n", recipe.Material2.Name, Inventory.MaterialCount(recipe.Material2), recipe.NumberMaterial2);
+            menuString += String.Format("║  {0,-15} :   {1,-3}/ {2,-3} ║ ║ Cost:{3,-6} ║\n", recipe.Material3.Name, Inventory.MaterialCount(recipe.Material3), recipe.NumberMaterial3, recipe.ItemToCraft.GoldValue);
+            menuString += "╚═══════════════════════════════╝ ╚═════════════╝\n";
+            Console.WriteLine(menuString);
+
+        } //Function to display the blacksmith's shop. ╦ ╩
         public static void BlacksmithCraftingInfoDisplay(Recipe recipe)
         {
             Console.Clear();
@@ -470,9 +501,9 @@ namespace The_Legend_of_Console
                                         "╠═══════════════════════════════╣ ╚═════════════╝\n";
             menuString += String.Format("║          {0,-15}      ║\n", recipe.ItemToCraft.Name);
             menuString += String.Format("╠═══════════════════════════════╣\n");
-            menuString += String.Format("║  {0,-15} :  {1,-3} / {2,-3} ║\n", recipe.Material1.Name, Inventory.MaterialCount(recipe.Material1), recipe.NumberMaterial1);
-            menuString += String.Format("║  {0,-15} :  {1,-3} / {2,-3} ║ ╔═════════════╗\n", recipe.Material2.Name, Inventory.MaterialCount(recipe.Material2), recipe.NumberMaterial2);
-            menuString += String.Format("║  {0,-15} :  {1,-3} / {2,-3} ║ ║ Cost:{3,-6} ║\n", recipe.Material3.Name, Inventory.MaterialCount(recipe.Material3), recipe.NumberMaterial3, recipe.ItemToCraft.GoldValue);
+            menuString += String.Format("║  {0,-15} :   {1,-3}/ {2,-3} ║\n", recipe.Material1.Name, Inventory.MaterialCount(recipe.Material1), recipe.NumberMaterial1);
+            menuString += String.Format("║  {0,-15} :   {1,-3}/ {2,-3} ║ ╔═════════════╗\n", recipe.Material2.Name, Inventory.MaterialCount(recipe.Material2), recipe.NumberMaterial2);
+            menuString += String.Format("║  {0,-15} :   {1,-3}/ {2,-3} ║ ║ Cost:{3,-6} ║\n", recipe.Material3.Name, Inventory.MaterialCount(recipe.Material3), recipe.NumberMaterial3, recipe.ItemToCraft.GoldValue);
                           menuString += "╚═══════════════════════════════╝ ╚═════════════╝\n";
             Console.WriteLine(menuString);
 

@@ -1,0 +1,12 @@
+﻿[
+    {
+        "Name": "Iron Chainmail",
+        "Type": "Chest",
+        "Health": "20",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "10",
+        "Full": "True",
+        "GoldValue": "200"
+    }
+]
