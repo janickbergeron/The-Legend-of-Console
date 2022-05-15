@@ -89,7 +89,7 @@ namespace The_Legend_of_Console
                            .ToList();
             //List<Item> duplicate = materialList.Distinct().ToList();
             return duplicate;
-        }
+        }  //Function that return a list of distinct material in the player's inventory.
         public static void AddItemToInventory(Item item)
         {
             if (item.Type == "Chest")
@@ -126,7 +126,7 @@ namespace The_Legend_of_Console
                 counter++;
             }
             return materialPosition;
-        }
+        }  //Function to find a specific material in the inventory (crafting)
         public static void AddItemToStorage(Item item)
         {
             if (item.Type == "Chest")
@@ -151,10 +151,11 @@ namespace The_Legend_of_Console
         }  //Function to add an item to storage.
         public static void RemoveItemFromInventory(int input)
         {
+            List<Item> materialList = InventoryMaterialProcess(InventoryMaterialList);
             int weapon = Inventory.InventoryWeaponList.Count();
             int armor = Inventory.InventoryArmorList.Count();
             int consum = Inventory.InventoryConsumList.Count();
-            int mats = Inventory.InventoryMaterialList.Count();
+            int mats = materialList.Count();
             int weaponArmor = weapon + armor;
             int weaponArmorConsum = weapon + armor + consum;
             int weaponArmorConsumMats = weapon + armor + consum + mats;
@@ -170,10 +171,11 @@ namespace The_Legend_of_Console
         }   //Function to remove an item from inventory.
         public static void RemoveItemFromStorage(int input)
         {
-            int weapon = Inventory.HouseStorageWeapon.Count();
-            int armor = Inventory.HouseStorageArmor.Count();
-            int consum = Inventory.HouseStorageConsum.Count();
-            int mats = Inventory.HouseStorageMaterial.Count();
+            List<Item> materialList = InventoryMaterialProcess(InventoryMaterialList);
+            int weapon = Inventory.InventoryWeaponList.Count();
+            int armor = Inventory.InventoryArmorList.Count();
+            int consum = Inventory.InventoryConsumList.Count();
+            int mats = materialList.Count();
             int weaponArmor = weapon + armor;
             int weaponArmorConsum = weapon + armor + consum;
             int weaponArmorConsumMats = weapon + armor + consum + mats;
@@ -193,28 +195,28 @@ namespace The_Legend_of_Console
             {
                 AddItemToInventory(item);
             }
-        }
+        }  //Function to load the saved item into the player's inventory.
         public static void StorageLogicAfterLoad(List<Item> itemList)
         {
             foreach (Item item in itemList)
             {
                 AddItemToStorage(item);
             }
-        }
+        }  //Function to load the saved item into the player's house.
         public static void EquipItemAfterLoad(List<Item> itemList)
         {
             foreach (Item item in itemList)
             {
                 EquipItemToSlot(item);
             }
-        }
+        }    //Function to reequip all saved equipment
         public static void RemoveItemStatsBeforeSave(List<Item> itemList)
         {
             foreach(Item item in itemList)
             {
                 RemoveItemStats(item);
             }
-        }
+        }  //Function that ensure the save feature only save the player's base stats.
         public static List<Item> GetEquippedItems()
         {
             List<Item> equippedItems = new List<Item>();
@@ -228,7 +230,7 @@ namespace The_Legend_of_Console
             equippedItems.Add(EquippedRing[0]);
             equippedItems.Add(EquippedRing[1]);
             return equippedItems;
-        }
+        }  //function to generate a list of all equipped items for saving.
         public static Item EquipItemToSlot(Item item)
         {
             Item returnToInventory = new(" ", "Placeholder", 0,0);
@@ -274,7 +276,7 @@ namespace The_Legend_of_Console
                 counter++;
             }
             return counter;
-        }
+        }   //Fucntion to count the number of material in the player's inventory.
         public static int GetInventoryTotal()
         {
             int list = InventoryWeaponList.Count();

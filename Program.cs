@@ -10,7 +10,10 @@
 
         public static void InitializeCombat()
         {
-            Monster monster = new("  Blob", 1, 10, 1, 5, 1, 0, player);
+            //Monster monster = new("  Blob", 1, 10, 1, 5, 1, 0, player);
+            Random random = new Random();
+            int rand = random.Next(0, Monster.MonsterList.Count());
+            Monster monster = Monster.CreateMonster(rand, Monster.MonsterList);
             Combat combat1 = new Combat(player, monster);
             monster.Health = monster.MaxHealth;
             combat1.StartCombat();
@@ -39,6 +42,7 @@
             Item.MaterialList = Item.GetItemData("Material");
             Item.CraftedWeaponList = Item.GetItemData("CraftedWeapon");
             Item.CraftedArmorList = Item.GetItemData("CraftedArmor");
+            Monster.MonsterList = Monster.GetMonsterData();
             Display.BoardList = Board.GetBoardData();
             
             Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));

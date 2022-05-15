@@ -340,5 +340,4 @@ namespace The_Legend_of_Console
             return input - 1;
         } //User input to select which item to equip.
     }
-
 }

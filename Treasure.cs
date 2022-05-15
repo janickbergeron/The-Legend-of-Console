@@ -27,7 +27,7 @@ namespace The_Legend_of_Console
         public static void TreasureGenerator()
         {
             Random rand = new Random();
-            int randomnumber = rand.Next(0, 21);
+            int randomnumber = rand.Next(10, 31);
             Treasure treasure = new(randomnumber);
             Console.WriteLine($"Congratulation! You have found a treasure containing {treasure.Gold} gold.");
             Console.ReadKey();

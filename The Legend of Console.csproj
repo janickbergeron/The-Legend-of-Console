@@ -19,6 +19,7 @@
     <None Remove="data\GlovesData.json" />
     <None Remove="data\ItemData.json" />
     <None Remove="data\MaterialData.json" />
+    <None Remove="data\MonsterData.json" />
     <None Remove="data\OffHandData.json" />
     <None Remove="data\PantsData.json" />
     <None Remove="data\RingData.json" />
@@ -76,6 +77,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data\WeaponData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="data\MonsterData.json">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

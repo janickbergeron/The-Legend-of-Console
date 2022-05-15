@@ -1,0 +1,12 @@
+﻿ [
+    {
+        "Name": "  Blob",
+        "Level": "1",
+        "MaxHealth": "10",
+        "MinDamage": "1",
+        "MaxDamage": "5",
+        "Defense": "1",
+        "Armor": "0"
+    }
+]
+

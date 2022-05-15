@@ -173,7 +173,7 @@ namespace The_Legend_of_Console
                 }
                 else
                 {
-                    Display.BoardLoading(0,Display.MainTab);
+                    Display.BoardLoading(1,Display.MainTab);
                 }
                 
 

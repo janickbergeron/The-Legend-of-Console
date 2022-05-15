@@ -46,6 +46,6 @@ namespace The_Legend_of_Console
             Item itemToCraft = Item.CreateItem(p_itemToCraft, itemList);
             Recipe recipe = new(Material1, numberMaterial1, Material2, numberMaterial2, Material3, numberMaterial3, itemToCraft);
             return recipe;
-        }
+        }  //Function to create a new crafting recipe.
     }
 }

@@ -28,10 +28,13 @@ namespace The_Legend_of_Console
             string json = JsonConvert.SerializeObject(playerData.ToArray(), Formatting.Indented, JsonFileUtils._options);
 
             //write string to file
-            
-            string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\PlayerSaveData.json";
-            System.IO.File.WriteAllText(path, json);
-        }
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path1 = $@"\data\Save\PlayerSaveData.json";
+            string fullPath = CurrentDirectory + path1;
+
+            //string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\PlayerSaveData.json";
+            System.IO.File.WriteAllText(fullPath, json);
+        }   //Function to save the player's character data.
         public static void SaveEquipmentData()
         {
             List<Item> equippedItemList = new List<Item>();
@@ -45,53 +48,55 @@ namespace The_Legend_of_Console
             equippedItemList.Add(Inventory.EquippedRing[1]);
 
             string json = JsonConvert.SerializeObject(equippedItemList.ToArray(), Formatting.Indented, JsonFileUtils._options);
-            string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\EquipmentSaveData.json";
-            System.IO.File.WriteAllText(path, json);
-        }
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path1 = $@"\data\Save\EquipmentSaveData.json";
+            string fullPath = CurrentDirectory + path1;
+            //string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\EquipmentSaveData.json";
+            System.IO.File.WriteAllText(fullPath, json);
+        } //Function to save the player's equipment data.
         public static void SaveInventoryData()
         {
             Inventory.RefreshInventoryList();
             List<Item> playerInventory = new List<Item>();
             playerInventory = Inventory.InventoryList;
             string json = JsonConvert.SerializeObject(playerInventory.ToArray(), Formatting.Indented, JsonFileUtils._options);
-            string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\InventorySaveData.json";
-            System.IO.File.WriteAllText(path, json);
-        }
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path1 = $@"\data\Save\InventorySaveData.json";
+            string fullPath = CurrentDirectory + path1;
+            //string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\InventorySaveData.json";
+            System.IO.File.WriteAllText(fullPath, json);
+        } //Function to save the player's inventory data.
         public static void SaveHouseData()
         {
             Inventory.RefreshInventoryList();
             List<Item> houseInventory = new List<Item>();
             houseInventory = Inventory.HouseStorageList;
             string json = JsonConvert.SerializeObject(houseInventory.ToArray(), Formatting.Indented, JsonFileUtils._options);
-            string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\HouseSaveData.json";
-            System.IO.File.WriteAllText(path, json);
-        }
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path1 = $@"\data\Save\HouseSaveData.json";
+            string fullPath = CurrentDirectory + path1;
+            //string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\HouseSaveData.json";
+            System.IO.File.WriteAllText(fullPath, json);
+        }  //Function to save the player's house storage data.
         public static Player LoadPlayerData()
         {
-            /*var CurrentDirectory = Environment.CurrentDirectory;
-            string path = $@"\Data\{item}Data.json";
-            string fullPath = CurrentDirectory + path;*/
-
-            string path = @"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\PlayerSaveData.json";
-            StreamReader r = new StreamReader(path);
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path1 = $@"\data\Save\PlayerSaveData.json";
+            string fullPath = CurrentDirectory + path1;
+            StreamReader r = new StreamReader(fullPath);
             string jsonString = r.ReadToEnd();
             List<Player> playerData = JsonConvert.DeserializeObject<List<Player>>(jsonString);
             return playerData[0];
-        }
+        }  //Function to load the player's character data.
         public static List<Item> LoadSavedData(string dataType)
         {
-            /*var CurrentDirectory = Environment.CurrentDirectory;
-            string path = $@"\Data\{item}Data.json";
-            string fullPath = CurrentDirectory + path;*/
-
-            string path = @$"C:\Users\Janick Bergeron\source\repos\The-Legend-of-Console\data\Save\{dataType}SaveData.json";
-            StreamReader r = new StreamReader(path);
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path1 = $@"\data\Save\{dataType}SaveData.json";
+            string fullPath = CurrentDirectory + path1;
+            StreamReader r = new StreamReader(fullPath);
             string jsonString = r.ReadToEnd();
             List<Item> Data = JsonConvert.DeserializeObject<List<Item>>(jsonString);
             return Data;
-        }
-
-
-        
+        }   //Function to load the specified data type.
     }
 }

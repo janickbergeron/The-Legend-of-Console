@@ -42,7 +42,7 @@ namespace The_Legend_of_Console
                 x++;
             }
             return leverList;
-        }
+        }  // Function to create a list of Lever associated with it's targeted door.
         public static void LeverInteractionLogic(Coordinate playerCoord, List<Interactible> leverList)
         {
             int y = playerCoord.X;
@@ -73,7 +73,7 @@ namespace The_Legend_of_Console
 
             }
 
-        }
+        }  //Function for the lever interaction logic.
         public static void LeverInteractionContext()
         {
             string context = "║    You heard a door opening in the distance...              ║";

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace The_Legend_of_Console
 {
+
     public class Monster : Entity
     {
-        public Monster(string name, int level, int maxHealth, int minDamage,int maxDamage, int defence, int armor, Entity enemy) : base(name, level, maxHealth, minDamage,maxDamage, defence, armor)
+        public static List<Monster> MonsterList = new List<Monster>();
+        public Monster(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense, int armor, Entity enemy) : base(name, level, maxHealth, minDamage,maxDamage, defense, armor)
         {
             Enemy = enemy;
         } //Monster Constructor
@@ -36,6 +39,21 @@ namespace The_Legend_of_Console
             }
             return CoordList;
         } //Function that returns a list of coordinate for all monster on the gameboard.
+        public static List<Monster> GetMonsterData()
+        {
+            var CurrentDirectory = Environment.CurrentDirectory;
+            string path = $@"\Data\MonsterData.json";
+            string fullPath = CurrentDirectory + path;
+            StreamReader r = new StreamReader(fullPath);
+            string jsonString = r.ReadToEnd();
+            List<Monster> monsterList = JsonConvert.DeserializeObject<List<Monster>>(jsonString);
+            return monsterList;
+        } // Function to fetch the Monster Data File.
+        public static Monster CreateMonster(int x, List<Monster> monsterList)
+        {
+            Monster monster = new(monsterList[x].Name, monsterList[x].Level, monsterList[x].MaxHealth, monsterList[x].MinDamage, monsterList[x].MaxDamage, monsterList[x].Defense, monsterList[x].Armor, monsterList[x].Enemy);
+            return monster;
+        }  //Function to create an item.
         public override int CombatAttack(int minDamage, int maxDamage)
         {
             Random rand = new Random();

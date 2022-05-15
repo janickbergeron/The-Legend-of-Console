@@ -174,6 +174,11 @@ namespace The_Legend_of_Console
             Console.WriteLine($"It'll cost you {recipe.ItemToCraft.GoldValue} gold for me to craft you a {recipe.ItemToCraft.Name}.");
             Console.WriteLine("Are you sure you wish to proceed? (Y/N)");
             PlayerMeetsReq5 = Input.YesNoInput();
+            if (!PlayerMeetsReq4)
+            {
+                Console.WriteLine("Not enough gold.");
+                Console.ReadKey();
+            }
             if (!PlayerMeetsReq5)
             {
                 Display.BlacksmithCraftingDisplay();
@@ -256,6 +261,11 @@ namespace The_Legend_of_Console
             Console.WriteLine($"It'll cost you {recipe.ItemToCraft.GoldValue} gold for me to craft you a {recipe.ItemToCraft.Name}.");
             Console.WriteLine("Are you sure you wish to proceed? (Y/N)");
             PlayerMeetsReq5 = Input.YesNoInput();
+            if (!PlayerMeetsReq4)
+            {
+                Console.WriteLine("Not enough gold.");
+                Console.ReadKey();
+            }
             if (!PlayerMeetsReq5)
             {
                 Display.ArmorerCraftingDisplay();

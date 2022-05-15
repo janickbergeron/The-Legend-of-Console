@@ -172,7 +172,7 @@ namespace The_Legend_of_Console
         public static void RandomBoardLoading(char[][] charTab)
         {
             Random rand = new Random();
-            int randomNumber = rand.Next(2,3);
+            int randomNumber = rand.Next(3,4);
             Player.isPlayerInTown = false;
             TabLoading(Board.GenerateBoard(randomNumber, BoardList),charTab);
             Coordinate.MonsterCoordList = Monster.MonsterPosition();
@@ -189,7 +189,7 @@ namespace The_Legend_of_Console
             {
                 PostFogTab[y][i] = PreFogTab[y][i];
             }
-        }
+        }  //Function for the fog of war process. (WIP)
         public static void TitleScreen()
         {
             Console.WriteLine(@" .____                                    .___         _____  _________                            .__");
@@ -218,7 +218,7 @@ namespace The_Legend_of_Console
         {
             ContextDisplayList.Insert(0, context);
             ContextDisplayList.RemoveAt(4);
-        }
+        }   //Function to display a line in the context display.
         public static void SaveGameContext()
         {
             string context = "║    Your progress has been saved.                            ║";

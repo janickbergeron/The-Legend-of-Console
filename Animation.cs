@@ -204,6 +204,6 @@ namespace The_Legend_of_Console
             Console.WriteLine("                              `||||		");
             Console.WriteLine("You feel rested. All your injuries have healed.");
             Console.ReadKey();
-        }
+        }    //Display the player's sleeping animation.
     }
 }
