@@ -78,6 +78,18 @@ namespace The_Legend_of_Console
                 HouseStorageList.Add(item);
             }
         } // Function to refresh the inventoryList
+        public static List<Item> InventoryMaterialProcess(List<Item> materialList)
+        {
+            //HashSet<Item> hashset = new HashSet<Item>();
+            //IEnumerable<Item> duplicates = InventoryMaterialList.Where(e => !hashset.Add(e));
+            //return duplicates;
+
+            List<Item> duplicate = materialList.GroupBy(p => p.Name)
+                           .Select(grp => grp.First())
+                           .ToList();
+            //List<Item> duplicate = materialList.Distinct().ToList();
+            return duplicate;
+        }
         public static void AddItemToInventory(Item item)
         {
             if (item.Type == "Chest")
@@ -256,7 +268,7 @@ namespace The_Legend_of_Console
         public static int MaterialCount(Item material)
         {
             int counter = 0;
-            foreach (Item item in Inventory.InventoryMaterialList)
+            foreach (Item item in InventoryMaterialList)
             {
                 if (material.Name == item.Name)
                 counter++;

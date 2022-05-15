@@ -41,7 +41,7 @@
             Item.CraftedArmorList = Item.GetItemData("CraftedArmor");
             Display.BoardList = Board.GetBoardData();
             
-            /*Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
+            Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
             Inventory.InventoryWeaponList.Add(Item.CreateItem(0, Item.OffHandList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.PantsList));
             Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.ChestList));
@@ -51,7 +51,11 @@
             Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.RingList));
             Inventory.InventoryConsumList.Add(Item.CreateItem(0, Item.ConsumList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(3, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(4, Item.MaterialList));   //*/
