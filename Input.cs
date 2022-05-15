@@ -23,13 +23,48 @@ namespace The_Legend_of_Console
             {
                 case 1:
                     Program.player = Program.PlayerCreation();
-                    Display.Gameboard();
                     break;
                 case 2:
-                    //TODO Load/Save Feature
+                    Program.player = GameSave.LoadPlayerData();
+                    Inventory.InventoryLogicAfterLoad(GameSave.LoadSavedData("Inventory"));
+                    Inventory.StorageLogicAfterLoad(GameSave.LoadSavedData("House"));
+                    Inventory.EquipItemAfterLoad(GameSave.LoadSavedData("Equipment"));
                     break;
                 case 3:
 
+                    break;
+            }
+        } //User input in Title Menu
+        public static void PauseMenuInput()
+        {
+            int input = 0;
+            try
+            {
+                do input = int.Parse(Console.ReadLine());
+                while (input != 1 && input != 2 && input != 3 && input != 4);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Incorrect Entry.");
+            }
+            switch (input)
+            {
+                case 1:
+                    Inventory.RemoveItemStatsBeforeSave(Inventory.GetEquippedItems());
+                    GameSave.SavePlayerData();
+                    GameSave.SaveEquipmentData();
+                    GameSave.SaveInventoryData();
+                    GameSave.SaveHouseData();
+                    Display.SaveGameContext();
+                    break;
+                case 2:
+                    //option 2        
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    Program.InProgress = false;
                     break;
             }
         } //User input in Title Menu

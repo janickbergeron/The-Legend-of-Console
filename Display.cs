@@ -203,15 +203,30 @@ namespace The_Legend_of_Console
         } //Function to display the Title Screen.
         public static void ContextDisplay()
         {
+            //ContextDisplayProcess("║ Space = Interact. I = Inventory. C = Character's statistics.║");
              string menuString = "╔═════════════════════════════════════════════════════════════╗ \n";                
                 foreach (string n in ContextDisplayList)
                 {
                    menuString += n + "\n";
                 }
+                                 
                    menuString += "╚═════════════════════════════════════════════════════════════╝";
             Console.WriteLine(menuString);
             Console.WriteLine("Space = Interact. I = Inventory. C = Character's statistics.");
         } //Function to draw the Context Display.
+        public static void ContextDisplayProcess(string context)
+        {
+            ContextDisplayList.Insert(0, context);
+            ContextDisplayList.RemoveAt(4);
+        }
+        public static void SaveGameContext()
+        {
+            string context = "║    Your progress has been saved.                            ║";
+            Display.ContextDisplayProcess(context);
+            Display.Gameboard();
+            Console.ReadKey();
+            Display.InitializeContextDisplay();
+        }  //Function to display the save message in the Context menu.
         public static void InitializeContextDisplay()
         {
             for (int i = 0; i < 4; i++)
@@ -414,6 +429,22 @@ namespace The_Legend_of_Console
             Console.WriteLine(menuString);
             Input.TitleMenuInput();
         }  //Function to display the title menu.
+        public static void PauseMenuDisplay()
+        {
+            Console.Clear();
+            string menuString = "╔═════════════════════════╗\n" +
+                                "║       Pause Menu        ║\n" +
+                                "╠═════════════════════════╣\n" +
+                                "║                         ║\n" +
+                                "║   1 - Save Progress     ║\n" +
+                                "║   2 - Option 2          ║\n" +
+                                "║   3 - Return to Game    ║\n" +
+                                "║   4 - Exit Game         ║\n" +
+                                "║                         ║\n" +
+                                "╚═════════════════════════╝";
+            Console.WriteLine(menuString);
+            Input.PauseMenuInput();
+        }  //Function to display the pause menu.
         public static void ArmorerDisplay()
         {
             Console.Clear();

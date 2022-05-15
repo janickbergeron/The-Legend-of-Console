@@ -175,6 +175,48 @@ namespace The_Legend_of_Console
             if (input > weaponArmorConsumMats)
                 Inventory.HouseStorageMaterial.RemoveAt(input - weaponArmorConsum);
         }   //Function to remove an item from storage.
+        public static void InventoryLogicAfterLoad(List<Item> itemList)
+        {
+            foreach (Item item in itemList)
+            {
+                AddItemToInventory(item);
+            }
+        }
+        public static void StorageLogicAfterLoad(List<Item> itemList)
+        {
+            foreach (Item item in itemList)
+            {
+                AddItemToStorage(item);
+            }
+        }
+        public static void EquipItemAfterLoad(List<Item> itemList)
+        {
+            foreach (Item item in itemList)
+            {
+                EquipItemToSlot(item);
+            }
+        }
+        public static void RemoveItemStatsBeforeSave(List<Item> itemList)
+        {
+            foreach(Item item in itemList)
+            {
+                RemoveItemStats(item);
+            }
+        }
+        public static List<Item> GetEquippedItems()
+        {
+            List<Item> equippedItems = new List<Item>();
+
+            equippedItems.Add(EquippedWeapon[0]);
+            equippedItems.Add(EquippedOffHand[0]);
+            equippedItems.Add(EquippedChest[0]);
+            equippedItems.Add(EquippedPants[0]);
+            equippedItems.Add(EquippedBoots[0]);
+            equippedItems.Add(EquippedGloves[0]);
+            equippedItems.Add(EquippedRing[0]);
+            equippedItems.Add(EquippedRing[1]);
+            return equippedItems;
+        }
         public static Item EquipItemToSlot(Item item)
         {
             Item returnToInventory = new(" ", "Placeholder", 0,0);
