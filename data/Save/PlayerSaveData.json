@@ -1,0 +1,15 @@
+[
+  {
+    "PlayerInventory": {},
+    "Gold": 0,
+    "Experience": 0,
+    "Name": "Pepi",
+    "Level": 1,
+    "MaxHealth": 50,
+    "Health": 50,
+    "MinDamage": 11,
+    "MaxDamage": 15,
+    "Defense": 2,
+    "Armor": 0
+  }
+]

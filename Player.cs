@@ -15,9 +15,10 @@ namespace The_Legend_of_Console
         public int Gold { get { return _gold; } set { _gold = value; } } 
         public int Experience { get { return _experience; } set { _experience = value;} }
         
-        public Player(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense,int armor): base(name,level,maxHealth,minDamage,maxDamage,defense,armor)
+        public Player(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense, int armor, int gold, int experience): base(name,level,maxHealth,minDamage,maxDamage,defense,armor)
         {
-
+            _gold = gold;
+            _experience = experience;
         }
         public static void PlayerMouvement(Coordinate playerCoord)
         {
@@ -28,7 +29,7 @@ namespace The_Legend_of_Console
 
             ConsoleKeyInfo key = Console.ReadKey();
             while (key.Key != ConsoleKey.UpArrow && key.Key != ConsoleKey.DownArrow && key.Key != ConsoleKey.LeftArrow && key.Key != ConsoleKey.RightArrow &&
-                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I && key.Key != ConsoleKey.C) 
+                   key.Key != ConsoleKey.W && key.Key != ConsoleKey.A && key.Key != ConsoleKey.S && key.Key != ConsoleKey.D && key.Key != ConsoleKey.Spacebar && key.Key != ConsoleKey.I && key.Key != ConsoleKey.C && key.Key != ConsoleKey.P) 
             {
                 key = Console.ReadKey();
             }
@@ -78,6 +79,10 @@ namespace The_Legend_of_Console
             if (key.Key == ConsoleKey.C)
             {
                 Display.EquipmentDisplay();
+            }
+            if (key.Key == ConsoleKey.P)
+            {
+                Display.PauseMenuDisplay();
             }
         }  //Function for the player's mouvement.
         public static void PlayerMouvementFog(Coordinate playerCoord)
