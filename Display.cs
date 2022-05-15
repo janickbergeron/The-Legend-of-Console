@@ -268,6 +268,7 @@ namespace The_Legend_of_Console
         {
             Console.Clear();
             Inventory.RefreshInventoryList();
+            List<Item> duplicate = Inventory.InventoryMaterialProcess(Inventory.InventoryMaterialList);
             int index = 0;
             string menuString = "╔═════════════════════════════════════════════════════════════════╗ ╔═════════════╗ \n" +
                   String.Format("║                            Inventory                            ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -298,10 +299,11 @@ namespace The_Legend_of_Console
                   menuString += "╠══════════════════════╩══════════════════════════════════════════╣ \n" +
                                 "║     Material                                                    ║ \n" +
                                 "╠══════════════════════╦══════════════════════════════════════════╣ \n";
-            foreach (Item item in Inventory.InventoryMaterialList)
+            foreach (Item item in duplicate)
             {
                 index++;
-                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: 1                              ║\n", index, item.Name, item.Defense, item.Health, item.MinDamage, item.MaxDamage);
+                int quantity = Inventory.MaterialCount(item);
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: {2,-3}                            ║\n", index, item.Name, quantity);
             }
             menuString += "╚══════════════════════╩══════════════════════════════════════════╝";
             Console.WriteLine(menuString);
@@ -372,6 +374,7 @@ namespace The_Legend_of_Console
             Console.Clear();
             int index = 0;
             int itemValue;
+            List<Item> duplicate = Inventory.InventoryMaterialProcess(Inventory.InventoryMaterialList);
             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ \n" +
                                 "║                                    Inventory                                   ║ \n" +
                                 "╠════════════════════════════════════════════════════════════════════════════════╣ \n" +
@@ -404,11 +407,12 @@ namespace The_Legend_of_Console
             menuString += "╠══════════════════════╩══════════════════════════════════════════╩══════════════╣ \n" +
                           "║     Material                                                                   ║ \n" +
                           "╠══════════════════════╦══════════════════════════════════════════╦══════════════╣ \n";
-            foreach (Item item in Inventory.InventoryMaterialList)
+            foreach (Item item in duplicate)
             {
                 index++;
                 itemValue = item.GoldValue / 4;
-                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: 1                              ║ Gold: {2,-6} ║\n", index, item.Name, itemValue);
+                int quantity = Inventory.MaterialCount(item);
+                menuString += String.Format("║ {0,2} - {1,-15} ║ Quantity: {2,-3}                            ║ Gold: {2,-6} ║\n", index, item.Name, quantity);
             }
             menuString += "╚══════════════════════╩══════════════════════════════════════════╩══════════════╝";
             Console.WriteLine(menuString);
