@@ -21,6 +21,7 @@ namespace The_Legend_of_Console
                 {
                     if (Program.player.Gold >= MerchantList[input].GoldValue)
                     {
+                        Audio.PlaySound("Coins");
                         Inventory.AddItemToInventory(MerchantList[input]);
                         Program.player.Gold = Program.player.Gold - MerchantList[input].GoldValue;
                         Console.WriteLine($"You have bought a {MerchantList[input].Name} for {MerchantList[input].GoldValue} gold.");
@@ -53,6 +54,7 @@ namespace The_Legend_of_Console
                 switch (UserConfirmed)
                 {
                     case true:
+                        Audio.PlaySound("Coins");
                         Program.player.Gold += itemValue;
                         Inventory.RemoveItemFromInventory(input);
                         break;
