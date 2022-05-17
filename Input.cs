@@ -35,6 +35,38 @@ namespace The_Legend_of_Console
                     break;
             }
         } //User input in Title Menu
+        public static void LevelUpInput()
+        {
+            int input = 0;
+            bool isFormatOK = false;
+            Console.WriteLine("Choose a stat to increase.");
+            while (!isFormatOK)
+            {
+                try
+                {
+                    do input = int.Parse(Console.ReadLine());
+                    while (input != 1 && input != 2 && input != 3);
+                    isFormatOK = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect Entry.");
+                }
+            }
+            switch (input)
+            {
+                case 1:
+                    Program.player.MaxHealth += 10;
+                    break;
+                case 2:
+                    Program.player.Defense += 1;
+                    break;
+                case 3:
+                    Program.player.MinDamage += 1;
+                    Program.player.MaxDamage += 2;
+                    break;
+            }
+        } //User input in Level UP Menu
         public static void PauseMenuInput()
         {
             int input = 0;

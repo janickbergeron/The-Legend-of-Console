@@ -10,6 +10,7 @@ namespace The_Legend_of_Console
     {
         public Inventory PlayerInventory = new Inventory();
         public static bool isPlayerInTown;
+        public static List<int> ExperienceTable = new List<int>();
         private int _gold;
         private int _experience;
         public int Gold { get { return _gold; } set { _gold = value; } } 
@@ -179,6 +180,31 @@ namespace The_Legend_of_Console
 
             }
         }  //Function the the player interaction logic.
+        public static List<int> InitializeExperienceTable()
+        {
+            int exp = 25;
+            List<int> ExpTable = new List<int>();
+            for (int i = 0; i < 100; i++)
+            {
+                exp += (int)(exp * 1.2f);
+
+                ExpTable[i] = exp;
+            }
+            return ExpTable;
+        }
+        public void PlayerLevelUp()
+        {
+            if (Experience >= ExperienceTable[Level-1])
+            {
+                Level += 1;
+                Combat.CombatLogProcess();
+                Combat.CombatLog.Add("║ You have gained a level!                                        ║");
+                Display.CombatLogDisplay();
+                Console.ReadKey();
+                Display.LevelUpDisplay();
+                Health = MaxHealth;
+            }
+        }
         public override int CombatAttack(int minDamage, int maxDamage)
         {
             Random random = new Random();

@@ -67,6 +67,7 @@
             Recipe.WeaponRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 1, 1, 2, 1, Item.CraftedWeaponList));
             Recipe.ArmorRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 3, 1, 4, 1, Item.CraftedArmorList));
 
+            Player.ExperienceTable = Player.InitializeExperienceTable();
             Display.InitializeGameboard1();
             Display.InitializeContextDisplay();
             Display.InitializeStringTab();

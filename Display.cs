@@ -433,6 +433,21 @@ namespace The_Legend_of_Console
             Console.WriteLine(menuString);
             Input.TitleMenuInput();
         }  //Function to display the title menu.
+        public static void LevelUpDisplay()
+        {
+            ClearConsole();
+            string menuString = "╔═══════════════════════════════╗\n" +
+                                "║      You gained a level!      ║\n" +
+                                "╠═══════════════════════════════╣\n" +
+                                "║                               ║\n" +
+                  String.Format("║   1 - MaxHealth: {0,-3} +10       ║\n",Program.player.MaxHealth) +
+                  String.Format("║   2 - Defense:  {0,-3}   +1       ║\n",Program.player.Defense) +
+                  String.Format("║   3 - Damage:  {0,-3}-{1,-3} +1-2     ║\n", Program.player.MinDamage, Program.player.MinDamage) +
+                                "║                               ║\n" +
+                                "╚═══════════════════════════════╝\n";
+            Console.WriteLine(menuString);
+            Input.LevelUpInput();
+        }
         public static void PauseMenuDisplay()
         {
             Console.Clear();

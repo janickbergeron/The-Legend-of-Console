@@ -126,6 +126,7 @@ namespace The_Legend_of_Console
             Combat.CombatLog.Add(String.Format("║ You have gained {0,3} experience points.                             {1,5}", exp, "║"));
             Display.CombatLogDisplay();
             Console.ReadKey();
+            _player.PlayerLevelUp();
 
             Display.Gameboard();
         }        //Function to start a new combat.
