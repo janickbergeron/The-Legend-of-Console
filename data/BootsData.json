@@ -8,6 +8,16 @@
         "Defense": "1",
         "Full": "True",
         "GoldValue": "10"
+    },
+    {
+        "Name": "Leather Boots",
+        "Type": "Boots",
+        "Health": "0",
+        "MinDamage": "0",
+        "MaxDamage": "0",
+        "Defense": "2",
+        "Full": "True",
+        "GoldValue": "10"
     }
 ]
 

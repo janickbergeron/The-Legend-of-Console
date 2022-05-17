@@ -15,6 +15,13 @@ namespace The_Legend_of_Console
         {
             Enemy = enemy;
         } //Monster Constructor
+        public void ScaleMonsterToLevel(int level)
+        {
+            Health = Health * level;
+            MinDamage = MinDamage * level;
+            MaxDamage = MaxDamage * level;
+            Defense = Defense * level;
+        }
         public static List<Coordinate> MonsterPosition()
         {
             int[] position = new int[2];
@@ -52,6 +59,7 @@ namespace The_Legend_of_Console
         public static Monster CreateMonster(int x, List<Monster> monsterList)
         {
             Monster monster = new(monsterList[x].Name, monsterList[x].Level, monsterList[x].MaxHealth, monsterList[x].MinDamage, monsterList[x].MaxDamage, monsterList[x].Defense, monsterList[x].Armor, monsterList[x].Enemy);
+            monster.ScaleMonsterToLevel(Program.player.Level);
             return monster;
         }  //Function to create an item.
         public override int CombatAttack(int minDamage, int maxDamage)
@@ -72,6 +80,13 @@ namespace The_Legend_of_Console
             Armor += Defense;
             return Armor;
         } //monster's combat defend function.
+        public void UseAbility(int abilityID)
+        {
+            if (abilityID < 0)  //Healing
+            {
+                Health += 10;
+            }
+        }
         public int ChooseAction()
         {
                 Random random = new Random();

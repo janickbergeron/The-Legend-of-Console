@@ -33,6 +33,13 @@ namespace The_Legend_of_Console
             player.Enemy = monster;
             monster.Enemy = player;
         }
+        public static int ExperienceGain(Monster monster)
+        {
+            int exp = monster.MaxHealth / 2;
+            exp += monster.MinDamage;
+            exp += monster.Defense;
+            return exp;
+        }
         public static void InitializeCombatLog()
         {
             for (int i = 0; i < 10; i++)
@@ -50,10 +57,12 @@ namespace The_Legend_of_Console
         }    //Function to remove the last line from the Combat Log
         public void StartCombat()
         {
+            int exp = 0;
             InitializeCombatLog();
             while (_player.Health > 0 && _monster.Health > 0)
             {
                 int mobAction = _monster.ChooseAction();
+                
                 var a = (MonsterAction)mobAction-1;
                 monsterAction = a.ToString();
                 Display.CombatLogDisplay();
@@ -98,12 +107,27 @@ namespace The_Legend_of_Console
             }
 
             if (_player.Health <= 0)
-                Console.WriteLine("Defeat, Game Over.");
-            else
-                Console.WriteLine("Victory !");
+            {
+                CombatLogProcess();
+                Combat.CombatLog.Add("║ Defeat, Game Over.                                                     ║");
+                Display.CombatLogDisplay();
                 Console.ReadKey();
-                Console.Clear();
-                Display.Gameboard();
+                Display.TitleMenuDisplay();
+            }
+            else
+                exp = ExperienceGain(_monster);
+                _player.Experience += exp;
+            CombatLogProcess();
+            Combat.CombatLog.Add( "║ Victory !                                                              ║");
+            Display.CombatLogDisplay();
+            Console.ReadKey();
+
+            CombatLogProcess();
+            Combat.CombatLog.Add(String.Format("║ You have gained {0,3} experience points.                             {1,5}", exp, "║"));
+            Display.CombatLogDisplay();
+            Console.ReadKey();
+
+            Display.Gameboard();
         }        //Function to start a new combat.
         private void PlayerTurn(int action)
         {
