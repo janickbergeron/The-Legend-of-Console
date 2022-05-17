@@ -27,6 +27,7 @@
     <None Remove="data\Save\HouseSaveData.json" />
     <None Remove="data\Save\InventorySaveData.json" />
     <None Remove="data\Save\PlayerSaveData.json" />
+    <None Remove="data\Sound\Coins.wav" />
     <None Remove="data\WeaponData.json" />
   </ItemGroup>
 
@@ -76,6 +77,9 @@
     <Content Include="data\Save\PlayerSaveData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\Sound\Coins.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\WeaponData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -90,6 +94,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Windows.Extensions" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

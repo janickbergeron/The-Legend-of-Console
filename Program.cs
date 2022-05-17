@@ -96,7 +96,6 @@
 
             }*/
 
-
                //Gameplay Loop
             Display.TitleScreen();
             Display.TitleMenuDisplay();

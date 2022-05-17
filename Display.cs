@@ -152,7 +152,7 @@ namespace The_Legend_of_Console
         } // custom Console.Clear command.
         public static void BoardLoading(int boardNumber, char[][] charTab)
         {
-            if (boardNumber == 0)
+            if (boardNumber == 0 || boardNumber == 1)
             {
                 Player.isPlayerInTown = true;
                 TabLoading(Board.GenerateBoard(boardNumber, BoardList),charTab);
