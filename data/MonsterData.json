@@ -2,9 +2,9 @@
     {
         "Name": "  Blob",
         "Level": "0",
-        "MaxHealth": "10",
+        "MaxHealth": "6",
         "MinDamage": "1",
-        "MaxDamage": "4",
+        "MaxDamage": "2",
         "Defense": "1",
         "Armor": "0"
     }

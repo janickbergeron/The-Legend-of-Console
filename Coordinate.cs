@@ -190,6 +190,19 @@ namespace The_Legend_of_Console
                 compteur++;
             }
         } //Function that verify if a combat encounter should be started.
+
+        public static void RandomCombatInitiator()
+        {
+            Random random = new Random();
+            int rng = random.Next(0, 21);
+            if (!Player.isPlayerInTown)
+            {
+                if (rng == 1)
+                {
+                    Program.InitializeCombat();
+                }
+            }
+        } //Function that verify if a combat encounter should be started.
         public static void TreasureInitiator(List<Coordinate> ListCoord)
         {
             int compteur = -1;

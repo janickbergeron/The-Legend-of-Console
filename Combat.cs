@@ -38,7 +38,7 @@ namespace The_Legend_of_Console
             int exp = monster.MaxHealth / 2;
             exp += monster.MinDamage;
             exp += monster.Defense;
-            return exp+25;
+            return exp;
         } //Function for the experience gain after combat.
         public static void InitializeCombatLog()
         {
@@ -115,7 +115,7 @@ namespace The_Legend_of_Console
                 Combat.CombatLog.Add("║ Defeat, Game Over.                                                     ║");
                 Display.CombatLogDisplay();
                 Console.ReadKey();
-                Display.TitleMenuDisplay();
+                Program.InProgress = false;
             }
             else
             {

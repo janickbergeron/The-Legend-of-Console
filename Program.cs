@@ -78,9 +78,10 @@
                 playerCoord = Coordinate.PlayerPosition();
                 Display.GameboardOptimisation();
                 Display.Gameboard();
-                Coordinate.CombatInitiator(Coordinate.MonsterCoordList);
+                //Coordinate.CombatInitiator(Coordinate.MonsterCoordList);
                 Coordinate.TreasureInitiator(Coordinate.TreasureCoordList);
                 Player.PlayerMouvement(playerCoord);
+                Coordinate.RandomCombatInitiator();
                 Thread.Sleep(10);
             }
         }   
