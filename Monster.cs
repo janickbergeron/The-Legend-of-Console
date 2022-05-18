@@ -23,6 +23,7 @@ namespace The_Legend_of_Console
             MaxDamage = MaxDamage * level;
             Defense = Defense * level;
         }
+        
         public static List<Coordinate> MonsterPosition()
         {
             int[] position = new int[2];

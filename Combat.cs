@@ -58,6 +58,9 @@ namespace The_Legend_of_Console
         public void StartCombat()
         {
             int exp = 0;
+            bool itemDropped = false;
+            List<Item> itemList = new List<Item>();
+
             InitializeCombatLog();
             while (_player.Health > 0 && _monster.Health > 0)
             {
@@ -115,20 +118,41 @@ namespace The_Legend_of_Console
                 Display.TitleMenuDisplay();
             }
             else
+            {
+
                 exp = ExperienceGain(_monster);
                 _player.Experience += exp;
-            CombatLogProcess();
-            Combat.CombatLog.Add( "║ Victory !                                                              ║");
-            Display.CombatLogDisplay();
-            Thread.Sleep(300);
+                CombatLogProcess();
+                Combat.CombatLog.Add( "║ Victory !                                                              ║");
+                Display.CombatLogDisplay();
+                Thread.Sleep(300);
+                CombatLogProcess();
+                Combat.CombatLog.Add(String.Format("║ You have gained {0,3} experience points.                             {1,5}", exp, "║"));
+                Display.CombatLogDisplay();
 
-            CombatLogProcess();
-            Combat.CombatLog.Add(String.Format("║ You have gained {0,3} experience points.                             {1,5}", exp, "║"));
-            Display.CombatLogDisplay();
-            Console.ReadKey();
-            _player.PlayerLevelUp();
-
-            Display.Gameboard();
+                //Post Combat Item Process
+                itemDropped = Item.MonsterDropChance();
+                    if (itemDropped)
+                    {
+                        itemList = Item.MonsterDroppedItem();
+                        foreach(Item item in itemList)
+                        {
+                            CombatLogProcess();
+                            Combat.CombatLog.Add(String.Format("║ The monster dropped : {1,-20}                            ║",_monster.Name, item.Name));
+                            Inventory.AddItemToInventory(itemList);
+                        }
+                        Display.CombatLogDisplay();
+                    }
+                //Post Combat Gold Process
+                CombatLogProcess();
+                int gold = Item.MonsterDroppedGold(_monster);
+                Combat.CombatLog.Add(String.Format("║ The monster dropped {1,3} gold.                                          ║", _monster.Name, gold));
+                _player.Gold += gold;
+                Display.CombatLogDisplay();
+                Console.ReadKey();
+                _player.PlayerLevelUp();
+                Display.Gameboard();
+            }
         }        //Function to start a new combat.
         private void PlayerTurn(int action)
         {

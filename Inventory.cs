@@ -108,6 +108,32 @@ namespace The_Legend_of_Console
                 InventoryWeaponList.Add(item);
             if (item.Type == "Consum")
                 InventoryConsumList.Add(item);
+            if (item.Type == "Material")
+                InventoryMaterialList.Add(item);
+        }  //Function to add an item to inventory.
+        public static void AddItemToInventory(List<Item> itemList)
+        {
+            foreach(Item item in itemList)
+            {
+                if (item.Type == "Chest")
+                    InventoryArmorList.Add(item);
+                if (item.Type == "Pants")
+                    InventoryArmorList.Add(item);
+                if (item.Type == "Boots")
+                    InventoryArmorList.Add(item);
+                if (item.Type == "Gloves")
+                    InventoryArmorList.Add(item);
+                if (item.Type == "Ring")
+                    InventoryArmorList.Add(item);
+                if (item.Type == "Weapon")
+                    InventoryWeaponList.Add(item);
+                if (item.Type == "Off-Hand")
+                    InventoryWeaponList.Add(item);
+                if (item.Type == "Consum")
+                    InventoryConsumList.Add(item);
+                if (item.Type == "Material")
+                    InventoryMaterialList.Add(item);
+            }
         }  //Function to add an item to inventory.
         public static void RemoveMaterialFromInventory(int itemPosition)
         {
