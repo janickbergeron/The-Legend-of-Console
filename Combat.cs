@@ -50,11 +50,11 @@ namespace The_Legend_of_Console
             {
                 CombatLog.Add("║                                                                        ║");
             }
-        }    //Function to initialize combat.
+        }   //Function to initialize combat.
         public static void CombatLogProcess()
         {
             CombatLog.RemoveAt(0);
-        }    //Function to remove the last line from the Combat Log
+        }   //Function to remove the last line from the Combat Log
         public void StartCombat()
         {
             int exp = 0;
@@ -138,7 +138,7 @@ namespace The_Legend_of_Console
                         foreach(Item item in itemList)
                         {
                             CombatLogProcess();
-                            Combat.CombatLog.Add(String.Format("║ The monster dropped : {1,-20}                            ║",_monster.Name, item.Name));
+                            Combat.CombatLog.Add(String.Format("║ The monster dropped : {1,-20}                             ║",_monster.Name, item.Name));
                             Inventory.AddItemToInventory(itemList);
                         }
                         Display.CombatLogDisplay();
@@ -153,11 +153,11 @@ namespace The_Legend_of_Console
                 _player.PlayerLevelUp();
                 Display.Gameboard();
             }
-        }        //Function to start a new combat.
+        }  //Function to start a new combat.
         private void PlayerTurn(int action)
         {
             _player.ExecuteAction(action);
-        }       //Function for the player's turn
+        }  //Function for the player's turn
         private void MonsterTurn(int action)
         {
             _monster.ExecuteAction(action);

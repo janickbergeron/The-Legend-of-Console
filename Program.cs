@@ -63,8 +63,8 @@
             Merchant.MerchantLoading();
 
             //Test loop
-            /*
-            while (TestInProgress)
+
+            /*while (TestInProgress)
             {
 
             }*/

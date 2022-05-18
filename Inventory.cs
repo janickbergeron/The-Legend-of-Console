@@ -98,7 +98,7 @@ namespace The_Legend_of_Console
             Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(3, Item.MaterialList));
             Inventory.InventoryMaterialList.Add(Item.CreateItem(4, Item.MaterialList));
-        }
+        }  //Function to add items to inventory for testing.
         public static List<Item> InventoryMaterialProcess(List<Item> materialList)
         {
             //HashSet<Item> hashset = new HashSet<Item>();
