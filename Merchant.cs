@@ -63,6 +63,20 @@ namespace The_Legend_of_Console
                 }
             }
         } //Fucntion to sell items to merchant.
+        public static void MerchantLoading()
+        {
+            Recipe.WeaponRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 1, 1, 2, 1, Item.CraftedWeaponList));
+            Recipe.ArmorRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 3, 1, 4, 1, Item.CraftedArmorList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.ChestList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.PantsList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.BootsList));
+            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.RingList));
+            Merchant.BlacksmithList.Add(Item.CreateItem(0, Item.WeaponList));
+            Merchant.BlacksmithList.Add(Item.CreateItem(0, Item.WeaponList));
+            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+        }
         public static void ArmorerLogic(int input)
         {
             List<Item> PlayerList = Inventory.InventoryList;

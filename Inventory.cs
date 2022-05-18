@@ -78,6 +78,27 @@ namespace The_Legend_of_Console
                 HouseStorageList.Add(item);
             }
         } // Function to refresh the inventoryList
+        public static void InventoryTest()
+        {
+            Inventory.InventoryWeaponList.Add(Item.CreateItem(0, Item.WeaponList));
+            Inventory.InventoryWeaponList.Add(Item.CreateItem(0, Item.OffHandList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.PantsList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.ChestList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.BootsList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.GlovesList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.RingList));
+            Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.RingList));
+            Inventory.InventoryConsumList.Add(Item.CreateItem(0, Item.ConsumList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(3, Item.MaterialList));
+            Inventory.InventoryMaterialList.Add(Item.CreateItem(4, Item.MaterialList));
+        }
         public static List<Item> InventoryMaterialProcess(List<Item> materialList)
         {
             //HashSet<Item> hashset = new HashSet<Item>();

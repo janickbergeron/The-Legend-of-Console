@@ -45,29 +45,8 @@
             Item.CraftedArmorList = Item.GetItemData("CraftedArmor");
             Monster.MonsterList = Monster.GetMonsterData();
             Display.BoardList = Board.GetBoardData();
-            
-            /*Inventory.InventoryWeaponList.Add(Item.CreateItem(0,Item.WeaponList));
-            Inventory.InventoryWeaponList.Add(Item.CreateItem(0, Item.OffHandList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.PantsList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.ChestList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.BootsList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.GlovesList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(0, Item.RingList));
-            Inventory.InventoryArmorList.Add(Item.CreateItem(1, Item.RingList));
-            Inventory.InventoryConsumList.Add(Item.CreateItem(0, Item.ConsumList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(0, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(1, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(2, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(3, Item.MaterialList));
-            Inventory.InventoryMaterialList.Add(Item.CreateItem(4, Item.MaterialList));   //*/
 
-            Recipe.WeaponRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 1, 1, 2, 1, Item.CraftedWeaponList));
-            Recipe.ArmorRecipeList.Add(Recipe.CreateRecipe(0, 0, 1, 3, 1, 4, 1, Item.CraftedArmorList));
-
+            //Initialization
             Player.ExperienceTable = Player.InitializeExperienceTable();
             Display.InitializeGameboard1();
             Display.InitializeContextDisplay();
@@ -75,42 +54,32 @@
             Display.InitializePreFogTab();
             Display.InitializePostFogTab();
             Inventory.InitializeEquipment();
+            //Inventory.InventoryTest();
 
-            Display.BoardLoading(0, Display.MainTab);  //Board loading                                                   
-            
-            // // Test loop
-            //Program.player = Program.PlayerCreation();
-            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.ChestList));
-            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.PantsList));
-            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.BootsList));
-            Merchant.ArmorerList.Add(Item.CreateItem(0, Item.RingList));
-            Merchant.BlacksmithList.Add(Item.CreateItem(0, Item.WeaponList));
-            Merchant.BlacksmithList.Add(Item.CreateItem(0, Item.WeaponList));
-            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
-            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
-            Merchant.AlchemistList.Add(Item.CreateItem(0, Item.ConsumList));
+            //Board loading
+            Display.BoardLoading(0, Display.MainTab);
 
+            //Merchant Loading
+            Merchant.MerchantLoading();
 
-            /*while (TestInProgress)
+            //Test loop
+            /*
+            while (TestInProgress)
             {
 
             }*/
 
-               //Gameplay Loop
+            //Gameplay Loop
             Display.TitleScreen();
             Display.TitleMenuDisplay();
 
             while (InProgress)
             {
-                Program.playerCoord = Coordinate.PlayerPosition();
-                //Display.FogOfWarProcess(playerCoord);
-                //Display.AddFogToMainTab();
+                playerCoord = Coordinate.PlayerPosition();
                 Display.GameboardOptimisation();
                 Display.Gameboard();
                 Coordinate.CombatInitiator(Coordinate.MonsterCoordList);
                 Coordinate.TreasureInitiator(Coordinate.TreasureCoordList);
-                //Coordinate.CoordListDisplay(Coordinate.MonsterCoordList);
-                //Console.WriteLine($"The player is at position ({playerCoord.X},{playerCoord.Y})");
                 Player.PlayerMouvement(playerCoord);
                 Thread.Sleep(10);
             }
