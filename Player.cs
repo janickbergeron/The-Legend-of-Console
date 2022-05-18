@@ -184,11 +184,11 @@ namespace The_Legend_of_Console
         {
             int exp = 25;
             List<int> ExpTable = new List<int>();
-            for (int i = 0; i < 100; i++)
+            for (int i = 1; i < 100; i++)
             {
-                exp += (int)(exp * 1.2f);
+                exp = (int)(exp * 1.1f);
 
-                ExpTable[i] = exp;
+                ExpTable.Add(exp);
             }
             return ExpTable;
         }
@@ -196,9 +196,12 @@ namespace The_Legend_of_Console
         {
             if (Experience >= ExperienceTable[Level-1])
             {
+
+                int expDifference = Experience - ExperienceTable[Level - 1];
                 Level += 1;
+                Experience = expDifference;
                 Combat.CombatLogProcess();
-                Combat.CombatLog.Add("║ You have gained a level!                                        ║");
+                Combat.CombatLog.Add("║ You have gained a level!                                               ║");
                 Display.CombatLogDisplay();
                 Console.ReadKey();
                 Display.LevelUpDisplay();

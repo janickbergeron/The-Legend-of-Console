@@ -240,17 +240,18 @@ namespace The_Legend_of_Console
         } //Function to initialize the Context Display.
         public static void CombatLogDisplay()
         {
-            Console.Clear();
+            ClearConsole();
+            int playerLevel = Program.player.Level;
                     string menuString = "╔════════════════════════════════════╦═══════════════════════════════════╦══════════════════════════════╗ \n";
             menuString += String.Format("║ Name: {0,-10}       {1,-3}/ {2,-3}HP  ║ Enemy: {3,-10}     {4,-3}/ {5,-3}HP  ║          Equipments          ║\n", Program.player.Name, Program.player.Health, Program.player.MaxHealth, Program.monster.Name, Program.monster.Health, Program.monster.MaxHealth) +
-                          String.Format("║ Level: {0,-3}             Armor: {1,-3}  ║ Level: {2,-5}          Armor: {3,-3}  ║ Weapon: {4,-17}    ║\n", Program.player.Level, Program.player.Armor, Program.monster.Level, Program.monster.Armor, Inventory.EquippedWeapon[0].Name) +
+                          String.Format("║ Level: {0,-3}             Armor: {1,-3}  ║ Level: {2,-5}          Armor: {3,-3}  ║ Weapon: {4,-17}    ║\n", Program.player.Level, Program.player.Armor, Program.player.Level, Program.monster.Armor, Inventory.EquippedWeapon[0].Name) +
                           String.Format("║ Damage: {0,3}-{1,-3}                    ║ Damage: {2,3}-{3,-3}                   ║ Off-Hand: {4,-17}  ║\n", Program.player.MinDamage, Program.player.MaxDamage, Program.monster.MinDamage, Program.monster.MaxDamage, Inventory.EquippedOffHand[0].Name) +
                           String.Format("║ Defense: {0,-5}                     ║ Defense: {1,-5}                    ║ Chest: {2,-17}     ║ \n", Program.player.Defense, Program.monster.Defense, Inventory.EquippedChest[0].Name); 
              menuString+= String.Format("║                                    ║                                   ║ Pants: {0,-17}     ║ \n", Inventory.EquippedPants[0].Name) +
                           String.Format("║                                    ║                                   ║ Gloves: {0,-17}    ║\n", Inventory.EquippedGloves[0].Name) +
                           String.Format("║                                    ║                                   ║ Boots: {0, -17}     ║\n",Inventory.EquippedBoots[0].Name) +
-                          String.Format("║                                    ╠═══════════════════════════════════╣ Ring: {0,-17}      ║\n", Inventory.EquippedRing[0].Name) +
-                          String.Format("║                                    ║ Next Action : {0,-10}          ║ Ring: {1,-17}      ║\n", Combat.monsterAction, Inventory.EquippedRing[1].Name) +
+                          String.Format("╠════════════════════════════════════╬═══════════════════════════════════╣ Ring: {0,-17}      ║\n", Inventory.EquippedRing[0].Name) +
+                          String.Format("║ Experience: {0,10} / {1,-10}║ Next Action : {2,-10}          ║ Ring: {3,-17}      ║\n", Program.player.Experience, Player.ExperienceTable[playerLevel - 1], Combat.monsterAction, Inventory.EquippedRing[1].Name) +
                                         "╠════════════════════════════════════╩═══════════════════════════════════╬══════════════════════════════╝\n";
             foreach(string n in Combat.CombatLog)
             {
@@ -266,7 +267,7 @@ namespace The_Legend_of_Console
         } //Function to show the inventory + user input
         public static void InventoryDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             Inventory.RefreshInventoryList();
             List<Item> duplicate = Inventory.InventoryMaterialProcess(Inventory.InventoryMaterialList);
             int index = 0;
@@ -311,7 +312,7 @@ namespace The_Legend_of_Console
         } //Function to display the inventory.
         public static void StorageDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
             string menuString = "╔═════════════════════════════════════════════════════════════════╗ ╔═════════════╗ \n" +
                   String.Format("║                         House Storage                           ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -353,13 +354,14 @@ namespace The_Legend_of_Console
         } //Function to display the inventory.
         public static void EquipmentDisplay()
         {
-            Console.Clear();
+            ClearConsole();
+            int playerLevel = Program.player.Level;
                             string menuString = "╔═════════════════════════════╦═══════════════════════════════════════════════════════════════════════╗\n";
                                   menuString += "║         Statistics          ║                              Equipments                               ║\n" +
                                                 "╠═════════════════════════════╬════════════════════════════╦══════════════════════════════════════════╣\n" +
                                   String.Format("║ Name: {0,-10}            ║ Weapon: {1,-17}  ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Name, Inventory.EquippedWeapon[0].Name, Inventory.EquippedWeapon[0].Defense, Inventory.EquippedWeapon[0].Health, Inventory.EquippedWeapon[0].MinDamage, Inventory.EquippedWeapon[0].MaxDamage) +
                                   String.Format("║ Level: {0,-3}                  ║ Off-Hand: {1,-17}║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Level, Inventory.EquippedOffHand[0].Name, Inventory.EquippedOffHand[0].Defense, Inventory.EquippedOffHand[0].Health, Inventory.EquippedOffHand[0].MinDamage, Inventory.EquippedOffHand[0].MaxDamage) +
-                                  String.Format("║ Exp: {0,6} / 100           ║ Chest: {1,-17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║ \n", Program.player.Experience, Inventory.EquippedChest[0].Name, Inventory.EquippedChest[0].Defense, Inventory.EquippedChest[0].Health, Inventory.EquippedChest[0].MinDamage, Inventory.EquippedChest[0].MaxDamage);
+                                  String.Format("║ Exp: {0,6} / {1,-10}    ║ Chest: {2,-17}   ║ Defense: {3,-3} Health: {4,-3} Damage: {5,3}-{6,-3} ║ \n", Program.player.Experience, Player.ExperienceTable[playerLevel-1],Inventory.EquippedChest[0].Name, Inventory.EquippedChest[0].Defense, Inventory.EquippedChest[0].Health, Inventory.EquippedChest[0].MinDamage, Inventory.EquippedChest[0].MaxDamage);
                     menuString += String.Format("║ Health: {0,4} / {1,-4}         ║ Pants: {2,-17}   ║ Defense: {3,-3} Health: {4,-3} Damage: {5,3}-{6,-3} ║ \n", Program.player.Health, Program.player.MaxHealth, Inventory.EquippedPants[0].Name, Inventory.EquippedPants[0].Defense, Inventory.EquippedPants[0].Health, Inventory.EquippedPants[0].MinDamage, Inventory.EquippedPants[0].MaxDamage) +
                                   String.Format("║ Damage: {0,3}-{1,-3}             ║ Gloves: {2,-17}  ║ Defense: {3,-3} Health: {4,-3} Damage: {5,3}-{6,-3} ║\n", Program.player.MinDamage, Program.player.MaxDamage, Inventory.EquippedGloves[0].Name, Inventory.EquippedGloves[0].Defense, Inventory.EquippedGloves[0].Health, Inventory.EquippedGloves[0].MinDamage, Inventory.EquippedGloves[0].MaxDamage) +
                                   String.Format("║ Defense: {0,-5}              ║ Boots: {1, -17}   ║ Defense: {2,-3} Health: {3,-3} Damage: {4,3}-{5,-3} ║\n", Program.player.Defense, Inventory.EquippedBoots[0].Name, Inventory.EquippedBoots[0].Defense, Inventory.EquippedBoots[0].Health, Inventory.EquippedBoots[0].MinDamage, Inventory.EquippedBoots[0].MaxDamage) +
@@ -371,7 +373,7 @@ namespace The_Legend_of_Console
         }   //Function to display the equipment + stats.
         public static void InventorySellDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
             int itemValue;
             List<Item> duplicate = Inventory.InventoryMaterialProcess(Inventory.InventoryMaterialList);
@@ -420,7 +422,7 @@ namespace The_Legend_of_Console
         }  //Function to display the inventory with gold value.
         public static void TitleMenuDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             string menuString = "╔═════════════════════╗\n" +
                                 "║      Main Menu      ║\n" +
                                 "╠═════════════════════╣\n" +
@@ -440,17 +442,29 @@ namespace The_Legend_of_Console
                                 "║      You gained a level!      ║\n" +
                                 "╠═══════════════════════════════╣\n" +
                                 "║                               ║\n" +
-                  String.Format("║   1 - MaxHealth: {0,-3} +10       ║\n",Program.player.MaxHealth) +
-                  String.Format("║   2 - Defense:  {0,-3}   +1       ║\n",Program.player.Defense) +
-                  String.Format("║   3 - Damage:  {0,-3}-{1,-3} +1-2     ║\n", Program.player.MinDamage, Program.player.MinDamage) +
+                  String.Format("║   1 - MaxHealth:   {0,-3}  +10   ║\n",Program.player.MaxHealth) +
+                  String.Format("║   2 - Defense:      {0,-3} +1    ║\n",Program.player.Defense) +
+                  String.Format("║   3 - Damage:  {0,3}-{1,-3}  +1-2  ║\n", Program.player.MinDamage, Program.player.MaxDamage) +
                                 "║                               ║\n" +
                                 "╚═══════════════════════════════╝\n";
             Console.WriteLine(menuString);
             Input.LevelUpInput();
-        }
+            ClearConsole();    
+            string menuString2 = "╔═══════════════════════════════╗\n" +
+                   String.Format("║            Level {0,-3}          ║\n", Program.player.Level) +
+                                 "╠═══════════════════════════════╣\n" +
+                                 "║                               ║\n" +
+                   String.Format("║       MaxHealth:   {0,-3}        ║\n", Program.player.MaxHealth) +
+                   String.Format("║       Defense:      {0,-3}       ║\n", Program.player.Defense) +
+                   String.Format("║       Damage:  {0,3}-{1,-3}        ║\n", Program.player.MinDamage, Program.player.MaxDamage) +
+                                 "║                               ║\n" +
+                                 "╚═══════════════════════════════╝\n";
+            Console.WriteLine(menuString2);
+            Console.ReadKey();
+        } //Function to display the level up menu.
         public static void PauseMenuDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             string menuString = "╔═════════════════════════╗\n" +
                                 "║       Pause Menu        ║\n" +
                                 "╠═════════════════════════╣\n" +
@@ -466,7 +480,7 @@ namespace The_Legend_of_Console
         }  //Function to display the pause menu.
         public static void ArmorerDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
              string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
                    String.Format("║                                   Armorer's Shack                              ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -482,7 +496,7 @@ namespace The_Legend_of_Console
         }  //Function to display the armorer's shop.
         public static void BlacksmithDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
                   String.Format("║                                 Blacksmith's Workshop                          ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -498,7 +512,7 @@ namespace The_Legend_of_Console
         } //Function to display the blacksmith's shop.
         public static void BlacksmithCraftingDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
                   String.Format("║                                 Blacksmith's Workshop                          ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -514,7 +528,7 @@ namespace The_Legend_of_Console
         } //Function to display the blacksmith's crafting window.
         public static void ArmorerCraftingDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
                   String.Format("║                                    Armorer's Shack                             ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -530,8 +544,8 @@ namespace The_Legend_of_Console
         } //Function to display the blacksmith's crafting window.
         public static void ArmorerCraftingInfoDisplay(Recipe recipe)
         {
-            Console.Clear();
-                    string menuString = "╔═══════════════════════════════╗ ╔═════════════╗\n" +
+            ClearConsole();
+            string menuString = "╔═══════════════════════════════╗ ╔═════════════╗\n" +
                           String.Format("║        Armorer's Shack        ║ ║ Gold: {0,-6}║\n", Program.player.Gold) +
                                         "╠═══════════════════════════════╣ ╚═════════════╝\n";
             menuString += String.Format("║          {0,-15}      ║\n", recipe.ItemToCraft.Name);
@@ -545,7 +559,7 @@ namespace The_Legend_of_Console
         } //Function to display the blacksmith's shop. ╦ ╩
         public static void BlacksmithCraftingInfoDisplay(Recipe recipe)
         {
-            Console.Clear();
+            ClearConsole();
             string menuString =         "╔═══════════════════════════════╗ ╔═════════════╗\n" +
                           String.Format("║     Blacksmith's Workshop     ║ ║ Gold: {0,-6}║\n", Program.player.Gold) +
                                         "╠═══════════════════════════════╣ ╚═════════════╝\n";
@@ -560,7 +574,7 @@ namespace The_Legend_of_Console
         } //Function to display the blacksmith's shop. ╦ ╩
         public static void AlchemistDisplay()
         {
-            Console.Clear();
+            ClearConsole();
             int index = 0;
             string menuString = "╔════════════════════════════════════════════════════════════════════════════════╗ ╔═════════════╗\n" +
                   String.Format("║                                    Alchemist's Lab                             ║ ║ Gold: {0,-6}║ \n", Program.player.Gold) +
@@ -576,8 +590,8 @@ namespace The_Legend_of_Console
         } //Function to display the alchemist's shop.
         public static void PlayerHouseDisplay()
         {
-             Console.Clear();
-             Console.WriteLine( " ___________________________________________________________________ \n" +
+            ClearConsole();
+            Console.WriteLine( " ___________________________________________________________________ \n" +
                                 "|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *|\n" +
                                 "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n" +
                                 "|   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   |\n" +

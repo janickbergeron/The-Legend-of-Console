@@ -5,7 +5,7 @@
         public static bool InProgress = true;
         public static bool TestInProgress = true;
         public static Player player = null;
-        public static Monster monster = new("  Blob", 1, 10, 1, 5, 1, 0, player);
+        public static Monster monster = null;
         public static Coordinate playerCoord = new(0, 0);
 
         public static void InitializeCombat()
@@ -14,13 +14,14 @@
             Random random = new Random();
             int rand = random.Next(0, Monster.MonsterList.Count());
             Monster monster = Monster.CreateMonster(rand, Monster.MonsterList);
+            Program.monster = monster;
             Combat combat1 = new Combat(player, monster);
             monster.Health = monster.MaxHealth;
             combat1.StartCombat();
         }
         public static Player PlayerCreation()
         {
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine("Choose the Player's name:");
             string name = Console.ReadLine();
 
@@ -77,8 +78,6 @@
 
             Display.BoardLoading(0, Display.MainTab);  //Board loading                                                   
             
-
-
             // // Test loop
             //Program.player = Program.PlayerCreation();
             Merchant.ArmorerList.Add(Item.CreateItem(0, Item.ChestList));

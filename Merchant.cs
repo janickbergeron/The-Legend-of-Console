@@ -306,7 +306,5 @@ namespace The_Legend_of_Console
                 return placeholder;
             }
         } //Function for the armorer's crafting Logic.
-
-
     }
 }

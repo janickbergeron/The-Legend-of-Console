@@ -11,7 +11,7 @@ namespace The_Legend_of_Console
 
         public static void ChestAnimationIdle()
         {
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine($"                                              \n" +
                               $"                                              \n" +
                               $"                                              \n" +
@@ -41,7 +41,7 @@ namespace The_Legend_of_Console
         }   //Display Idle chest
         public static void AnimationChestOpen()
         {
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine($"                                              \n" +
                               $"                                              \n" +
                               $"                                              \n" +
@@ -65,7 +65,7 @@ namespace The_Legend_of_Console
                               $"▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒\n" +
                               $"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
                               $"  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  \n");
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine($"                                                \n" +
                                 $"                                              \n" +
                                 $"                                              \n" +
@@ -90,7 +90,7 @@ namespace The_Legend_of_Console
                                 $"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
                                 $"  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  \n");
             Thread.Sleep(50);
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine($"                                               \n" +
                                 $"                                               \n" +
                                 $"    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     \n" +
@@ -115,7 +115,7 @@ namespace The_Legend_of_Console
                                 $"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ \n" +
                                 $"  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  \n");
             Thread.Sleep(50);
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine($"                    ▓▓▓▓                     \n" +
                                 $"    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     \n" +
                                 $"    ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓     \n" +
@@ -142,7 +142,7 @@ namespace The_Legend_of_Console
         }  //Display opening chest animation.
         public static void SleepingAnimation()
         {
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine("						\n" +
                               "			    		\n" +
                               "			    		\n" +
@@ -157,7 +157,7 @@ namespace The_Legend_of_Console
             Console.WriteLine(@" `---------------'--\\\\      .`--'		");
             Console.WriteLine("                              `||||		");
             Thread.Sleep(500);
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine("						\n" +
                               "			    		\n" +
                               "			    		\n" +
@@ -172,7 +172,7 @@ namespace The_Legend_of_Console
             Console.WriteLine(@" `---------------'--\\\\      .`--'		");
             Console.WriteLine("                              `||||		");
             Thread.Sleep(500);
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine("						\n" +
                               "			    		\n" +
                               "			   Z		\n" +
@@ -188,7 +188,7 @@ namespace The_Legend_of_Console
             Console.WriteLine("                              `||||		");
 
             Thread.Sleep(500);
-            Console.Clear();
+            Display.ClearConsole();
             Console.WriteLine("			      			\n" +
                               "                      Z		\n" +
                               "			   Z		\n" +

@@ -9,7 +9,7 @@ namespace The_Legend_of_Console
     internal class Combat
     {
         private Player _player;
-        private Monster _monster;
+        private  Monster _monster;
         public static string monsterAction;
         public static List<string> CombatLog = new List<string>();
         public enum MonsterAction
@@ -38,7 +38,7 @@ namespace The_Legend_of_Console
             int exp = monster.MaxHealth / 2;
             exp += monster.MinDamage;
             exp += monster.Defense;
-            return exp;
+            return exp+25;
         }
         public static void InitializeCombatLog()
         {
@@ -120,7 +120,7 @@ namespace The_Legend_of_Console
             CombatLogProcess();
             Combat.CombatLog.Add( "║ Victory !                                                              ║");
             Display.CombatLogDisplay();
-            Console.ReadKey();
+            Thread.Sleep(300);
 
             CombatLogProcess();
             Combat.CombatLog.Add(String.Format("║ You have gained {0,3} experience points.                             {1,5}", exp, "║"));

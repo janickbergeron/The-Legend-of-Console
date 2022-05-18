@@ -17,7 +17,8 @@ namespace The_Legend_of_Console
         } //Monster Constructor
         public void ScaleMonsterToLevel(int level)
         {
-            Health = Health * level;
+            MaxHealth = MaxHealth * level;
+            Health = MaxHealth;
             MinDamage = MinDamage * level;
             MaxDamage = MaxDamage * level;
             Defense = Defense * level;
