@@ -39,7 +39,7 @@ namespace The_Legend_of_Console
             exp += monster.MinDamage;
             exp += monster.Defense;
             return exp+25;
-        }
+        } //Function for the experience gain after combat.
         public static void InitializeCombatLog()
         {
             for (int i = 0; i < 10; i++)

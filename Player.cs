@@ -179,7 +179,7 @@ namespace The_Legend_of_Console
                 
 
             }
-        }  //Function the the player interaction logic.
+        }  //Function for the player interaction logic.
         public static List<int> InitializeExperienceTable()
         {
             int exp = 25;
@@ -191,7 +191,7 @@ namespace The_Legend_of_Console
                 ExpTable.Add(exp);
             }
             return ExpTable;
-        }
+        }  //Function to initialize the experience table.
         public void PlayerLevelUp()
         {
             if (Experience >= ExperienceTable[Level-1])
@@ -207,7 +207,7 @@ namespace The_Legend_of_Console
                 Display.LevelUpDisplay();
                 Health = MaxHealth;
             }
-        }
+        } //Function for the player's levelup.
         public override int CombatAttack(int minDamage, int maxDamage)
         {
             Random random = new Random();

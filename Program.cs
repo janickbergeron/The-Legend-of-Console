@@ -99,8 +99,6 @@
                //Gameplay Loop
             Display.TitleScreen();
             Display.TitleMenuDisplay();
-            
-
 
             while (InProgress)
             {

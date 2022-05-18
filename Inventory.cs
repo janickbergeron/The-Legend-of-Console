@@ -194,7 +194,7 @@ namespace The_Legend_of_Console
                 Inventory.InventoryConsumList.RemoveAt(input - weaponArmor);
             if (input + 1 > weaponArmorConsum && input <= weaponArmorConsumMats)
                 Inventory.InventoryMaterialList.RemoveAt(input - weaponArmorConsum);
-        }   //Function to remove an item from inventory.
+        }  //Function to remove an item from inventory.
         public static void RemoveItemFromStorage(int input)
         {
             List<Item> materialList = InventoryMaterialProcess(InventoryMaterialList);
@@ -214,7 +214,7 @@ namespace The_Legend_of_Console
                 Inventory.HouseStorageConsum.RemoveAt(input - weaponArmor);
             if (input > weaponArmorConsumMats)
                 Inventory.HouseStorageMaterial.RemoveAt(input - weaponArmorConsum);
-        }   //Function to remove an item from storage.
+        }  //Function to remove an item from storage.
         public static void InventoryLogicAfterLoad(List<Item> itemList)
         {
             foreach (Item item in itemList)
@@ -235,7 +235,7 @@ namespace The_Legend_of_Console
             {
                 EquipItemToSlot(item);
             }
-        }    //Function to reequip all saved equipment
+        }  //Function to reequip all saved equipment
         public static void RemoveItemStatsBeforeSave(List<Item> itemList)
         {
             foreach(Item item in itemList)

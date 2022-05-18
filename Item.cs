@@ -107,14 +107,14 @@ namespace The_Legend_of_Console
             AddItemToEquipmentList(GlovesList);
             AddItemToEquipmentList(RingList);
             AddItemToEquipmentList(ConsumList);
-        }
+        }  //Function to refresh the list of all equipment
         public static void AddItemToEquipmentList(List<Item> itemList)
         {
             foreach (Item item in itemList)
             {
                 AllEquipmentList.Add(item);
             }
-        }
+        } //Function to add item to the list of all equipment.
         public static bool MonsterDropChance()
         {
             Random random = new Random();
@@ -127,7 +127,7 @@ namespace The_Legend_of_Console
             {
                 return false;
             }
-        }
+        }  //Function to decide if a monster drop an item from monster encounter.
         public static List<Item> MonsterDroppedItem()
         {
             List<Item> monsterDrop = new List<Item>();
@@ -147,12 +147,12 @@ namespace The_Legend_of_Console
                 }
             monsterDrop.Add(item);
             return monsterDrop;
-        }
+        } //Function to decide which item drops from monster encounter.
         public static int MonsterDroppedGold(Monster monster)
         {
             Random random = new Random();
             int goldDropped = random.Next(1, monster.MaxHealth);
             return goldDropped;
-        }
+        } //Function to decide how many gold drops from monster encounter.
     }
 }

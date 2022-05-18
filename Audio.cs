@@ -15,6 +15,6 @@ namespace The_Legend_of_Console
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + @$"\data\Sound\{soundName}.wav";
             player.Play();
-        }
+        } //Function to play a sound.
     }      
 }

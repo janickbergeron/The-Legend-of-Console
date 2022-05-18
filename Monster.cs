@@ -88,7 +88,7 @@ namespace The_Legend_of_Console
             {
                 Health += 10;
             }
-        }
+        }  //Function for the monsters combat ability.
         public int ChooseAction()
         {
                 Random random = new Random();

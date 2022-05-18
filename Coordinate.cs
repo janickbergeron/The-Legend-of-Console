@@ -230,7 +230,7 @@ namespace The_Legend_of_Console
                 Display.PlayerHouseDisplay();
                 Player.PlayerHouseLogic(Input.HouseInput());
             }
-        }        //Function to know if the player is trying to enter a shop.
+        }  //Function to know if the player is trying to enter a shop.
         public static void ShopPanelInteraction(Coordinate playerPosition)
         {
             if (playerPosition.X == 14 && playerPosition.Y == 7)
@@ -284,7 +284,7 @@ namespace The_Legend_of_Console
             {
                 Interactible.PlayerHouseContext();
             }
-        }    //Function to know which shop panel the user is trying to interact with.
+        }  //Function to know which shop panel the user is trying to interact with.
         public static char FindInteractible(Coordinate playerPosition)
         {
             if (Display.MainTab[playerPosition.Y+1][playerPosition.X] == 'P' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == '▓' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == '▒' || Display.MainTab[playerPosition.Y + 1][playerPosition.X] == 'L')  //Look for interactible Cell to the right of the player.
@@ -307,6 +307,6 @@ namespace The_Legend_of_Console
                 return Display.MainTab[playerPosition.Y][playerPosition.X + 1];
             }
             return ' ';
-        }    //Function that verify if any interactible cell is around the player's position.
+        }  //Function that verify if any interactible cell is around the player's position.
     }
 }

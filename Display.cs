@@ -130,7 +130,7 @@ namespace The_Legend_of_Console
                 Console.Write(n);
             }
             Console.WriteLine();
-        }    //Function to draw one line of the gameboard.
+        }  //Function to draw one line of the gameboard.
         public static void Gameboard()
         {
             ClearConsole();
@@ -140,7 +140,7 @@ namespace The_Legend_of_Console
                 Gameline(i);
             }
             ContextDisplay();
-        }   //Function to draw the gameboard.
+        }  //Function to draw the gameboard.
         public static void ClearConsole()
         {
             Console.SetCursorPosition(0, 0);
