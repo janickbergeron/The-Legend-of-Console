@@ -163,7 +163,7 @@ namespace The_Legend_of_Console
             {
                 Player.isPlayerInTown = false;
                 TabLoading(Board.GenerateBoard(boardNumber, BoardList), charTab);
-                Coordinate.MonsterCoordList = Monster.MonsterPosition();
+                Coordinate.BossCoordList = Coordinate.BossMonsterPosition();
                 Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
                 Coordinate.LeverCoordList = Coordinate.LeverPosition();
                 Coordinate.DoorCoordList = Coordinate.DoorPosition();
@@ -175,7 +175,7 @@ namespace The_Legend_of_Console
             int randomNumber = rand.Next(3,4);
             Player.isPlayerInTown = false;
             TabLoading(Board.GenerateBoard(randomNumber, BoardList),charTab);
-            Coordinate.MonsterCoordList = Monster.MonsterPosition();
+            Coordinate.BossCoordList = Coordinate.BossMonsterPosition();
             Coordinate.TreasureCoordList = Coordinate.TreasurePosition();
             Coordinate.LeverCoordList = Coordinate.LeverPosition();
             Coordinate.DoorCoordList = Coordinate.DoorPosition();

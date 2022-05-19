@@ -146,10 +146,10 @@ namespace The_Legend_of_Console
                 //Post Combat Gold Process
                 CombatLogProcess();
                 int gold = Item.MonsterDroppedGold(_monster);
-                Combat.CombatLog.Add(String.Format("║ The monster dropped {1,3} gold.                                          ║", _monster.Name, gold));
+                Combat.CombatLog.Add(String.Format("║ The monster dropped : {1,3} gold.                                        ║", _monster.Name, gold));
                 _player.Gold += gold;
                 Display.CombatLogDisplay();
-                Console.ReadKey();
+                Console.ReadKey(); 
                 _player.PlayerLevelUp();
                 Display.Gameboard();
             }

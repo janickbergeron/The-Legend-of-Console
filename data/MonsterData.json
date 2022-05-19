@@ -7,6 +7,15 @@
         "MaxDamage": "2",
         "Defense": "1",
         "Armor": "0"
+    },
+    {
+        "Name": "Goblin",
+        "Level": "0",
+        "MaxHealth": "8",
+        "MinDamage": "2",
+        "MaxDamage": "3",
+        "Defense": "1",
+        "Armor": "0"
     }
 ]
 

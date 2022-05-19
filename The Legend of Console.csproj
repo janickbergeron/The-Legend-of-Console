@@ -12,6 +12,7 @@
     <None Remove="data\ArmorData.json" />
     <None Remove="data\BoardData.json" />
     <None Remove="data\BootsData.json" />
+    <None Remove="data\BossData.json" />
     <None Remove="data\ChestData.json" />
     <None Remove="data\ConsumData.json" />
     <None Remove="data\CraftedArmorData.json" />
@@ -36,6 +37,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data\BootsData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\BossData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data\ChestData.json">

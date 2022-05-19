@@ -10,7 +10,7 @@ namespace The_Legend_of_Console
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public static List<Coordinate> MonsterCoordList = new List<Coordinate>();
+        public static List<Coordinate> BossCoordList = new List<Coordinate>();
         public static List<Coordinate> TreasureCoordList = new List<Coordinate>();
         public static List<Coordinate> LeverCoordList = new List<Coordinate>();
         public static List<Coordinate> PanelCoordList = new List<Coordinate>();
@@ -49,6 +49,30 @@ namespace The_Legend_of_Console
             }
             return PlayerCoord;
         } //Returns a Coordinate object with player's current coordinates
+        public static List<Coordinate> BossMonsterPosition()
+        {
+            int[] position = new int[2];
+            List<Coordinate> CoordList = new List<Coordinate>();
+
+            for (int i = 0; i < 16; i++)
+            {
+                int compteur = 0;
+                foreach (char n in Display.MainTab[i])
+                {
+                    if (n != 'B')
+                        compteur++;
+                    else
+                    {
+                        position[0] = compteur;
+                        position[1] = i;
+                        compteur++;
+                        Coordinate Coord = new(position[0], position[1]);
+                        CoordList.Add(Coord);
+                    }
+                }
+            }
+            return CoordList;
+        } //Function that returns a list of coordinate for all monster on the gameboard.
         public static List<Coordinate> TreasurePosition()
         {
             int[] position = new int[2];
@@ -183,8 +207,8 @@ namespace The_Legend_of_Console
             {
                 if (coord.X == Program.playerCoord.X && coord.Y == Program.playerCoord.Y)
                 {
-                    Program.InitializeCombat();
-                    MonsterCoordList.RemoveAt(compteur);
+                    Program.InitializeBossCombat();
+                    BossCoordList.RemoveAt(compteur);
                     break;
                 }
                 compteur++;

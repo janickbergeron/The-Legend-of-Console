@@ -148,10 +148,30 @@ namespace The_Legend_of_Console
             monsterDrop.Add(item);
             return monsterDrop;
         } //Function to decide which item drops from monster encounter.
+        public static List<Item> BossMonsterDroppedItem()
+        {
+            List<Item> monsterDrop = new List<Item>();
+            Item item = null;
+            Random random = new Random();
+            int ItemType = random.Next(0, 10);
+            if (ItemType >= 2) //Equipment drop >= 2 = 80%d
+            {
+                RefreshEquipmentList();
+                int Item = random.Next(0, AllEquipmentList.Count());
+                item = CreateItem(Item, AllEquipmentList);
+            }
+            if (ItemType <= 1) //Material drop <= 1 = 20%
+            {
+                int Item = random.Next(0, MaterialList.Count());
+                item = CreateItem(Item, MaterialList);
+            }
+            monsterDrop.Add(item);
+            return monsterDrop;
+        } //Function to decide which item drops from monster encounter.
         public static int MonsterDroppedGold(Monster monster)
         {
             Random random = new Random();
-            int goldDropped = random.Next(1, monster.MaxHealth);
+            int goldDropped = random.Next(1, monster.MaxHealth/2);
             return goldDropped;
         } //Function to decide how many gold drops from monster encounter.
     }

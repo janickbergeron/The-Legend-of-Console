@@ -1,0 +1,12 @@
+[
+    {
+        "Name": "Blob King",
+        "Level": "0",
+        "MaxHealth": "12",
+        "MinDamage": "2",
+        "MaxDamage": "4",
+        "Defense": "2",
+        "Armor": "0"
+    }
+]
+

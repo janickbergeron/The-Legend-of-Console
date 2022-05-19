@@ -11,6 +11,7 @@ namespace The_Legend_of_Console
     public class Monster : Entity
     {
         public static List<Monster> MonsterList = new List<Monster>();
+        public static List<Monster> BossMonsterList = new List<Monster>();
         public Monster(string name, int level, int maxHealth, int minDamage,int maxDamage, int defense, int armor, Entity enemy) : base(name, level, maxHealth, minDamage,maxDamage, defense, armor)
         {
             Enemy = enemy;
@@ -24,7 +25,7 @@ namespace The_Legend_of_Console
             Defense = Defense * level;
         }
         
-        public static List<Coordinate> MonsterPosition()
+        public static List<Coordinate> BossMonsterPosition()
         {
             int[] position = new int[2];
             List<Coordinate> CoordList = new List<Coordinate>();
@@ -48,10 +49,10 @@ namespace The_Legend_of_Console
             }
             return CoordList;
         } //Function that returns a list of coordinate for all monster on the gameboard.
-        public static List<Monster> GetMonsterData()
+        public static List<Monster> GetEntityData(string Entity)
         {
             var CurrentDirectory = Environment.CurrentDirectory;
-            string path = $@"\Data\MonsterData.json";
+            string path = $@"\Data\{Entity}Data.json";
             string fullPath = CurrentDirectory + path;
             StreamReader r = new StreamReader(fullPath);
             string jsonString = r.ReadToEnd();

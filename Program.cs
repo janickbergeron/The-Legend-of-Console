@@ -19,6 +19,16 @@
             monster.Health = monster.MaxHealth;
             combat1.StartCombat();
         }
+        public static void InitializeBossCombat()
+        {
+            Random random = new Random();
+            int rand = random.Next(0, Monster.BossMonsterList.Count());
+            Monster monster = Monster.CreateMonster(rand, Monster.BossMonsterList);
+            Program.monster = monster;
+            Combat combat1 = new Combat(player, monster);
+            monster.Health = monster.MaxHealth;
+            combat1.StartCombat();
+        }
         public static Player PlayerCreation()
         {
             Display.ClearConsole();
@@ -43,7 +53,8 @@
             Item.MaterialList = Item.GetItemData("Material");
             Item.CraftedWeaponList = Item.GetItemData("CraftedWeapon");
             Item.CraftedArmorList = Item.GetItemData("CraftedArmor");
-            Monster.MonsterList = Monster.GetMonsterData();
+            Monster.MonsterList = Monster.GetEntityData("Monster");
+            Monster.BossMonsterList = Monster.GetEntityData("Boss");
             Display.BoardList = Board.GetBoardData();
 
             //Initialization
@@ -78,7 +89,7 @@
                 playerCoord = Coordinate.PlayerPosition();
                 Display.GameboardOptimisation();
                 Display.Gameboard();
-                //Coordinate.CombatInitiator(Coordinate.MonsterCoordList);
+                Coordinate.CombatInitiator(Coordinate.BossCoordList);
                 Coordinate.TreasureInitiator(Coordinate.TreasureCoordList);
                 Player.PlayerMouvement(playerCoord);
                 Coordinate.RandomCombatInitiator();
